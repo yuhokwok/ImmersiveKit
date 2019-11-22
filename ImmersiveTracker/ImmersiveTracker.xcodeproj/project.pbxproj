@@ -1,0 +1,393 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED207AFA2388404E001806CB /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = ED207AF82388404E001806CB /* GCDAsyncUdpSocket.m */; };
+		ED207AFB2388404E001806CB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = ED207AF92388404E001806CB /* GCDAsyncSocket.m */; };
+		ED207AFE238842A3001806CB /* UIDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFD238842A3001806CB /* UIDevices.swift */; };
+		ED207B00238842C4001806CB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFF238842C4001806CB /* File.swift */; };
+		ED207B03238843CA001806CB /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207B02238843CA001806CB /* ClientViewController.swift */; };
+		ED76D16223883C5100D8CE23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16123883C5100D8CE23 /* AppDelegate.swift */; };
+		ED76D16423883C5100D8CE23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16323883C5100D8CE23 /* SceneDelegate.swift */; };
+		ED76D16623883C5100D8CE23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16523883C5100D8CE23 /* ViewController.swift */; };
+		ED76D16923883C5100D8CE23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16723883C5100D8CE23 /* Main.storyboard */; };
+		ED76D16B23883C5400D8CE23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16A23883C5400D8CE23 /* Assets.xcassets */; };
+		ED76D16E23883C5400D8CE23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16C23883C5400D8CE23 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED207AED23884007001806CB /* ImmersiveTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImmersiveTracker-Bridging-Header.h"; sourceTree = "<group>"; };
+		ED207AF52388404D001806CB /* CocoaAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaAsyncSocket.h; sourceTree = "<group>"; };
+		ED207AF62388404D001806CB /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		ED207AF72388404D001806CB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		ED207AF82388404E001806CB /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		ED207AF92388404E001806CB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		ED207AFD238842A3001806CB /* UIDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevices.swift; sourceTree = "<group>"; };
+		ED207AFF238842C4001806CB /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		ED207B02238843CA001806CB /* ClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientViewController.swift; sourceTree = "<group>"; };
+		ED76D15E23883C5100D8CE23 /* ImmersiveTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImmersiveTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED76D16123883C5100D8CE23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED76D16323883C5100D8CE23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ED76D16523883C5100D8CE23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED76D16823883C5100D8CE23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED76D16A23883C5400D8CE23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED76D16D23883C5400D8CE23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED76D16F23883C5400D8CE23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED76D15B23883C5100D8CE23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED207AFC23884128001806CB /* 3rd-Party */ = {
+			isa = PBXGroup;
+			children = (
+				ED5818D723883F5A000C64D3 /* CocoaAsyncSocket */,
+				ED207AFD238842A3001806CB /* UIDevices.swift */,
+				ED207AED23884007001806CB /* ImmersiveTracker-Bridging-Header.h */,
+			);
+			path = "3rd-Party";
+			sourceTree = "<group>";
+		};
+		ED5818D723883F5A000C64D3 /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				ED207AF52388404D001806CB /* CocoaAsyncSocket.h */,
+				ED207AF72388404D001806CB /* GCDAsyncSocket.h */,
+				ED207AF92388404E001806CB /* GCDAsyncSocket.m */,
+				ED207AF62388404D001806CB /* GCDAsyncUdpSocket.h */,
+				ED207AF82388404E001806CB /* GCDAsyncUdpSocket.m */,
+			);
+			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		ED76D15523883C5100D8CE23 = {
+			isa = PBXGroup;
+			children = (
+				ED76D16023883C5100D8CE23 /* ImmersiveTracker */,
+				ED76D15F23883C5100D8CE23 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED76D15F23883C5100D8CE23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED76D15E23883C5100D8CE23 /* ImmersiveTracker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED76D16023883C5100D8CE23 /* ImmersiveTracker */ = {
+			isa = PBXGroup;
+			children = (
+				ED207AFC23884128001806CB /* 3rd-Party */,
+				ED76D16123883C5100D8CE23 /* AppDelegate.swift */,
+				ED76D16323883C5100D8CE23 /* SceneDelegate.swift */,
+				ED76D16523883C5100D8CE23 /* ViewController.swift */,
+				ED207B02238843CA001806CB /* ClientViewController.swift */,
+				ED207AFF238842C4001806CB /* File.swift */,
+				ED76D16723883C5100D8CE23 /* Main.storyboard */,
+				ED76D16A23883C5400D8CE23 /* Assets.xcassets */,
+				ED76D16C23883C5400D8CE23 /* LaunchScreen.storyboard */,
+				ED76D16F23883C5400D8CE23 /* Info.plist */,
+			);
+			path = ImmersiveTracker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED76D15D23883C5100D8CE23 /* ImmersiveTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED76D17223883C5400D8CE23 /* Build configuration list for PBXNativeTarget "ImmersiveTracker" */;
+			buildPhases = (
+				ED76D15A23883C5100D8CE23 /* Sources */,
+				ED76D15B23883C5100D8CE23 /* Frameworks */,
+				ED76D15C23883C5100D8CE23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImmersiveTracker;
+			productName = ImmersiveTracker;
+			productReference = ED76D15E23883C5100D8CE23 /* ImmersiveTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED76D15623883C5100D8CE23 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "ImmersiveKit Team";
+				TargetAttributes = {
+					ED76D15D23883C5100D8CE23 = {
+						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
+					};
+				};
+			};
+			buildConfigurationList = ED76D15923883C5100D8CE23 /* Build configuration list for PBXProject "ImmersiveTracker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED76D15523883C5100D8CE23;
+			productRefGroup = ED76D15F23883C5100D8CE23 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED76D15D23883C5100D8CE23 /* ImmersiveTracker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED76D15C23883C5100D8CE23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED76D16E23883C5400D8CE23 /* LaunchScreen.storyboard in Resources */,
+				ED76D16B23883C5400D8CE23 /* Assets.xcassets in Resources */,
+				ED76D16923883C5100D8CE23 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED76D15A23883C5100D8CE23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED207AFA2388404E001806CB /* GCDAsyncUdpSocket.m in Sources */,
+				ED207AFB2388404E001806CB /* GCDAsyncSocket.m in Sources */,
+				ED207B00238842C4001806CB /* File.swift in Sources */,
+				ED207B03238843CA001806CB /* ClientViewController.swift in Sources */,
+				ED76D16623883C5100D8CE23 /* ViewController.swift in Sources */,
+				ED207AFE238842A3001806CB /* UIDevices.swift in Sources */,
+				ED76D16223883C5100D8CE23 /* AppDelegate.swift in Sources */,
+				ED76D16423883C5100D8CE23 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ED76D16723883C5100D8CE23 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED76D16823883C5100D8CE23 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ED76D16C23883C5400D8CE23 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED76D16D23883C5400D8CE23 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED76D17023883C5400D8CE23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ED76D17123883C5400D8CE23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED76D17323883C5400D8CE23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5778F83X4J;
+				INFOPLIST_FILE = ImmersiveTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ImmersiveKit.app.ImmersiveTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ImmersiveTracker/3rd-Party/ImmersiveTracker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED76D17423883C5400D8CE23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5778F83X4J;
+				INFOPLIST_FILE = ImmersiveTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ImmersiveKit.app.ImmersiveTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ImmersiveTracker/3rd-Party/ImmersiveTracker-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED76D15923883C5100D8CE23 /* Build configuration list for PBXProject "ImmersiveTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED76D17023883C5400D8CE23 /* Debug */,
+				ED76D17123883C5400D8CE23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED76D17223883C5400D8CE23 /* Build configuration list for PBXNativeTarget "ImmersiveTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED76D17323883C5400D8CE23 /* Debug */,
+				ED76D17423883C5400D8CE23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED76D15623883C5100D8CE23 /* Project object */;
+}
