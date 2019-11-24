@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5769209238A5C8900930B03 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5769207238A5C8900930B03 /* Utilities.swift */; };
+		B576920A238A5C8900930B03 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5769208238A5C8900930B03 /* MessageLabel.swift */; };
+		B576920C238AB17B00930B03 /* character in Resources */ = {isa = PBXBuildFile; fileRef = B576920B238AB17B00930B03 /* character */; };
 		ED207AFA2388404E001806CB /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = ED207AF82388404E001806CB /* GCDAsyncUdpSocket.m */; };
 		ED207AFB2388404E001806CB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = ED207AF92388404E001806CB /* GCDAsyncSocket.m */; };
 		ED207AFE238842A3001806CB /* UIDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFD238842A3001806CB /* UIDevices.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5769207238A5C8900930B03 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B5769208238A5C8900930B03 /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
+		B576920B238AB17B00930B03 /* character */ = {isa = PBXFileReference; lastKnownFileType = folder; name = character; path = "../../../ios app 2019/BodyCheck/BodyDetection/character"; sourceTree = "<group>"; };
 		ED207AED23884007001806CB /* ImmersiveTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImmersiveTracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		ED207AF52388404D001806CB /* CocoaAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaAsyncSocket.h; sourceTree = "<group>"; };
 		ED207AF62388404D001806CB /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -92,11 +98,14 @@
 		ED76D16023883C5100D8CE23 /* ImmersiveTracker */ = {
 			isa = PBXGroup;
 			children = (
+				B576920B238AB17B00930B03 /* character */,
 				ED207AFC23884128001806CB /* 3rd-Party */,
 				ED76D16123883C5100D8CE23 /* AppDelegate.swift */,
 				ED76D16323883C5100D8CE23 /* SceneDelegate.swift */,
 				ED76D16523883C5100D8CE23 /* ViewController.swift */,
 				ED207B02238843CA001806CB /* ClientViewController.swift */,
+				B5769208238A5C8900930B03 /* MessageLabel.swift */,
+				B5769207238A5C8900930B03 /* Utilities.swift */,
 				ED207AFF238842C4001806CB /* File.swift */,
 				ED76D16723883C5100D8CE23 /* Main.storyboard */,
 				ED76D16A23883C5400D8CE23 /* Assets.xcassets */,
@@ -165,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B576920C238AB17B00930B03 /* character in Resources */,
 				ED76D16E23883C5400D8CE23 /* LaunchScreen.storyboard in Resources */,
 				ED76D16B23883C5400D8CE23 /* Assets.xcassets in Resources */,
 				ED76D16923883C5100D8CE23 /* Main.storyboard in Resources */,
@@ -180,10 +190,12 @@
 			files = (
 				ED207AFA2388404E001806CB /* GCDAsyncUdpSocket.m in Sources */,
 				ED207AFB2388404E001806CB /* GCDAsyncSocket.m in Sources */,
+				B576920A238A5C8900930B03 /* MessageLabel.swift in Sources */,
 				ED207B00238842C4001806CB /* File.swift in Sources */,
 				ED207B03238843CA001806CB /* ClientViewController.swift in Sources */,
 				ED76D16623883C5100D8CE23 /* ViewController.swift in Sources */,
 				ED207AFE238842A3001806CB /* UIDevices.swift in Sources */,
+				B5769209238A5C8900930B03 /* Utilities.swift in Sources */,
 				ED76D16223883C5100D8CE23 /* AppDelegate.swift in Sources */,
 				ED76D16423883C5100D8CE23 /* SceneDelegate.swift in Sources */,
 			);
@@ -331,13 +343,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5778F83X4J;
+				DEVELOPMENT_TEAM = 9TMD28C7K3;
 				INFOPLIST_FILE = ImmersiveTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ImmersiveKit.app.ImmersiveTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = LouisTsui.ImmersiveKit.app.ImmersiveTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ImmersiveTracker/3rd-Party/ImmersiveTracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -352,13 +364,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5778F83X4J;
+				DEVELOPMENT_TEAM = 9TMD28C7K3;
 				INFOPLIST_FILE = ImmersiveTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ImmersiveKit.app.ImmersiveTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = LouisTsui.ImmersiveKit.app.ImmersiveTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ImmersiveTracker/3rd-Party/ImmersiveTracker-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
