@@ -49,6 +49,10 @@ class ClientViewController: UIViewController, GCDAsyncSocketDelegate, NetService
     // ar kit - body tracking code //
     
     @IBAction func sendData(_ sender: Any) {
+        self.sendData()
+    }
+    
+    func sendData() {
         guard let msg = self.messageTextField.text else { return }
         if let data = msg.data(using: .utf8) {
             self.asyncSocket?.write(data, withTimeout: -1, tag: -1)
@@ -270,9 +274,10 @@ class ClientViewController: UIViewController, GCDAsyncSocketDelegate, NetService
                                     print("leftHandJoint.columns3.x = \(leftHandJoint3x)")
             messageTextField.text = "leftHandJoint.columns3.x = \(leftHandJoint3x))"
             
-                        
-    
-                        //            print("leftHandJoint = \(leftHandJoint))") // localTransform leftHandJoint = SIMD3<Float>(0.26797035, -4.2915342e-08, 1.9073488e-08))
+            self.tv?.text = "\(leftHandJoint3x.x)"
+            
+            self.sendData()
+            //            print("leftHandJoint = \(leftHandJoint))") // localTransform leftHandJoint = SIMD3<Float>(0.26797035, -4.2915342e-08, 1.9073488e-08))
             //                        print("leftHandJoint = \(leftHandJoint))")  // modelTransform leftHandJoint = SIMD3<Float>(0.2939057, -0.00094909663, 0.17401978))
             //                        print("rightHandJoint = \(rightHandJoint)") // modelTransform rightHandJoint = SIMD3<Float>(-0.29449734, 0.044589043, 0.27011696)
                
