@@ -11,5 +11,5 @@ An AR VR Development Framework for Developing Full Body Tracking ARVR App based 
 ## ImmersitveKitUnityPlugin (Plan to do)
 - For building game with popular Unity3D engine
 
-## ImmseriveXP (Plan to do)
+## ImmersiveXP (Plan to do)
 - An demo application using immserive kit
