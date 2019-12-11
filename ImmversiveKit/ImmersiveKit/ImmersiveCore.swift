@@ -9,6 +9,10 @@
 import Foundation
 
 
+public protocol ImmersiveKitDebug {
+    func report(msg : String)
+}
+
 public struct ImmersiveCore {
     public static var version = 1.0
 }

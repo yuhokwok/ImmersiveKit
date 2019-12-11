@@ -8,72 +8,139 @@
 
 
 import Foundation
-import CocoaAsyncSocket
-
-public protocol ImmersiveClientDelegate {
-    
-}
+//import CocoaAsyncSocket
 
 /// Class for receiving data from Immersive Server
-public class ImmersiveClient : NSObject, NetServiceDelegate, NetServiceBrowserDelegate, GCDAsyncSocketDelegate {
+public class ImmersiveClient : ImmersiveNetworkCore  {
     
     //Data Field
     private var serverAddresses : [Data]?
-    private var asyncSocket : GCDAsyncSocket?
-    private var serverService : NetService?
     private var netServiceBrowser : NetServiceBrowser?
+    private var connected = false
     
+    private var serviceType : String
+    private var serviceDomain : String
+ 
+    public var isConnected : Bool {
+        return connected
+    }
+    
+    
+    public init(type : String, domain : String, runQueue: DispatchQueue? = nil) {
+        self.serviceType = type
+        self.serviceDomain = domain
+        self.netServiceBrowser = NetServiceBrowser()
+        super.init(runQueue: runQueue)
+    }
+    
+    public func browse() {
+        self.netServiceBrowser?.delegate = self
+        self.netServiceBrowser?.searchForServices(ofType: serviceType, inDomain: serviceDomain)
+    }
+    
+    public func stop() {
+        asyncSocket?.disconnect()
+        netService?.stop()
+        netService?.delegate = nil
+        netServiceBrowser?.stop()
+        netServiceBrowser?.delegate = nil
+    }
 }
+
 //MARK: - GCDAsyncSocketDelegate
 extension ImmersiveClient {
-    public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+    override public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+        printLog("socket did connect to host \(host) : \(port)")
+        connected = true
+    }
+    
+    override public func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
+        if !connected {
+            self.connectToNextAddress()
+        }
+    }
+    
+    override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+        printLog("disconnected")
+        if let str = String(data: data, encoding: .utf8) {
+            printLog("echo: \(str)")
+        }
+    }
+    
+    override public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         
     }
     
-    public func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-        
-    }
-    
-    public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        
-    }
-    
-    public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-        
+    private func connectToNextAddress(){
+        if serverAddresses == nil || serverAddresses?.count == 0 {
+            printLog("no server address")
+            return
+        }
+        var done = false
+        while(!done && serverAddresses!.count > 0){
+            var addr : Data
+            addr = serverAddresses!.removeFirst()
+            
+            do {
+                try asyncSocket?.connect(toAddress: addr)
+                done = true
+            } catch _ {
+                printLog("cannot connect")
+            }
+        }
+
+        if (!done){
+            printLog("unable to connect any resolved address")
+        }
     }
 }
 
 //MARK: - NetServiceDelegate
 extension ImmersiveClient {
-    public func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
-        
+    override public func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
+        printLog("did not resolve")
     }
-    
-    public func netServiceDidResolveAddress(_ sender: NetService) {
+
+    override public func netServiceDidResolveAddress(_ sender: NetService) {
+        printLog("did resolve \(String(describing: sender.addresses))")
+        if serverAddresses == nil {
+            printLog("got addresses")
+            serverAddresses = sender.addresses
+        }
         
+        if(asyncSocket == nil){
+            asyncSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
+        }
+        
+        self.connectToNextAddress()
     }
 }
 
 //MARK: - NetServiceBrowserDelegate
 extension ImmersiveClient {
-    public func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
-        
+    override public func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
+        printLog("will search for service")
     }
     
-    public func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
-        
+    override public func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
+        printLog("did stop search for service")
     }
     
-    public func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        
+    override public func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
+        printLog("did find service \(service.name)")
+        if netService == nil {
+            printLog("resolving...")
+            netService = service
+            netService?.delegate = self
+            netService?.resolve(withTimeout: 5.0)
+        }
     }
     
-    public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
-        
+    override public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
+        printLog("did remove service \(service.name)")
     }
     
-    public func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
-        
+    override public func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
+        printLog("did stop search for service")
     }
 }
-

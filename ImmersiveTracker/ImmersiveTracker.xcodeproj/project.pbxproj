@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		B5769209238A5C8900930B03 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5769207238A5C8900930B03 /* Utilities.swift */; };
 		B576920A238A5C8900930B03 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5769208238A5C8900930B03 /* MessageLabel.swift */; };
-		ED207AFA2388404E001806CB /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = ED207AF82388404E001806CB /* GCDAsyncUdpSocket.m */; };
-		ED207AFB2388404E001806CB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = ED207AF92388404E001806CB /* GCDAsyncSocket.m */; };
+		ED0BCBAB23A0E36A00CA3DE1 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBAA23A0E36A00CA3DE1 /* Constant.swift */; };
 		ED207AFE238842A3001806CB /* UIDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFD238842A3001806CB /* UIDevices.swift */; };
 		ED207B00238842C4001806CB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFF238842C4001806CB /* File.swift */; };
 		ED207B03238843CA001806CB /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207B02238843CA001806CB /* ClientViewController.swift */; };
@@ -18,7 +17,7 @@
 		ED764ACD23A0A746004419AA /* ImmersiveKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED764ACB23A0A746004419AA /* ImmersiveKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ED76D16223883C5100D8CE23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16123883C5100D8CE23 /* AppDelegate.swift */; };
 		ED76D16423883C5100D8CE23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16323883C5100D8CE23 /* SceneDelegate.swift */; };
-		ED76D16623883C5100D8CE23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16523883C5100D8CE23 /* ViewController.swift */; };
+		ED76D16623883C5100D8CE23 /* ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16523883C5100D8CE23 /* ServerViewController.swift */; };
 		ED76D16923883C5100D8CE23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16723883C5100D8CE23 /* Main.storyboard */; };
 		ED76D16B23883C5400D8CE23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16A23883C5400D8CE23 /* Assets.xcassets */; };
 		ED76D16E23883C5400D8CE23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16C23883C5400D8CE23 /* LaunchScreen.storyboard */; };
@@ -42,12 +41,8 @@
 /* Begin PBXFileReference section */
 		B5769207238A5C8900930B03 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B5769208238A5C8900930B03 /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
+		ED0BCBAA23A0E36A00CA3DE1 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		ED207AED23884007001806CB /* ImmersiveTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImmersiveTracker-Bridging-Header.h"; sourceTree = "<group>"; };
-		ED207AF52388404D001806CB /* CocoaAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaAsyncSocket.h; sourceTree = "<group>"; };
-		ED207AF62388404D001806CB /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		ED207AF72388404D001806CB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		ED207AF82388404E001806CB /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
-		ED207AF92388404E001806CB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		ED207AFD238842A3001806CB /* UIDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevices.swift; sourceTree = "<group>"; };
 		ED207AFF238842C4001806CB /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		ED207B02238843CA001806CB /* ClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientViewController.swift; sourceTree = "<group>"; };
@@ -55,7 +50,7 @@
 		ED76D15E23883C5100D8CE23 /* ImmersiveTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImmersiveTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED76D16123883C5100D8CE23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED76D16323883C5100D8CE23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED76D16523883C5100D8CE23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED76D16523883C5100D8CE23 /* ServerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerViewController.swift; sourceTree = "<group>"; };
 		ED76D16823883C5100D8CE23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED76D16A23883C5400D8CE23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED76D16D23883C5400D8CE23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,23 +73,10 @@
 		ED207AFC23884128001806CB /* 3rd-Party */ = {
 			isa = PBXGroup;
 			children = (
-				ED5818D723883F5A000C64D3 /* CocoaAsyncSocket */,
 				ED207AFD238842A3001806CB /* UIDevices.swift */,
 				ED207AED23884007001806CB /* ImmersiveTracker-Bridging-Header.h */,
 			);
 			path = "3rd-Party";
-			sourceTree = "<group>";
-		};
-		ED5818D723883F5A000C64D3 /* CocoaAsyncSocket */ = {
-			isa = PBXGroup;
-			children = (
-				ED207AF52388404D001806CB /* CocoaAsyncSocket.h */,
-				ED207AF72388404D001806CB /* GCDAsyncSocket.h */,
-				ED207AF92388404E001806CB /* GCDAsyncSocket.m */,
-				ED207AF62388404D001806CB /* GCDAsyncUdpSocket.h */,
-				ED207AF82388404E001806CB /* GCDAsyncUdpSocket.m */,
-			);
-			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
 		ED764ABE23A0A419004419AA /* Frameworks */ = {
@@ -129,12 +111,13 @@
 				ED207AFC23884128001806CB /* 3rd-Party */,
 				ED76D16123883C5100D8CE23 /* AppDelegate.swift */,
 				ED76D16323883C5100D8CE23 /* SceneDelegate.swift */,
-				ED76D16523883C5100D8CE23 /* ViewController.swift */,
+				ED76D16523883C5100D8CE23 /* ServerViewController.swift */,
 				ED207B02238843CA001806CB /* ClientViewController.swift */,
 				B5769208238A5C8900930B03 /* MessageLabel.swift */,
 				B5769207238A5C8900930B03 /* Utilities.swift */,
 				ED207AFF238842C4001806CB /* File.swift */,
 				ED76D16F23883C5400D8CE23 /* Info.plist */,
+				ED0BCBAA23A0E36A00CA3DE1 /* Constant.swift */,
 			);
 			path = ImmersiveTracker;
 			sourceTree = "<group>";
@@ -232,14 +215,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED207AFA2388404E001806CB /* GCDAsyncUdpSocket.m in Sources */,
-				ED207AFB2388404E001806CB /* GCDAsyncSocket.m in Sources */,
 				B576920A238A5C8900930B03 /* MessageLabel.swift in Sources */,
 				ED207B00238842C4001806CB /* File.swift in Sources */,
 				ED207B03238843CA001806CB /* ClientViewController.swift in Sources */,
-				ED76D16623883C5100D8CE23 /* ViewController.swift in Sources */,
+				ED76D16623883C5100D8CE23 /* ServerViewController.swift in Sources */,
 				ED207AFE238842A3001806CB /* UIDevices.swift in Sources */,
 				B5769209238A5C8900930B03 /* Utilities.swift in Sources */,
+				ED0BCBAB23A0E36A00CA3DE1 /* Constant.swift in Sources */,
 				ED76D16223883C5100D8CE23 /* AppDelegate.swift in Sources */,
 				ED76D16423883C5100D8CE23 /* SceneDelegate.swift in Sources */,
 			);

@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GCDAsyncSocket.h"
+#import "GCDAsyncUdpSocket.h"
+
 //! Project version number for ImmersiveKit.
 FOUNDATION_EXPORT double ImmersiveKitVersionNumber;
 

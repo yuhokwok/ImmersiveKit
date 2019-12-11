@@ -13,20 +13,16 @@ import ARKit
 import Combine
 // ar kit - body tracking code //
 
+import ImmersiveKit
 
-let SERV_TYPE = "_immersivetracker._tcp."
-let SERV_DOMAIN  = "local."
-let SERV_PORT : Int32 = 55699
-class ClientViewController: UIViewController, GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ARSessionDelegate {
+
+//GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate,
+class ClientViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ARSessionDelegate, ImmersiveKitDebug {
+    
+    var immersiveClient : ImmersiveClient?
     
     @IBOutlet var tv : UITextView?
     @IBOutlet weak var messageTextField: UITextField!
-    
-    var connected = false
-    var serverAddresses : [Data]?
-    var asyncSocket : GCDAsyncSocket?
-    var serverService : NetService?
-    var netServiceBrowser : NetServiceBrowser?
     
     
     // ar kit - body tracking code //
@@ -54,16 +50,7 @@ class ClientViewController: UIViewController, GCDAsyncSocketDelegate, NetService
     
     func sendData() {
         guard let msg = self.messageTextField.text else { return }
-        if let data = msg.data(using: .utf8) {
-            self.asyncSocket?.write(data, withTimeout: -1, tag: -1)
-            self.asyncSocket?.write(GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
-            self.asyncSocket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
-            printLog("send - \(msg)")
-            
-            
-            
-            
-        }
+        self.immersiveClient?.sendMessage(msg: msg)
     }
     
 //    @IBAction func returnTapped(_ sender: Any) {
@@ -76,7 +63,8 @@ class ClientViewController: UIViewController, GCDAsyncSocketDelegate, NetService
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //self.asyncSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
+        self.immersiveClient = ImmersiveClient(type: SERV_TYPE, domain: SERV_DOMAIN)
+        self.immersiveClient?.debugDelegate = self
     }
     
     
@@ -84,11 +72,8 @@ class ClientViewController: UIViewController, GCDAsyncSocketDelegate, NetService
         super.viewDidAppear(animated)
         
         logTextView = self.tv
-        netServiceBrowser = NetServiceBrowser()
-        netServiceBrowser?.delegate = self
-        //netServiceBrowser?.searchForServices(ofType: "_thevrar._tcp.", inDomain: "local.")
-        printLog("try browse for service")
-        netServiceBrowser?.searchForServices(ofType: SERV_TYPE, inDomain: SERV_DOMAIN)
+        
+        self.immersiveClient?.browse()
         
           // ar kit - body tracking code //
         arView.session.delegate = self
@@ -129,109 +114,11 @@ class ClientViewController: UIViewController, GCDAsyncSocketDelegate, NetService
     
     
     override func viewDidDisappear(_ animated: Bool) {
+        self.immersiveClient?.stop()
         super.viewDidAppear(animated)
-        asyncSocket?.disconnect()
-        serverService?.stop()
-        serverService?.delegate = nil
-        netServiceBrowser?.delegate = nil
-        netServiceBrowser?.stop()
-    }
-    
-    //MARK:-- NetServiceBrowserDelegate
-    func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
-        printLog("will search for service")
-    }
-
-    
-    
-    func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
-        printLog("did not search \(errorDict)")
-    }
-    
-    func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        printLog("did find service \(service.name)")
-        if serverService == nil {
-            printLog("resolving...")
-            serverService = service
-            serverService?.delegate = self
-            serverService?.resolve(withTimeout: 5.0)
-        }
-    }
-    
-    func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
-        printLog("did remove service \(service.name)")
-    }
-    
-    func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
-        printLog("did stop search for service")
     }
     
 
-
-    //MARK:-- CocoaAsyncSocketDelegate
-    func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        printLog("socket did connect to host \(host) : \(port)")
-        connected = true
-    }
-    
-    func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-        printLog("disconnected")
-        if !connected {
-            self.connectToNextAddress()
-        }
-    }
-    
-    func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        if let str = String(data: data, encoding: .utf8) {
-            printLog("echo: \(str)")
-        }
-    }
-    
-    func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-        
-    }
-    
-    //MARK:-- NetServiceDelegate
-    func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
-        printLog("did not resolve")
-    }
-    
-    func netServiceDidResolveAddress(_ sender: NetService) {
-        printLog("did resolve \(String(describing: sender.addresses))")
-        if serverAddresses == nil {
-            printLog("got addresses")
-            serverAddresses = sender.addresses
-        }
-        
-        if(asyncSocket == nil){
-            asyncSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
-        }
-        
-        self.connectToNextAddress()
-    }
-    
-    func connectToNextAddress(){
-        if serverAddresses == nil || serverAddresses?.count == 0 {
-            printLog("no server address")
-            return
-        }
-        var done = false
-        while(!done && serverAddresses!.count > 0){
-            var addr : Data
-            addr = serverAddresses!.removeFirst()
-            
-            do {
-                try asyncSocket?.connect(toAddress: addr)
-                done = true
-            } catch _ {
-                printLog("cannot connect")
-            }
-        }
-
-        if (!done){
-            printLog("unable to connect any resolved address")
-        }
-    }
      // ===============================select camera  ================================================ //
     @IBAction func chooseCamera(_ sender: Any) {
         
@@ -289,4 +176,11 @@ class ClientViewController: UIViewController, GCDAsyncSocketDelegate, NetService
                         }
                     }
                 }
+}
+
+//MARK: -- Immersive Network Debug
+extension ClientViewController {
+    func report(msg : String) {
+        printLog(msg)
+    }
 }
