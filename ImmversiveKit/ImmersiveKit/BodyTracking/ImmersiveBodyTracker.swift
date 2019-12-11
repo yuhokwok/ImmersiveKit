@@ -72,17 +72,22 @@ extension ImmersiveBodyTracker {
            // in the world is relative to the body anchor's rotation.
            bodyAnchorEntity.orientation = Transform(matrix: bodyAnchor.transform).rotation
         
-        
-            let leftHandJoint0x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.0.x)!)
-            let leftHandJoint1x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.1.x)!)
-            let leftHandJoint2x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.2.x)!)
-            let leftHandJoint3x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.3.x)!)
-            
-            
-            
-            let msg = "leftHandJoint.columns3.x = \(leftHandJoint3x))"
-            print("leftHandJoint.columns3.x = \(leftHandJoint3x)")
-            self.delegate?.trackerDidUpdate(str: msg)
+
+            let immersiveBody = ImmersiveBody(skeleton: bodyAnchor.skeleton)
+            guard let bodyJSON = immersiveBody.jsonfiy() else {
+                self.delegate?.trackerDidUpdate(str: "no body data")
+                return
+            }
+            self.delegate?.trackerDidUpdate(str: bodyJSON)
+//            let leftHandJoint0x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.0.x)!)
+//            let leftHandJoint1x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.1.x)!)
+//            let leftHandJoint2x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.2.x)!)
+//            let leftHandJoint3x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.3.x)!)
+//
+                        
+//            let msg = "leftHandJoint.columns3.x = \(leftHandJoint3x))"
+//            print("leftHandJoint.columns3.x = \(leftHandJoint3x)")
+//            self.delegate?.trackerDidUpdate(str: msg)
             
             if let character = body, character.parent == nil {
                 // Attach the character to its anchor as soon as

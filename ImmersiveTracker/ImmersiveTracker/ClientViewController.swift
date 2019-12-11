@@ -30,15 +30,12 @@ class ClientViewController: UIViewController, ImmersiveBodyTrackerDelegate, Imme
     @IBOutlet weak var arView: ARView!
     @IBOutlet weak var messageLabel: MessageLabel!
     
-    
     // A tracked raycast which is used to place the character accurately
     // in the scene wherever the user taps.
     //var placementRaycast: ARTrackedRaycast?
-    //var tapPlacementAnchor: AnchorEntity?
-    
+    //var tapPlacementAnchor: AnchorEntity?    
 
     // ar kit - body tracking code //
-    
     @IBAction func sendData(_ sender: Any) {
         self.sendData()
     }
@@ -112,7 +109,7 @@ extension ClientViewController {
     func trackerDidUpdate(str: String) {
         self.tv?.text = "\(str)"
         messageLabel.text = "leftHandJoint.columns3.x = \(str))"
-                                print("leftHandJoint.columns3.x = \(str)")
+        //print("leftHandJoint.columns3.x = \(str)")
         messageTextField.text = "leftHandJoint.columns3.x = \(str))"
         self.sendData()
     }

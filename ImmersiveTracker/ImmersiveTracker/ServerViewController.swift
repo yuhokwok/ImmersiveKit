@@ -12,16 +12,11 @@ import ImmersiveKit
 class ServerViewController: UIViewController, ImmersiveKitDebugging {
     
     @IBOutlet var tv : UITextView?
-//    var asyncSocket : GCDAsyncSocket?
-//    var connectedSockets = [GCDAsyncSocket]()
-//    var netService : NetService?
     
     var immersiveServer : ImmersiveServer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        self.asyncSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
         
         self.immersiveServer = ImmersiveServer(type: SERV_TYPE, domain: SERV_DOMAIN, port: SERV_PORT)
         self.immersiveServer?.debugDelegate = self
