@@ -8,11 +8,8 @@ An AR VR Development Framework for Developing Full Body Tracking ARVR App based 
 ## ImmersiveKit Framework
 - iOS Framework for developing Game/VR/AR app which is connected to ImmseriveTracker
 
-## ImmersitveKitUnityPlugin (Plan to do)
+## ImmersiveKitUnityPlugin (Plan to do)
 - For building game with popular Unity3D engine
 
 ## ImmersiveXP (Plan to do)
 - An demo application using immserive kit
-
-## CocoaAsyncSocket Framework
-- Network Connection Foundation of ImmersiveKit
