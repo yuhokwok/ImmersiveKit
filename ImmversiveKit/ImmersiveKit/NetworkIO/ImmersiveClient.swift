@@ -33,12 +33,12 @@ public class ImmersiveClient : ImmersiveNetworkCore  {
         super.init(runQueue: runQueue)
     }
     
-    public func browse() {
+    public override func start() throws {
         self.netServiceBrowser?.delegate = self
         self.netServiceBrowser?.searchForServices(ofType: serviceType, inDomain: serviceDomain)
     }
     
-    public func stop() {
+    public override func stop() {
         asyncSocket?.disconnect()
         netService?.stop()
         netService?.delegate = nil
@@ -61,7 +61,7 @@ extension ImmersiveClient {
     }
     
     override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        printLog("disconnected")
+        printLog("did read data")
         if let str = String(data: data, encoding: .utf8) {
             printLog("echo: \(str)")
         }

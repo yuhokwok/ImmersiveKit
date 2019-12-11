@@ -36,7 +36,7 @@ public class ImmersiveServer : ImmersiveNetworkCore {
     
     
     /// Accept connection from clients and publish the service
-    public func start() throws {
+    public override func start() throws {
         guard let asyncSocket = self.asyncSocket else {
             return 
         }
@@ -52,7 +52,7 @@ public class ImmersiveServer : ImmersiveNetworkCore {
     
     
     /// Disconnect all exisitng connection and stop publishing the service
-    public func close() {
+    public override func stop() {
         for socket in connectedSockets {
             socket.disconnect()
         }

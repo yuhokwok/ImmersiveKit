@@ -16,7 +16,7 @@ import ARKit
 public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate {
     public var receiverDelegate : ImmersiveBodyReceiverDelegate?
     
-    public var debugDelegate : ImmersiveKitDebug?
+    public var debugDelegate : ImmersiveKitDebugging?
     
     /// A socket for connection to server / client
     public var asyncSocket : GCDAsyncSocket?
@@ -36,6 +36,13 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
         
     }
     
+    public func start() throws {
+        
+    }
+    
+    public func stop() {
+        
+    }
     
     public func sendMessage(msg : String) {
         if let data = msg.data(using: .utf8) {

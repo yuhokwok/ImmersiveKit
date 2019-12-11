@@ -9,7 +9,11 @@
 import Foundation
 
 
-public protocol ImmersiveKitDebug {
+/// For developer to forward console log messsage to app project
+public protocol ImmersiveKitDebugging {
+    
+    /// Call delegate with reporting message
+    /// - Parameter msg: message for console log
     func report(msg : String)
 }
 

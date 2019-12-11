@@ -9,7 +9,7 @@
 import UIKit
 import ImmersiveKit
 
-class ServerViewController: UIViewController, ImmersiveKitDebug {
+class ServerViewController: UIViewController, ImmersiveKitDebugging {
     
     @IBOutlet var tv : UITextView?
 //    var asyncSocket : GCDAsyncSocket?
@@ -44,7 +44,7 @@ class ServerViewController: UIViewController, ImmersiveKitDebug {
       // disapper ＝ 消失
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        immersiveServer?.close()
+        immersiveServer?.stop()
     }
 }
 
