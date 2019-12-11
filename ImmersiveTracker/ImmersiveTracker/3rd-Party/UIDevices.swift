@@ -3,7 +3,7 @@
 //  VR Development Framework for Developing Industrial Training Simulation based on Smartphone
 //
 //  Created by Louis Tsui on 31/10/2019.
-//  Copyright © 2019 Jason Chow. All rights reserved.
+//  Copyright © 2019 ImmersiveKit Team. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ import UIKit
 class UIDevices {
 
 var modelName: String {
-    #if (arch(i386) || arch(x86_64)) && os(iOS)
+    #if targetEnvironment(simulator)
         let DEVICE_IS_SIMULATOR = true
     #else
         let DEVICE_IS_SIMULATOR = false

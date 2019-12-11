@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImmersiveKit
 
 //Global Stuff
 var logTextView : UITextView?
@@ -30,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("====== powered by ImmersiveKit \(ImmersiveCore.version) ======")
         return true
     }
 

@@ -5,7 +5,7 @@ An AR VR Development Framework for Developing Full Body Tracking ARVR App based 
 - iOS App for full human body tracking
 - Network IO for trasmitting body tracking data
 
-## ImmersiveKit
+## ImmersiveKit Framework
 - iOS Framework for developing Game/VR/AR app which is connected to ImmseriveTracker
 
 ## ImmersitveKitUnityPlugin (Plan to do)
@@ -13,3 +13,6 @@ An AR VR Development Framework for Developing Full Body Tracking ARVR App based 
 
 ## ImmersiveXP (Plan to do)
 - An demo application using immserive kit
+
+## CocoaAsyncSocket Framework
+- Network Connection Foundation of ImmersiveKit

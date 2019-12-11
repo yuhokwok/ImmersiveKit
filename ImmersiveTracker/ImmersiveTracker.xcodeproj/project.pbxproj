@@ -14,6 +14,8 @@
 		ED207AFE238842A3001806CB /* UIDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFD238842A3001806CB /* UIDevices.swift */; };
 		ED207B00238842C4001806CB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFF238842C4001806CB /* File.swift */; };
 		ED207B03238843CA001806CB /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207B02238843CA001806CB /* ClientViewController.swift */; };
+		ED764ACC23A0A746004419AA /* ImmersiveKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED764ACB23A0A746004419AA /* ImmersiveKit.framework */; };
+		ED764ACD23A0A746004419AA /* ImmersiveKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED764ACB23A0A746004419AA /* ImmersiveKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ED76D16223883C5100D8CE23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16123883C5100D8CE23 /* AppDelegate.swift */; };
 		ED76D16423883C5100D8CE23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16323883C5100D8CE23 /* SceneDelegate.swift */; };
 		ED76D16623883C5100D8CE23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16523883C5100D8CE23 /* ViewController.swift */; };
@@ -22,6 +24,20 @@
 		ED76D16E23883C5400D8CE23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16C23883C5400D8CE23 /* LaunchScreen.storyboard */; };
 		EDAA1DD123A002EA004424FB /* robot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EDAA1DD023A002EA004424FB /* robot.usdz */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ED764ACE23A0A746004419AA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ED764ACD23A0A746004419AA /* ImmersiveKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B5769207238A5C8900930B03 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -35,6 +51,7 @@
 		ED207AFD238842A3001806CB /* UIDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevices.swift; sourceTree = "<group>"; };
 		ED207AFF238842C4001806CB /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		ED207B02238843CA001806CB /* ClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientViewController.swift; sourceTree = "<group>"; };
+		ED764ACB23A0A746004419AA /* ImmersiveKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImmersiveKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED76D15E23883C5100D8CE23 /* ImmersiveTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImmersiveTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED76D16123883C5100D8CE23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED76D16323883C5100D8CE23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED764ACC23A0A746004419AA /* ImmersiveKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,11 +97,20 @@
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
+		ED764ABE23A0A419004419AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED764ACB23A0A746004419AA /* ImmersiveKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ED76D15523883C5100D8CE23 = {
 			isa = PBXGroup;
 			children = (
 				ED76D16023883C5100D8CE23 /* ImmersiveTracker */,
 				ED76D15F23883C5100D8CE23 /* Products */,
+				ED764ABE23A0A419004419AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +168,7 @@
 				ED76D15A23883C5100D8CE23 /* Sources */,
 				ED76D15B23883C5100D8CE23 /* Frameworks */,
 				ED76D15C23883C5100D8CE23 /* Resources */,
+				ED764ACE23A0A746004419AA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -296,6 +324,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -349,6 +378,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
