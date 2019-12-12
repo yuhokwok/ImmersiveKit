@@ -73,6 +73,8 @@ class ClientViewController: UIViewController, ImmersiveBodyTrackerDelegate, Imme
         
         // Asynchronously load the 3D character.
         var cancellable: AnyCancellable? = nil
+        
+        #if !targetEnvironment(simulator)
         cancellable = Entity.loadBodyTrackedAsync(named: "robot").sink(
             receiveCompletion: { completion in
                 if case let .failure(error) = completion {
@@ -89,6 +91,7 @@ class ClientViewController: UIViewController, ImmersiveBodyTrackerDelegate, Imme
                 print("Error: Unable to load model as BodyTrackedEntity")
             }
         })
+        #endif
     }
     
     
