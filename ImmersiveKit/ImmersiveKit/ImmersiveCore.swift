@@ -8,6 +8,9 @@
 
 import Foundation
 
+public protocol ImmersiveDebugPrintDelegate {
+    func debugPrint(msg : String)
+}
 
 /// For developer to forward console log messsage to app project
 public protocol ImmersiveKitDebugging {
@@ -17,6 +20,14 @@ public protocol ImmersiveKitDebugging {
     func report(msg : String)
 }
 
+
+/// Core struct type for fundamental tasks
 public struct ImmersiveCore {
     public static var version = 1.0
+    
+    public static var printer : ImmersiveDebugPrintDelegate?
+    
+    public static func print(msg : String) {
+        printer?.debugPrint(msg: msg)
+    }
 }

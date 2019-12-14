@@ -17,21 +17,22 @@ var logDateFormatter : DateFormatter = {
     return dateFormatter
 }()
 func printLog(_ msg : String){
-    print(msg)
+    print(msg.quickTrim())
     if let str = logTextView?.text {
-        logTextView?.text = "\(logDateFormatter.string(from: Date()))\t:    \(msg)\n\(str)"
+        //logTextView?.text = "\(logDateFormatter.string(from: Date()))\t:    \(msg.quickTrim())\n\(str)"
+        logTextView?.text = "\(logDateFormatter.string(from: Date()))\t:    \(msg.quickTrim())"
     }
 }
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+class AppDelegate: UIResponder, UIApplicationDelegate, ImmersiveDebugPrintDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        print("====== powered by ImmersiveKit \(ImmersiveCore.version) ======")
+        print("====== Powered by ImmersiveKit \(ImmersiveCore.version) ======")
+        ImmersiveCore.printer = self
+        print("====== ImmersiveKit debug printer hooked ======")
         return true
     }
 
@@ -49,6 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func debugPrint(msg: String) {
+        printLog(msg.quickTrim())
+    }
 
 }
 

@@ -13,9 +13,9 @@ import ARKit
 
 
 /// Foundation Class for ImmersiveClient & ImmersiveServver
-public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate {
-    public var receiverDelegate : ImmersiveBodyReceiverDelegate?
+public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate, ImmersiveBodyTrackerDelegate {
     
+    public var receiverDelegate : ImmersiveBodyReceiverDelegate?
     public var debugDelegate : ImmersiveKitDebugging?
     
     /// A socket for connection to server / client
@@ -30,10 +30,19 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
         self.asyncSocket = GCDAsyncSocket(delegate: self, delegateQueue: queue)
     }
 
+    
     /// Transmit the detected ARBodyAnchor to receiver
     /// - Parameter body: ARBbodyAnchor detected by ARKit
-    public func transmit(body : ARBodyAnchor) {
+    public func transmit(bodyAnchor : ARBodyAnchor) {
         
+    }
+    
+    
+    public func transmit(body : Body) {
+        guard let jsonData = body.jsonfiy() else {
+            return
+        }
+        self.write(data: jsonData)
     }
     
     public func start() throws {
@@ -44,14 +53,14 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
         
     }
     
-    public func sendMessage(msg : String) {
-        if let data = msg.data(using: .utf8) {
-            sendData(data: data)
+    public func write(str : String) {
+        if let data = str.data(using: .utf8) {
+            write(data: data)
         }
         //printLog("send - \(msg)")
     }
     
-    public func sendData(data : Data) {
+    public func write(data : Data) {
         self.asyncSocket?.write(data, withTimeout: -1, tag: -1)
         self.asyncSocket?.write(GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
         self.asyncSocket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
@@ -59,6 +68,30 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
     
     internal func printLog(_ msg : String) {
         debugDelegate?.report(msg: msg)
+    }
+    
+    //TODO: delete it
+    //var transformCount = 0
+}
+
+extension ImmersiveNetworkCore {
+    public func bodyDidUpdate(bodyAnchor: ARBodyAnchor) {
+        
+        //if transformCount == 0 {
+            let body = Body(bodyAnchor: bodyAnchor)
+            guard let bodyJSONData = body.jsonfiy() else {
+                
+                return
+            }
+            
+            if let msg = bodyJSONData.stringifyFromJSONData() {
+                //ImmersiveCore.print(msg: "\(msg)")
+            }
+            
+            self.transmit(body : body)
+            //transformCount = 1
+        //}
+        
     }
 }
 

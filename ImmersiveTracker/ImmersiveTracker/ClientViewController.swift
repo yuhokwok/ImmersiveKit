@@ -17,7 +17,13 @@ import ImmersiveKit
 
 
 //GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate,
-class ClientViewController: UIViewController, ImmersiveBodyTrackerDelegate, ImmersiveKitDebugging {
+class ClientViewController: UIViewController, ImmersiveKitDebugging {
+    func bodyDidUpdate(bodyAnchor: ARBodyAnchor) {
+        
+    }
+    
+    
+    
     
     var immersiveClient : ImmersiveClient?
     var immersiveBodyTracker : ImmersiveBodyTracker?
@@ -42,7 +48,7 @@ class ClientViewController: UIViewController, ImmersiveBodyTrackerDelegate, Imme
     
     func sendData() {
         guard let msg = self.messageTextField.text else { return }
-        self.immersiveClient?.sendMessage(msg: msg)
+        self.immersiveClient?.write(str: msg)
     }
     
 
@@ -55,9 +61,9 @@ class ClientViewController: UIViewController, ImmersiveBodyTrackerDelegate, Imme
         // Do any additional setup after loading the view.
         self.immersiveClient = ImmersiveClient(type: SERV_TYPE, domain: SERV_DOMAIN)
         self.immersiveClient?.debugDelegate = self
-        
-        self.immersiveBodyTracker = ImmersiveBodyTracker(arView: self.arView)
-        self.immersiveBodyTracker?.delegate = self
+        self.immersiveClient?.canWriteWithDropFrame = true
+        self.immersiveBodyTracker = ImmersiveBodyTracker(arView: self.arView, delegate: self.immersiveClient)
+        //self.immersiveBodyTracker?.delegate = self.immersiveClient
     }
     
     
@@ -103,6 +109,7 @@ class ClientViewController: UIViewController, ImmersiveBodyTrackerDelegate, Imme
 
 }
 
+
 //MARK: -- Immersive Network Debug
 extension ClientViewController {
     func report(msg : String) {
@@ -111,9 +118,10 @@ extension ClientViewController {
     
     func trackerDidUpdate(str: String) {
         self.tv?.text = "\(str)"
-        messageLabel.text = "leftHandJoint.columns3.x = \(str))"
+        //messageLabel.text = "leftHandJoint.columns3.x = \(str))"
         //print("leftHandJoint.columns3.x = \(str)")
-        messageTextField.text = "leftHandJoint.columns3.x = \(str))"
+        //messageTextField.text = "leftHandJoint.columns3.x = \(str))"
+        printLog(str)
         self.sendData()
     }
 }

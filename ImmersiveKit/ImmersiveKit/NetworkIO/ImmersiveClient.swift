@@ -20,11 +20,16 @@ public class ImmersiveClient : ImmersiveNetworkCore  {
     
     private var serviceType : String
     private var serviceDomain : String
+    
+    private var isWritingData = false
+    
+    
+    /// indicate the client write the latest frame only or not
+    public var canWriteWithDropFrame : Bool = false
  
     public var isConnected : Bool {
         return connected
     }
-    
     
     public init(type : String, domain : String, runQueue: DispatchQueue? = nil) {
         self.serviceType = type
@@ -45,6 +50,19 @@ public class ImmersiveClient : ImmersiveNetworkCore  {
         netServiceBrowser?.stop()
         netServiceBrowser?.delegate = nil
     }
+    
+    public override func write(data: Data) {
+        if canWriteWithDropFrame == true {
+            if isWritingData == false {
+                isWritingData = true
+                super.write(data: data)
+            } else {
+                printLog("skip")
+            }
+        } else {
+            super.write(data: data)
+        }
+    }
 }
 
 //MARK: - GCDAsyncSocketDelegate
@@ -63,12 +81,13 @@ extension ImmersiveClient {
     override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         printLog("did read data")
         if let str = String(data: data, encoding: .utf8) {
-            printLog("echo: \(str)")
+            printLog("echo: \(str.quickTrim())")
         }
     }
     
     override public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-        
+        printLog("did write data")
+        isWritingData = false
     }
     
     private func connectToNextAddress(){

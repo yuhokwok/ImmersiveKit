@@ -8,12 +8,26 @@
 
 import UIKit
 import simd
+import ARKit
+
+
 
 struct ImmersiveTransform : Codable, CustomStringConvertible {
     var col0 : SIMDColumn
     var col1 : SIMDColumn
     var col2 : SIMDColumn
     var col3 : SIMDColumn
+    
+    init(transform : simd_float4x4){
+        col0 = SIMDColumn(row1: transform[0][0], row2: transform[0][1],
+                          row3: transform[0][2], row4: transform[0][3])
+        col1 = SIMDColumn(row1: transform[1][0], row2: transform[1][1],
+                          row3: transform[1][2], row4: transform[1][3])
+        col2 = SIMDColumn(row1: transform[2][0], row2: transform[2][1],
+                          row3: transform[2][2], row4: transform[2][3])
+        col3 = SIMDColumn(row1: transform[3][0], row2: transform[3][1],
+                          row3: transform[3][2], row4: transform[3][3])
+    }
     
     init?(transform : simd_float4x4?){
         guard let transform = transform else {

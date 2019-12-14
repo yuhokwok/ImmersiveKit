@@ -14,6 +14,7 @@ An AR VR Development Framework for Developing Full Body Tracking ARVR App based 
 - TODO: iOS Simulator Support
     -transmit pre-recorded tracking data
     -receive tracking data
+    -sending tracking data bug (will keep sending pending data / latency)
 
 ## ImmersiveRecorder
 ### Human Pose Recoder for App Testing with Simulator

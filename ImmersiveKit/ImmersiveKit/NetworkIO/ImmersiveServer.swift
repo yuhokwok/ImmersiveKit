@@ -88,7 +88,7 @@ extension ImmersiveServer {
         
         if let str = String(data: data, encoding: .utf8) {
             // received string from client server
-            printLog("received: \(str)")
+            printLog("received: \(str.quickTrim())")
             sock.write(data, withTimeout: -1, tag: -1)
             sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
         }

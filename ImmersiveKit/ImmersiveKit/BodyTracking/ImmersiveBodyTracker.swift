@@ -11,7 +11,7 @@ import ARKit
 import RealityKit
 
 public protocol ImmersiveBodyTrackerDelegate {
-    func trackerDidUpdate(str : String)
+    func bodyDidUpdate(bodyAnchor : ARBodyAnchor)
 }
 
 public class ImmersiveBodyTracker : NSObject, ARSessionDelegate {
@@ -53,6 +53,27 @@ public class ImmersiveBodyTracker : NSObject, ARSessionDelegate {
         #endif
     }
     
+    public init?(arView : ARView, delegate: ImmersiveBodyTrackerDelegate?) {
+        // If the iOS device doesn't support body tracking, raise a developer error for
+        // this unhandled case.
+        guard ARBodyTrackingConfiguration.isSupported else {
+            fatalError("This feature is only supported on devices with an A12 chip")
+            return nil
+        }
+        
+        #if !targetEnvironment(simulator)
+        self.arView = arView
+        self.configuration = ARBodyTrackingConfiguration()
+        #endif
+        
+        self.delegate = delegate
+        
+        super.init()
+        
+        #if !targetEnvironment(simulator)
+        self.arView.session.delegate = self
+        #endif
+    }
     
     /// Start the Body Tracking Session
     public func run(){
@@ -75,35 +96,21 @@ public class ImmersiveBodyTracker : NSObject, ARSessionDelegate {
 }
 
 //MARK: - ARSessionDelegate
+
 extension ImmersiveBodyTracker {
     public func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
         #if !targetEnvironment(simulator)
         for anchor in anchors {
-           guard let bodyAnchor = anchor as? ARBodyAnchor else { continue }
-           
-           // Update the position of the character anchor's position.
-           let bodyPosition = simd_make_float3(bodyAnchor.transform.columns.3)
-           bodyAnchorEntity.position = bodyPosition + bodyOffset
-           // Also copy over the rotation of the body anchor, because the skeleton's pose
-           // in the world is relative to the body anchor's rotation.
-           bodyAnchorEntity.orientation = Transform(matrix: bodyAnchor.transform).rotation
-        
-
-            let immersiveBody = ImmersiveBody(skeleton: bodyAnchor.skeleton)
-            guard let bodyJSON = immersiveBody.jsonfiy() else {
-                self.delegate?.trackerDidUpdate(str: "no body data")
-                return
-            }
-            self.delegate?.trackerDidUpdate(str: bodyJSON)
-//            let leftHandJoint0x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.0.x)!)
-//            let leftHandJoint1x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.1.x)!)
-//            let leftHandJoint2x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.2.x)!)
-//            let leftHandJoint3x = simd_make_float3((bodyAnchor.skeleton.modelTransform(for: .leftHand)?.columns.3.x)!)
-//
-                        
-//            let msg = "leftHandJoint.columns3.x = \(leftHandJoint3x))"
-//            print("leftHandJoint.columns3.x = \(leftHandJoint3x)")
-//            self.delegate?.trackerDidUpdate(str: msg)
+            guard let bodyAnchor = anchor as? ARBodyAnchor else { continue }
+            
+            // Update the position of the character anchor's position.
+            let bodyPosition = simd_make_float3(bodyAnchor.transform.columns.3)
+            bodyAnchorEntity.position = bodyPosition + bodyOffset
+            // Also copy over the rotation of the body anchor, because the skeleton's pose
+            // in the world is relative to the body anchor's rotation.
+            bodyAnchorEntity.orientation = Transform(matrix: bodyAnchor.transform).rotation
+            
+            delegate?.bodyDidUpdate(bodyAnchor: bodyAnchor)
             
             if let character = body, character.parent == nil {
                 // Attach the character to its anchor as soon as
