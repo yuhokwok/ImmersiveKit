@@ -10,7 +10,7 @@ import Foundation
 
 extension Data {
     /// convert JSON in Data format to String
-    public func stringifyFromJSONData() -> String? {
+    public func stringify() -> String? {
         guard let str = String(data: self, encoding: .utf8) else {
             return nil
         }

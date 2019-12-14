@@ -13,6 +13,10 @@ import Foundation
 /// Class for sending Tracking Data to Immersive Client
 public class ImmersiveServer : ImmersiveNetworkCore {
     
+    
+    /// Set this ture, the server will be an echo server
+    public var isEcho : Bool = false
+    
     private var serviceType : String
     private var serviceDomain : String
     private var servicePort : Int32
@@ -69,7 +73,8 @@ public class ImmersiveServer : ImmersiveNetworkCore {
 extension ImmersiveServer {
     override public func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
         self.connectedSockets.append(newSocket)
-        newSocket.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
+        //newSocket.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
+        super.socket(sock, didAcceptNewSocket: newSocket)
         printLog("connected")
     }
     
@@ -86,13 +91,14 @@ extension ImmersiveServer {
     
     override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         
-        if let str = String(data: data, encoding: .utf8) {
+        if let str = data.stringify()  {
             // received string from client server
             printLog("received: \(str.quickTrim())")
-            sock.write(data, withTimeout: -1, tag: -1)
-            sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
+            if isEcho {
+                sock.write(data, withTimeout: -1, tag: -1)
+            }
         }
-        
+        super.socket(sock, didRead: data, withTag: tag)
     }
 }
 

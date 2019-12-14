@@ -70,6 +70,7 @@ extension ImmersiveClient {
     override public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
         printLog("socket did connect to host \(host) : \(port)")
         connected = true
+        super.socket(sock, didConnectToHost: host, port: port)
     }
     
     override public func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {

@@ -84,7 +84,7 @@ extension ImmersiveNetworkCore {
                 return
             }
             
-            if let msg = bodyJSONData.stringifyFromJSONData() {
+            if let msg = bodyJSONData.stringify() {
                 //ImmersiveCore.print(msg: "\(msg)")
             }
             
@@ -97,8 +97,13 @@ extension ImmersiveNetworkCore {
 
 //MARK: - GCDAsyncSocketDelegate
 extension ImmersiveNetworkCore {
+    //server
+    public func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
+        newSocket.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
+    }
+    
     public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        
+        sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
     }
     
     public func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
@@ -106,17 +111,14 @@ extension ImmersiveNetworkCore {
     }
     
     public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        
+        sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
     }
     
     public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         
     }
     
-    //server
-    public func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
-
-    }
+    
 }
 
 //MARK: - NetServiceDelegate
