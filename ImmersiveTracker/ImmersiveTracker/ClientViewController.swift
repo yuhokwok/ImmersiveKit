@@ -69,6 +69,7 @@ class ClientViewController: UIViewController, ImmersiveKitDebugging {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        UIApplication.shared.isIdleTimerDisabled = true
         
         logTextView = self.tv
         
@@ -102,6 +103,8 @@ class ClientViewController: UIViewController, ImmersiveKitDebugging {
     
     
     override func viewDidDisappear(_ animated: Bool) {
+        UIApplication.shared.isIdleTimerDisabled = false
+        
         self.immersiveBodyTracker?.stop()
         self.immersiveClient?.stop()
         super.viewDidAppear(animated)

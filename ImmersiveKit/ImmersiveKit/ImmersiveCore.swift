@@ -23,7 +23,12 @@ public protocol ImmersiveKitDebugging {
 
 /// Core struct type for fundamental tasks
 public struct ImmersiveCore {
-    public static var version = 1.0
+    public static var version : String {
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            return version
+        }
+        return "0.0"
+    }
     
     public static var printer : ImmersiveDebugPrintDelegate?
     

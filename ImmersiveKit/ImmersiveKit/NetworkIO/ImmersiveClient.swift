@@ -70,6 +70,7 @@ extension ImmersiveClient {
     override public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
         printLog("socket did connect to host \(host) : \(port)")
         connected = true
+        super.socket(sock, didConnectToHost: host, port: port)
     }
     
     override public func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
@@ -80,6 +81,7 @@ extension ImmersiveClient {
     
     override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         printLog("did read data")
+        super.socket(sock, didRead: data, withTag: tag)
         if let str = String(data: data, encoding: .utf8) {
             printLog("echo: \(str.quickTrim())")
         }
@@ -87,6 +89,7 @@ extension ImmersiveClient {
     
     override public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         printLog("did write data")
+        super.socket(sock, didWriteDataWithTag: tag)
         isWritingData = false
     }
     
