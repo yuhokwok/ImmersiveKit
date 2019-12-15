@@ -14,6 +14,7 @@ public protocol ImmersiveBodyTrackerDelegate {
     func bodyDidUpdate(bodyAnchor : ARBodyAnchor)
 }
 
+/// The tracker class for tracking the human pose
 public class ImmersiveBodyTracker : NSObject, ARSessionDelegate {
     public var delegate : ImmersiveBodyTrackerDelegate?
     
