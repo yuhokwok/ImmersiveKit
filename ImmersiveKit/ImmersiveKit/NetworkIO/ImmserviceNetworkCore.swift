@@ -59,6 +59,9 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
         
     }
     
+    
+    /// Write Data with String
+    /// - Parameter str: string to be sent
     public func write(str : String) {
         if let data = str.data(using: .utf8) {
             write(data: data)
@@ -66,6 +69,8 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
         //printLog("send - \(msg)")
     }
     
+    /// Write Data with Data
+    /// - Parameter data: data to be sent
     public func write(data : Data) {
         //pending for future use
 //        if useACK == true && waitingForACK == true {
