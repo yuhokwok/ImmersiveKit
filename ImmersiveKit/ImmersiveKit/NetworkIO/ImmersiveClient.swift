@@ -81,6 +81,7 @@ extension ImmersiveClient {
     
     override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         printLog("did read data")
+        super.socket(sock, didRead: data, withTag: tag)
         if let str = String(data: data, encoding: .utf8) {
             printLog("echo: \(str.quickTrim())")
         }
@@ -88,6 +89,7 @@ extension ImmersiveClient {
     
     override public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         printLog("did write data")
+        super.socket(sock, didWriteDataWithTag: tag)
         isWritingData = false
     }
     

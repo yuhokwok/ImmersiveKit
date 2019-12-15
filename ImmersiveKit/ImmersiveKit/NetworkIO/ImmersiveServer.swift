@@ -86,7 +86,7 @@ extension ImmersiveServer {
     }
     
     override public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-        
+        super.socket(sock, didWriteDataWithTag: tag)
     }
     
     override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {

@@ -23,6 +23,13 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
     
     /// NetService Object for bonjour connection
     public var netService : NetService?
+  
+    //pending for future use
+//    public var useACK : Bool = true
+//    public var waitingForACK: Bool = false
+//    public static var ack : Data {
+//        return "ack".data(using: .utf8)!
+//    }
     
     public init(runQueue: DispatchQueue?){
         super.init()
@@ -36,7 +43,6 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
     public func transmit(bodyAnchor : ARBodyAnchor) {
         
     }
-    
     
     public func transmit(body : Body) {
         guard let jsonData = body.jsonfiy() else {
@@ -61,6 +67,10 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
     }
     
     public func write(data : Data) {
+        //pending for future use
+//        if useACK == true && waitingForACK == true {
+//            return
+//        }
         self.asyncSocket?.write(data, withTimeout: -1, tag: -1)
         self.asyncSocket?.write(GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
         self.asyncSocket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
@@ -111,6 +121,14 @@ extension ImmersiveNetworkCore {
     }
     
     public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+        //pending for future use
+//        if let string = data.stringify() {
+//            if !string.hasPrefix("ack") && useACK == false {
+//                self.write(data: ImmersiveNetworkCore.ack)
+//            } else if string.hasPrefix("ack") && useACK == true && waitingForACK == true {
+//                waitingForACK = false
+//            }
+//        }
         sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
     }
     
