@@ -20,6 +20,7 @@
 		ED764AC823A0A44C004419AA /* ImmersiveBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED764AC723A0A44C004419AA /* ImmersiveBody.swift */; };
 		ED764ACA23A0A493004419AA /* ImmersiveCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED764AC923A0A493004419AA /* ImmersiveCore.swift */; };
 		ED9A541323A0052700E448B9 /* ImmersiveKit.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9A541123A0052700E448B9 /* ImmersiveKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED9B101D23A6267600DE406A /* ImmersiveSpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B101C23A6267600DE406A /* ImmersiveSpeechRecognizer.swift */; };
 		EDFF26B423A37716002B5B2F /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF26B323A37716002B5B2F /* Body.swift */; };
 		EDFF26B623A37BE8002B5B2F /* ImmersiveBodyReceiverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF26B523A37BE8002B5B2F /* ImmersiveBodyReceiverDelegate.swift */; };
 		EDFF26B823A37D29002B5B2F /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF26B723A37D29002B5B2F /* Data+Extension.swift */; };
@@ -55,6 +56,7 @@
 		ED9A540E23A0052700E448B9 /* ImmersiveKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImmersiveKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9A541123A0052700E448B9 /* ImmersiveKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImmersiveKit.h; sourceTree = "<group>"; };
 		ED9A541223A0052700E448B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED9B101C23A6267600DE406A /* ImmersiveSpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveSpeechRecognizer.swift; sourceTree = "<group>"; };
 		EDFF26B323A37716002B5B2F /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
 		EDFF26B523A37BE8002B5B2F /* ImmersiveBodyReceiverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveBodyReceiverDelegate.swift; sourceTree = "<group>"; };
 		EDFF26B723A37D29002B5B2F /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				ED0BCBBF23A140FC00CA3DE1 /* Resources */,
 				ED764AC623A0A440004419AA /* Model */,
+				ED9B101B23A6249D00DE406A /* Speech Recognition */,
 				ED0BCBC123A1440700CA3DE1 /* BodyTracking */,
 				ED764AC123A0A432004419AA /* NetworkIO */,
 				ED0BCBC723A14A7400CA3DE1 /* ApplicationSupports */,
@@ -197,6 +200,14 @@
 				ED9A541223A0052700E448B9 /* Info.plist */,
 			);
 			path = ImmersiveKit;
+			sourceTree = "<group>";
+		};
+		ED9B101B23A6249D00DE406A /* Speech Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				ED9B101C23A6267600DE406A /* ImmersiveSpeechRecognizer.swift */,
+			);
+			path = "Speech Recognition";
 			sourceTree = "<group>";
 		};
 		EDFF26B923A37DB3002B5B2F /* Deprecated */ = {
@@ -295,6 +306,7 @@
 				EDFF26B423A37716002B5B2F /* Body.swift in Sources */,
 				EDFF26B623A37BE8002B5B2F /* ImmersiveBodyReceiverDelegate.swift in Sources */,
 				ED0BCBC323A1444700CA3DE1 /* ImmersiveBodyTracker.swift in Sources */,
+				ED9B101D23A6267600DE406A /* ImmersiveSpeechRecognizer.swift in Sources */,
 				ED0BCBBC23A1203700CA3DE1 /* GCDAsyncSocket.m in Sources */,
 				ED0BCBCB23A1563200CA3DE1 /* ImmersiveTransform.swift in Sources */,
 				ED764ACA23A0A493004419AA /* ImmersiveCore.swift in Sources */,
