@@ -91,6 +91,12 @@ extension ImmersiveServer {
     
     override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         
+        //try converting received data to body type
+        let decoder : JSONDecoder = JSONDecoder();
+        if let body = try? decoder.decode(Body.self, from: data) {
+            self.receiverDelegate?.bodyReceived(body: body)
+        }
+        
         if let str = data.stringify()  {
             // received string from client server
             printLog("received: \(str.quickTrim())")
@@ -104,6 +110,7 @@ extension ImmersiveServer {
 
 //MARK:-- NetServiceDelegate
 extension ImmersiveServer {
+
     
     override public func netServiceDidPublish(_ sender: NetService) {
         printLog("netservice published") //2
