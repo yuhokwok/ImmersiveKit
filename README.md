@@ -16,6 +16,9 @@ An AR VR Development Framework for Developing Full Body Tracking ARVR App based 
     -receive tracking data
     -sending tracking data bug (will keep sending pending data / latency)
 
+## VoiceCommandTestApp
+### Sample Test App for ImmersiveKit's Voice command feature
+
 ## ImmersiveRecorder
 ### Human Pose Recoder for App Testing with Simulator
 - TODO: Record human pose for running tracker in simulator
