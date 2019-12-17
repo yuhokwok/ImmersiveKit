@@ -2,7 +2,7 @@
 //  Data+Extension.swift
 //  ImmersiveKit
 //
-//  Created by Yu Ho Kwok on 13/12/2019.
+//  Created by ImmersiveKit Team on 13/12/2019.
 //  Copyright © 2019 ImmersiveKit Team. All rights reserved.
 //
 
@@ -18,11 +18,4 @@ extension Data {
     }
 }
 
-extension String {
-    public func quickTrim() -> String {
-        if self.count > 1000 {
-            return "\(self[self.startIndex..<self.index(self.startIndex, offsetBy: 80)])..."
-        }
-        return self;
-    }
-}
+

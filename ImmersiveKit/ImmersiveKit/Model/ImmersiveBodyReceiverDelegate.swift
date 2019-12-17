@@ -2,7 +2,7 @@
 //  ImmersiveBodyReceiverDelegate.swift
 //  ImmersiveKit
 //
-//  Created by Yu Ho Kwok on 13/12/2019.
+//  Created by ImmersiveKit Team on 13/12/2019.
 //  Copyright © 2019 ImmersiveKit Team. All rights reserved.
 //
 

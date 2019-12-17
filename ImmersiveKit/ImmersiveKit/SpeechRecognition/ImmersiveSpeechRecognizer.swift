@@ -2,7 +2,7 @@
 //  ImmersiveSpeechRecognition.swift
 //  ImmersiveKit
 //
-//  Created by Yu Ho Kwok on 15/12/2019.
+//  Created by ImmersiveKit Team on 15/12/2019.
 //  Copyright © 2019 ImmersiveKit Team. All rights reserved.
 //
 
@@ -10,13 +10,22 @@ import Foundation
 import AVFoundation
 import Speech
 
+public protocol ImmersiveVoiceSpeechRecognizerDelegate {
+    func voiceCommandDetected(str: String)
+}
+
+
+/// Class for quick on-device recognition setup
 public class ImmersiveSpeechRecognizer {
     public var recognizer : SFSpeechRecognizer?
     var request : SFSpeechAudioBufferRecognitionRequest
     var recoginitionTask : SFSpeechRecognitionTask?
     var audioEngine : AVAudioEngine?
+    var voiceCommandDelegate : ImmersiveVoiceSpeechRecognizerDelegate?
+    var commands : [String] = [String]()
     
-    public init?(locale : Locale) {
+    
+    public init?(locale : Locale, partialResults : Bool = true, keyPhrases : [String]?) {
         guard let recognizer = SFSpeechRecognizer(locale: locale) else {
             return nil
         }
@@ -30,11 +39,17 @@ public class ImmersiveSpeechRecognizer {
             return nil
         }
         
+        
         request = SFSpeechAudioBufferRecognitionRequest()
-        request.shouldReportPartialResults = true
+        request.shouldReportPartialResults = partialResults
         request.requiresOnDeviceRecognition = true
+        request.contextualStrings = keyPhrases ?? []
+        
+        
+        
         self.recognizer = recognizer
         
+        ImmersiveCore.printer?.debugPrint(msg:"\(request.contextualStrings)")
         self.audioEngine = AVAudioEngine()
     }
     
@@ -60,6 +75,12 @@ public class ImmersiveSpeechRecognizer {
             result, error in
             if let result = result {
                 print(result.bestTranscription.formattedString)
+                if result.isFinal {
+                    ImmersiveCore.printer?.debugPrint(msg: "\(result.bestTranscription.formattedString) - Final")
+                } else {
+                    ImmersiveCore.printer?.debugPrint(msg: result.bestTranscription.formattedString)
+                }
+                
             } else if let error = error {
                 print(error)
             }
