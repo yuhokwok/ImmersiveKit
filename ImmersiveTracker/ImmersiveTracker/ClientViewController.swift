@@ -110,6 +110,7 @@ class ClientViewController: UIViewController, ImmersiveKitDebugging {
         super.viewDidAppear(animated)
     }
 
+    
 }
 
 
@@ -118,6 +119,8 @@ extension ClientViewController {
     func report(msg : String) {
         printLog(msg)
     }
+    
+
     
     func trackerDidUpdate(str: String) {
         self.tv?.text = "\(str)"

@@ -8,18 +8,25 @@
 
 import UIKit
 import ImmersiveKit
+import SceneKit
 
-class ServerViewController: UIViewController, ImmersiveKitDebugging {
+class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBodyReceiverDelegate {
     
     @IBOutlet var tv : UITextView?
     
+    @IBOutlet weak var coordinates: UILabel!
+    
     var immersiveServer : ImmersiveServer?
+    
+    //var body : Body?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.immersiveServer = ImmersiveServer(type: SERV_TYPE, domain: SERV_DOMAIN, port: SERV_PORT)
         self.immersiveServer?.debugDelegate = self
+        self.immersiveServer?.receiverDelegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,6 +34,9 @@ class ServerViewController: UIViewController, ImmersiveKitDebugging {
         
         logTextView = self.tv
         
+        
+        
+
         
         do {
             try self.immersiveServer?.start()
@@ -39,6 +49,7 @@ class ServerViewController: UIViewController, ImmersiveKitDebugging {
       // disapper ＝ 消失
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.immersiveServer?.receiverDelegate = nil
         immersiveServer?.stop()
     }
 }
@@ -46,6 +57,10 @@ class ServerViewController: UIViewController, ImmersiveKitDebugging {
 extension ServerViewController {
     func report(msg: String) {
         printLog(msg)
+    }
+    
+    func bodyReceived(body : Body) {
+        print("i got a body <3")
     }
 }
 

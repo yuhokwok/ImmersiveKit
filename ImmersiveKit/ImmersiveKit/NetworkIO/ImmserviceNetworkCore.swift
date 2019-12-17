@@ -10,8 +10,6 @@ import Foundation
 //import CocoaAsyncSocket
 import ARKit
 
-
-
 /// Foundation Class for ImmersiveClient & ImmersiveServver
 public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate, ImmersiveBodyTrackerDelegate {
     
@@ -134,6 +132,8 @@ extension ImmersiveNetworkCore {
 //                waitingForACK = false
 //            }
 //        }
+        
+        
         sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
     }
     
