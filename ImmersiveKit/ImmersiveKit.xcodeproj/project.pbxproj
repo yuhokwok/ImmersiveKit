@@ -15,6 +15,7 @@
 		ED0BCBC323A1444700CA3DE1 /* ImmersiveBodyTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBC223A1444700CA3DE1 /* ImmersiveBodyTracker.swift */; };
 		ED0BCBC923A14B1800CA3DE1 /* ImmersiveBodyTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBC823A14B1800CA3DE1 /* ImmersiveBodyTrackerViewController.swift */; };
 		ED0BCBCB23A1563200CA3DE1 /* ImmersiveTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBCA23A1563200CA3DE1 /* ImmersiveTransform.swift */; };
+		ED145C2823AB5A1600215953 /* SCNVector3+MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED145C2723AB5A1600215953 /* SCNVector3+MathUtils.swift */; };
 		ED764AC423A0A43B004419AA /* ImmersiveServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED764AC223A0A43B004419AA /* ImmersiveServer.swift */; };
 		ED764AC523A0A43B004419AA /* ImmersiveClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED764AC323A0A43B004419AA /* ImmersiveClient.swift */; };
 		ED764AC823A0A44C004419AA /* ImmersiveBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED764AC723A0A44C004419AA /* ImmersiveBody.swift */; };
@@ -48,6 +49,7 @@
 		ED0BCBC223A1444700CA3DE1 /* ImmersiveBodyTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveBodyTracker.swift; sourceTree = "<group>"; };
 		ED0BCBC823A14B1800CA3DE1 /* ImmersiveBodyTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveBodyTrackerViewController.swift; sourceTree = "<group>"; };
 		ED0BCBCA23A1563200CA3DE1 /* ImmersiveTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveTransform.swift; sourceTree = "<group>"; };
+		ED145C2723AB5A1600215953 /* SCNVector3+MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+MathUtils.swift"; sourceTree = "<group>"; };
 		ED764AC223A0A43B004419AA /* ImmersiveServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImmersiveServer.swift; sourceTree = "<group>"; };
 		ED764AC323A0A43B004419AA /* ImmersiveClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImmersiveClient.swift; sourceTree = "<group>"; };
 		ED764AC723A0A44C004419AA /* ImmersiveBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImmersiveBody.swift; sourceTree = "<group>"; };
@@ -89,13 +91,6 @@
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
-		ED0BCBBF23A140FC00CA3DE1 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		ED0BCBC023A1417E00CA3DE1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,35 +107,12 @@
 			path = BodyTracking;
 			sourceTree = "<group>";
 		};
-		ED0BCBC423A14A5200CA3DE1 /* VR */ = {
+		ED145C2623AB59FA00215953 /* Application Supports */ = {
 			isa = PBXGroup;
 			children = (
+				ED145C2723AB5A1600215953 /* SCNVector3+MathUtils.swift */,
 			);
-			path = VR;
-			sourceTree = "<group>";
-		};
-		ED0BCBC523A14A5B00CA3DE1 /* AR */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AR;
-			sourceTree = "<group>";
-		};
-		ED0BCBC623A14A6500CA3DE1 /* Interactive */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactive;
-			sourceTree = "<group>";
-		};
-		ED0BCBC723A14A7400CA3DE1 /* ApplicationSupports */ = {
-			isa = PBXGroup;
-			children = (
-				ED0BCBC523A14A5B00CA3DE1 /* AR */,
-				ED0BCBC623A14A6500CA3DE1 /* Interactive */,
-				ED0BCBC423A14A5200CA3DE1 /* VR */,
-			);
-			path = ApplicationSupports;
+			path = "Application Supports";
 			sourceTree = "<group>";
 		};
 		ED764AC123A0A432004419AA /* NetworkIO */ = {
@@ -185,11 +157,10 @@
 		ED9A541023A0052700E448B9 /* ImmersiveKit */ = {
 			isa = PBXGroup;
 			children = (
-				ED0BCBBF23A140FC00CA3DE1 /* Resources */,
+				ED145C2623AB59FA00215953 /* Application Supports */,
 				ED764AC623A0A440004419AA /* Model */,
 				ED0BCBC123A1440700CA3DE1 /* BodyTracking */,
 				ED764AC123A0A432004419AA /* NetworkIO */,
-				ED0BCBC723A14A7400CA3DE1 /* ApplicationSupports */,
 				ED0BCBC023A1417E00CA3DE1 /* ViewControllers */,
 				ED9A541123A0052700E448B9 /* ImmersiveKit.h */,
 				ED764AC923A0A493004419AA /* ImmersiveCore.swift */,
@@ -298,6 +269,7 @@
 				ED0BCBBC23A1203700CA3DE1 /* GCDAsyncSocket.m in Sources */,
 				ED0BCBCB23A1563200CA3DE1 /* ImmersiveTransform.swift in Sources */,
 				ED764ACA23A0A493004419AA /* ImmersiveCore.swift in Sources */,
+				ED145C2823AB5A1600215953 /* SCNVector3+MathUtils.swift in Sources */,
 				ED0BCBC923A14B1800CA3DE1 /* ImmersiveBodyTrackerViewController.swift in Sources */,
 				ED764AC823A0A44C004419AA /* ImmersiveBody.swift in Sources */,
 				ED764AC523A0A43B004419AA /* ImmersiveClient.swift in Sources */,

@@ -61,12 +61,21 @@ class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBo
     }
     // moving a 3D Model
     func movingThreeDModel() {
-        let ship = gameScene.rootNode.childNode(withName: "ship", recursively: true)!
-         // action of this ship.scn model
-         ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: CGFloat(positionX), y: CGFloat(positionY), z: CGFloat(positionZ), duration: 1)))
-         // set up the background color of sceneView
-         gameView.backgroundColor = UIColor.black
+//        let ship = gameScene.rootNode.childNode(withName: "ship", recursively: true)!
+//         // action of this ship.scn model
+//         ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: CGFloat(positionX), y: CGFloat(positionY), z: CGFloat(positionZ), duration: 1)))
+//         // set up the background color of sceneView
+//         gameView.backgroundColor = UIColor.black
     }
+    
+    func move(pos : SCNVector3) {
+        let ship = gameScene.rootNode.childNode(withName: "ship", recursively: true)!
+        // action of this ship.scn model
+        ship.runAction(SCNAction.move(to: pos, duration: 0.0))
+        // set up the background color of sceneView
+        gameView.backgroundColor = UIColor.black
+    }
+    
     // SceneKit override code
     override var shouldAutorotate: Bool {
         return true
@@ -84,6 +93,8 @@ class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBo
         }
     }
     // End SceneKit override code
+    
+    var firstBody : Body?
 }
 
 extension ServerViewController {
@@ -91,16 +102,28 @@ extension ServerViewController {
       
     }
     func bodyReceived(body : Body) {
-        positionX = body.hipWorldPosition.simdFloat4x4().position().x
-        positionY = body.hipWorldPosition.simdFloat4x4().position().y
-        positionZ = body.hipWorldPosition.simdFloat4x4().position().z
+        //set the first detect location as origin
+        if firstBody == nil {
+            firstBody = body
+        }
+        
+        let diffX = body.hipWorldPosition.simdFloat4x4().coordinate().x - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().x
+        let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
+        let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
+        
+        let pos = SCNVector3(diffX, diffY, diffZ)//body.hipWorldPosition.simdFloat4x4().coordinate()
+        self.move(pos: pos)
+        
+        //positionX = body.hipWorldPosition.simdFloat4x4().position().x
+        //positionY = body.hipWorldPosition.simdFloat4x4().position().y
+        //positionZ = body.hipWorldPosition.simdFloat4x4().position().z
             // moving 3D model base on x,y,z coordinates
             movingThreeDModel()
         //print(positionX, positionY, positionZ)
     }
 }
 extension matrix_float4x4 {
-    func position() -> SCNVector3 {
-        return SCNVector3(columns.3.x, columns.3.y, columns.3.z)
+    func coordinate() -> SCNVector3 {
+        return SCNVector3(columns.3.x  * 5 , columns.3.y * 5, columns.3.z * 5)
     }
 }
