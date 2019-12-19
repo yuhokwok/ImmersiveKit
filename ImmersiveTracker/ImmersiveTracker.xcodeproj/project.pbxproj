@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5150F1B23AB2C2C00EF0667 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B5150F1A23AB2C2B00EF0667 /* art.scnassets */; };
 		B568E09223A5077000B3457D /* ImmersiveKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED764ACB23A0A746004419AA /* ImmersiveKit.framework */; };
 		B568E09323A5080500B3457D /* ImmersiveKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED764ACB23A0A746004419AA /* ImmersiveKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5769209238A5C8900930B03 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5769207238A5C8900930B03 /* Utilities.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B5150F1A23AB2C2B00EF0667 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		B5769207238A5C8900930B03 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B5769208238A5C8900930B03 /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
 		ED0BCBAA23A0E36A00CA3DE1 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		ED76D16023883C5100D8CE23 /* ImmersiveTracker */ = {
 			isa = PBXGroup;
 			children = (
+				B5150F1A23AB2C2B00EF0667 /* art.scnassets */,
 				EDAA1DD223A002F0004424FB /* Resources */,
 				ED207AFC23884128001806CB /* 3rd-Party */,
 				ED76D16123883C5100D8CE23 /* AppDelegate.swift */,
@@ -203,6 +206,7 @@
 			files = (
 				EDAA1DD123A002EA004424FB /* robot.usdz in Resources */,
 				ED76D16E23883C5400D8CE23 /* LaunchScreen.storyboard in Resources */,
+				B5150F1B23AB2C2C00EF0667 /* art.scnassets in Resources */,
 				ED76D16B23883C5400D8CE23 /* Assets.xcassets in Resources */,
 				ED76D16923883C5100D8CE23 /* Main.storyboard in Resources */,
 			);

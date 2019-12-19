@@ -8,26 +8,33 @@
 
 import UIKit
 import ImmersiveKit
+import QuartzCore
 import SceneKit
 
-class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBodyReceiverDelegate, SCNSceneRendererDelegate {
+class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBodyReceiverDelegate {
    
     @IBOutlet var tv : UITextView?
+    // SceneKit code
+    var gameView : SCNView!
+    var gameScene: SCNScene!
+    @IBOutlet weak var scnView: SCNView!
+    
+    var positionX :Float = 0
+    var positionY :Float = 0
+    var positionZ :Float = 0
     
     var immersiveServer : ImmersiveServer?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        displayThreeDModel()
         self.immersiveServer = ImmersiveServer(type: SERV_TYPE, domain: SERV_DOMAIN, port: SERV_PORT)
         self.immersiveServer?.debugDelegate = self
         self.immersiveServer?.receiverDelegate = self
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    
         logTextView = self.tv
-        
         do {
             try self.immersiveServer?.start()
             printLog("start accepting incoming connection and publish zeroconf service")
@@ -42,6 +49,41 @@ class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBo
         self.immersiveServer?.receiverDelegate = nil
         immersiveServer?.stop()
     }
+    
+    // display a 3D Model
+    func displayThreeDModel() {
+        // create a new scene
+        gameView =  scnView as? SCNView
+        gameScene = SCNScene(named: "art.scnassets/ship.scn")!
+        gameView?.scene = gameScene
+
+
+    }
+    // moving a 3D Model
+    func movingThreeDModel() {
+        let ship = gameScene.rootNode.childNode(withName: "ship", recursively: true)!
+         // action of this ship.scn model
+         ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: CGFloat(positionX), y: CGFloat(positionY), z: CGFloat(positionZ), duration: 1)))
+         // set up the background color of sceneView
+         gameView.backgroundColor = UIColor.black
+    }
+    // SceneKit override code
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
+        } else {
+            return .all
+        }
+    }
+    // End SceneKit override code
 }
 
 extension ServerViewController {
@@ -49,15 +91,14 @@ extension ServerViewController {
       
     }
     func bodyReceived(body : Body) {
-        let positionX = body.hipWorldPosition.simdFloat4x4().position().x
-        let positionY = body.hipWorldPosition.simdFloat4x4().position().y
-        let positionZ = body.hipWorldPosition.simdFloat4x4().position().z
-        
-        print(positionX, positionY, positionZ)
-        
+        positionX = body.hipWorldPosition.simdFloat4x4().position().x
+        positionY = body.hipWorldPosition.simdFloat4x4().position().y
+        positionZ = body.hipWorldPosition.simdFloat4x4().position().z
+            // moving 3D model base on x,y,z coordinates
+            movingThreeDModel()
+        //print(positionX, positionY, positionZ)
     }
 }
-
 extension matrix_float4x4 {
     func position() -> SCNVector3 {
         return SCNVector3(columns.3.x, columns.3.y, columns.3.z)

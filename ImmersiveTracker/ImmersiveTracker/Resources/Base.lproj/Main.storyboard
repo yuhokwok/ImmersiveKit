@@ -12,42 +12,50 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ServerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5eA-tn-LNj">
-                                <rect key="frame" x="20" y="132" width="374" height="730"/>
+                                <rect key="frame" x="20" y="44" width="374" height="121"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlQ-ns-g5h">
-                                <rect key="frame" x="20" y="88" width="98" height="36"/>
+                                <rect key="frame" x="20" y="0.0" width="98" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjr-LQ-hix">
+                                <rect key="frame" x="20" y="231" width="374" height="577"/>
+                            </sceneKitView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="zjr-LQ-hix" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="J15-5i-1wL"/>
                             <constraint firstItem="5eA-tn-LNj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KkI-jB-99W"/>
                             <constraint firstItem="qlQ-ns-g5h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="QVh-6E-Sdi"/>
-                            <constraint firstItem="5eA-tn-LNj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="TJo-xJ-VMe"/>
+                            <constraint firstItem="zjr-LQ-hix" firstAttribute="top" secondItem="5eA-tn-LNj" secondAttribute="bottom" constant="66" id="RUK-uy-X9G"/>
+                            <constraint firstItem="5eA-tn-LNj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-643" id="TJo-xJ-VMe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zjr-LQ-hix" secondAttribute="trailing" constant="20" id="g4V-gr-FEq"/>
                             <constraint firstItem="qlQ-ns-g5h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gpy-FW-kMe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5eA-tn-LNj" secondAttribute="trailing" constant="20" id="ogz-5m-JKT"/>
+                            <constraint firstItem="zjr-LQ-hix" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uFY-f1-Lgc"/>
                             <constraint firstItem="5eA-tn-LNj" firstAttribute="top" secondItem="qlQ-ns-g5h" secondAttribute="bottom" constant="8" id="xkV-bl-GNf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="0Ug-m9-Zz9"/>
                     <connections>
+                        <outlet property="scnView" destination="zjr-LQ-hix" id="QgA-sG-VmA"/>
                         <outlet property="tv" destination="5eA-tn-LNj" id="CuS-Ea-yy1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+            <point key="canvasLocation" x="100" y="157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bh9-2E-H21">
@@ -80,7 +88,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
                                         <state key="normal" title="Server"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="u1J-ia-nsi"/>
+                                            <segue destination="BYZ-38-t0r" kind="showDetail" id="6Q9-kO-d6L"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCj-Jt-Mhk">
@@ -180,48 +188,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BGo-z3-584" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="100.00000000000001" y="825"/>
-        </scene>
-        <!--Server View Controller-->
-        <scene sceneID="lSP-vl-M7F">
-            <objects>
-                <viewController id="MRC-tm-IN5" customClass="ServerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SQ6-1S-SrG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gVr-KU-PIG">
-                                <rect key="frame" x="20" y="98" width="374" height="764"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR4-Wx-Pv4">
-                                <rect key="frame" x="20" y="44" width="98" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="jR4-Wx-Pv4" firstAttribute="leading" secondItem="2fI-3h-uXn" secondAttribute="leading" constant="20" id="2aS-tq-7gX"/>
-                            <constraint firstItem="gVr-KU-PIG" firstAttribute="leading" secondItem="2fI-3h-uXn" secondAttribute="leading" constant="20" id="CK4-Th-YkX"/>
-                            <constraint firstItem="gVr-KU-PIG" firstAttribute="bottom" secondItem="2fI-3h-uXn" secondAttribute="bottom" id="MJA-tm-rmk"/>
-                            <constraint firstItem="gVr-KU-PIG" firstAttribute="top" secondItem="2fI-3h-uXn" secondAttribute="top" constant="54" id="UOF-xL-rB6"/>
-                            <constraint firstItem="2fI-3h-uXn" firstAttribute="trailing" secondItem="gVr-KU-PIG" secondAttribute="trailing" constant="20" id="Vyg-2s-thZ"/>
-                            <constraint firstItem="jR4-Wx-Pv4" firstAttribute="top" secondItem="2fI-3h-uXn" secondAttribute="top" id="dxj-AZ-Gus"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="2fI-3h-uXn"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="XMl-Jg-CTr"/>
-                    <connections>
-                        <outlet property="tv" destination="gVr-KU-PIG" id="TD2-4e-s0N"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fCJ-pe-EXv" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
         <!--ARView-->
         <scene sceneID="zJc-Wy-WDW">
