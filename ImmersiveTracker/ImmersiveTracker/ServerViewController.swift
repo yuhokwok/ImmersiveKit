@@ -10,17 +10,11 @@ import UIKit
 import ImmersiveKit
 import SceneKit
 
-class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBodyReceiverDelegate {
-    
+class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBodyReceiverDelegate, SCNSceneRendererDelegate {
+   
     @IBOutlet var tv : UITextView?
     
-    @IBOutlet weak var coordinates: UILabel!
-    
     var immersiveServer : ImmersiveServer?
-    
-    //var body : Body?
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,10 +27,6 @@ class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBo
         super.viewDidAppear(animated)
         
         logTextView = self.tv
-        
-        
-        
-
         
         do {
             try self.immersiveServer?.start()
@@ -56,11 +46,20 @@ class ServerViewController: UIViewController, ImmersiveKitDebugging, ImmersiveBo
 
 extension ServerViewController {
     func report(msg: String) {
-        printLog(msg)
+      
     }
-    
     func bodyReceived(body : Body) {
-        print("i got a body <3")
+        let positionX = body.hipWorldPosition.simdFloat4x4().position().x
+        let positionY = body.hipWorldPosition.simdFloat4x4().position().y
+        let positionZ = body.hipWorldPosition.simdFloat4x4().position().z
+        
+        print(positionX, positionY, positionZ)
+        
     }
 }
 
+extension matrix_float4x4 {
+    func position() -> SCNVector3 {
+        return SCNVector3(columns.3.x, columns.3.y, columns.3.z)
+    }
+}

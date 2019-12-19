@@ -191,8 +191,8 @@
 				ED764AC123A0A432004419AA /* NetworkIO */,
 				ED0BCBC723A14A7400CA3DE1 /* ApplicationSupports */,
 				ED0BCBC023A1417E00CA3DE1 /* ViewControllers */,
-				ED764AC923A0A493004419AA /* ImmersiveCore.swift */,
 				ED9A541123A0052700E448B9 /* ImmersiveKit.h */,
+				ED764AC923A0A493004419AA /* ImmersiveCore.swift */,
 				ED0BCBB623A11C9A00CA3DE1 /* module.map */,
 				ED9A541223A0052700E448B9 /* Info.plist */,
 			);
