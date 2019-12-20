@@ -1,5 +1,11 @@
 import UIKit
 
+let t = StringTransform("我愛你好嗎 Hello")
+
+
+print("津路".applyingTransform(StringTransform.mandarinToLatin, reverse: false)?.applyingTransform(.stripCombiningMarks, reverse: false))
+print("進路".applyingTransform(StringTransform.mandarinToLatin, reverse: false)?.applyingTransform(.stripCombiningMarks, reverse: false))
+
 var str = "Hello, pla，y一口路gr𣈱dd中。ab楽f...  "
 str = str.trimmingCharacters(in: CharacterSet.whitespaces)
 
