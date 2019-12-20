@@ -8,6 +8,9 @@
       location = "group:ImmersiveTracker/ImmersiveTracker.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:VoiceCommandTestApp/VoiceCommandTestApp.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:README.md">
    </FileRef>
 </Workspace>
