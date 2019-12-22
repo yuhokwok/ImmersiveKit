@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 
-open class ImmersiveNetworkViewController: ImmersiveViewController, ImmersiveDataReceiverDelegate, ImmersiveKitDebugging, ImmersiveNetworkAgentProvider {
+open class ImmersivePlayerNetworkViewController: ImmersivePlayerViewController, ImmersiveDataReceiverDelegate, ImmersiveKitDebugging, ImmersiveNetworkAgentProvider {
     
     public var initialBody : Body?
     

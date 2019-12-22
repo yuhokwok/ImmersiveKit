@@ -12,7 +12,7 @@ import SceneKit
 
 
 /// Subclass of UIViewController for Fast VR World Setup
-open class ImmersiveViewController: UIViewController, ImmersiveViewDelegate, ImmersiveWorldProvider {
+open class ImmersivePlayerViewController: UIViewController, ImmersiveViewDelegate, ImmersiveWorldProvider {
 
     @IBOutlet public weak var immersiveView : ImmersiveView!
     
@@ -106,7 +106,7 @@ open class ImmersiveViewController: UIViewController, ImmersiveViewDelegate, Imm
     }
 }
 
-extension ImmersiveViewController {
+extension ImmersivePlayerViewController {
     open func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         DispatchQueue.main.async {
             [weak self] in

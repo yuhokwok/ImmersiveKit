@@ -12,7 +12,7 @@ import QuartzCore
 import SceneKit
 import CoreMotion
 
-class VRPlayerViewController: ImmersiveNetworkViewController {
+class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     
     enum Constant {
         enum Distance {
