@@ -21,11 +21,6 @@ public class ImmersiveClient : ImmersiveNetworkCore  {
     private var serviceType : String
     private var serviceDomain : String
     
-    private var isWritingData = false
-    
-    
-    /// indicate the client write the latest frame only or not
-    public var canWriteWithDropFrame : Bool = false
  
     public var isConnected : Bool {
         return connected
@@ -39,6 +34,7 @@ public class ImmersiveClient : ImmersiveNetworkCore  {
     }
     
     public override func start() throws {
+        ImmersiveCore.print(msg: "client started discovering server")
         self.netServiceBrowser?.delegate = self
         self.netServiceBrowser?.searchForServices(ofType: serviceType, inDomain: serviceDomain)
     }
@@ -52,23 +48,18 @@ public class ImmersiveClient : ImmersiveNetworkCore  {
     }
     
     public override func write(data: Data) {
-        if canWriteWithDropFrame == true {
-            if isWritingData == false {
-                isWritingData = true
-                super.write(data: data)
-            } else {
-                printLog("skip")
-            }
-        } else {
-            super.write(data: data)
+        guard connected else {
+            isWritingData = false
+            return
         }
+        super.write(data : data)
     }
 }
 
 //MARK: - GCDAsyncSocketDelegate
 extension ImmersiveClient {
     override public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        printLog("socket did connect to host \(host) : \(port)")
+        ImmersiveCore.print(msg: "socket did connect to host \(host) : \(port)")
         connected = true
         super.socket(sock, didConnectToHost: host, port: port)
     }
@@ -80,22 +71,21 @@ extension ImmersiveClient {
     }
     
     override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        printLog("did read data")
+        //ImmersiveCore.print(msg: "did read data")
         super.socket(sock, didRead: data, withTag: tag)
-        if let str = String(data: data, encoding: .utf8) {
-            printLog("echo: \(str.quickTrim())")
-        }
+//        if let str = String(data: data, encoding: .utf8) {
+//            ImmersiveCore.print(msg: "echo: \(str.quickTrim())")
+//        }
     }
     
     override public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-        printLog("did write data")
+        ImmersiveCore.print(msg: "did write data")
         super.socket(sock, didWriteDataWithTag: tag)
-        isWritingData = false
     }
     
     private func connectToNextAddress(){
         if serverAddresses == nil || serverAddresses?.count == 0 {
-            printLog("no server address")
+            ImmersiveCore.print(msg: "no server address")
             return
         }
         var done = false
@@ -107,12 +97,12 @@ extension ImmersiveClient {
                 try asyncSocket?.connect(toAddress: addr)
                 done = true
             } catch _ {
-                printLog("cannot connect")
+                ImmersiveCore.print(msg: "cannot connect")
             }
         }
 
         if (!done){
-            printLog("unable to connect any resolved address")
+            ImmersiveCore.print(msg: "unable to connect any resolved address")
         }
     }
 }
@@ -120,13 +110,13 @@ extension ImmersiveClient {
 //MARK: - NetServiceDelegate
 extension ImmersiveClient {
     override public func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
-        printLog("did not resolve")
+        ImmersiveCore.print(msg: "did not resolve")
     }
 
     override public func netServiceDidResolveAddress(_ sender: NetService) {
-        printLog("did resolve \(String(describing: sender.addresses))")
+        ImmersiveCore.print(msg: "did resolve \(String(describing: sender.addresses))")
         if serverAddresses == nil {
-            printLog("got addresses")
+            ImmersiveCore.print(msg: "got addresses")
             serverAddresses = sender.addresses
         }
         
@@ -141,17 +131,17 @@ extension ImmersiveClient {
 //MARK: - NetServiceBrowserDelegate
 extension ImmersiveClient {
     override public func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
-        printLog("will search for service")
+        ImmersiveCore.print(msg: "will search for service")
     }
     
     override public func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
-        printLog("did stop search for service")
+        ImmersiveCore.print(msg: "did stop search for service")
     }
     
     override public func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        printLog("did find service \(service.name)")
+        ImmersiveCore.print(msg: "did find service \(service.name)")
         if netService == nil {
-            printLog("resolving...")
+            ImmersiveCore.print(msg: "resolving...")
             netService = service
             netService?.delegate = self
             netService?.resolve(withTimeout: 5.0)
@@ -159,10 +149,10 @@ extension ImmersiveClient {
     }
     
     override public func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
-        printLog("did remove service \(service.name)")
+        ImmersiveCore.print(msg: "did remove service \(service.name)")
     }
     
     override public func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
-        printLog("did stop search for service")
+        ImmersiveCore.print(msg: "did stop search for service")
     }
 }

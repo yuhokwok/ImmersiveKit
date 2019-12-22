@@ -12,11 +12,7 @@ import Foundation
 
 /// Class for sending Tracking Data to Immersive Client
 public class ImmersiveServer : ImmersiveNetworkCore {
-    
-    
-    /// Set this ture, the server will be an echo server
-    public var isEcho : Bool = false
-    
+        
     private var serviceType : String
     private var serviceDomain : String
     private var servicePort : Int32
@@ -45,6 +41,7 @@ public class ImmersiveServer : ImmersiveNetworkCore {
             return 
         }
         
+        ImmersiveCore.print(msg: "server started accepting client")
         try asyncSocket.accept(onPort: UInt16(self.servicePort))
         
         netService = NetService(domain: self.serviceDomain, type: self.serviceType, name: "", port: self.servicePort)
@@ -52,6 +49,37 @@ public class ImmersiveServer : ImmersiveNetworkCore {
         netService?.publish()
         
         //netService?.setTXTRecord(NetService.data(fromTXTRecord: ["hi" : "bye".data(using: .utf8)!]))
+    }
+    
+    
+    /// broadcast data to all client
+    /// - Parameter data: the data to be sent
+    public override func write(data: Data) {
+        
+        guard self.connectedSockets.count > 0 else {
+            isWritingData  = false
+            return
+        }
+        
+      //  ImmersiveCore.print(msg: "send body")
+        if canWriteWithDropFrame == true {
+            if isWritingData == false {
+                isWritingData = true
+                for socket in connectedSockets {
+                    socket.write(data, withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+                    socket.write(GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+                }
+                self.asyncSocket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+            } else {
+                printLog("skip")
+            }
+        } else {
+            for socket in connectedSockets {
+                socket.write(data, withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+                socket.write(GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+            }
+            self.asyncSocket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+        }
     }
     
     
@@ -90,20 +118,6 @@ extension ImmersiveServer {
     }
     
     override public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-        
-        //try converting received data to body type
-        let decoder : JSONDecoder = JSONDecoder();
-        if let body = try? decoder.decode(Body.self, from: data) {
-            self.receiverDelegate?.bodyReceived(body: body)
-        }
-        
-        if let str = data.stringify()  {
-            // received string from client server
-            printLog("received: \(str.quickTrim())")
-            if isEcho {
-                sock.write(data, withTimeout: -1, tag: -1)
-            }
-        }
         super.socket(sock, didRead: data, withTag: tag)
     }
 }

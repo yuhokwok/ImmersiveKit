@@ -10,10 +10,16 @@ import Foundation
 //import CocoaAsyncSocket
 import ARKit
 
+
 /// Foundation Class for ImmersiveClient & ImmersiveServver
 public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate, ImmersiveBodyTrackerDelegate {
     
-    public var receiverDelegate : ImmersiveBodyReceiverDelegate?
+    public static let TIMEOUT : TimeInterval = -1
+    
+    /// Set this ture, the server will be an echo server
+    public var isEcho : Bool = false
+    
+    public var receiverDelegate : ImmersiveDataReceiverDelegate?
     public var debugDelegate : ImmersiveKitDebugging?
     
     /// A socket for connection to server / client
@@ -22,6 +28,12 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
     /// NetService Object for bonjour connection
     public var netService : NetService?
   
+    //monitor the writing state of data
+    public var isWritingData = false
+    
+    /// indicate the client write the latest frame only or not
+    public var canWriteWithDropFrame : Bool = false
+    
     //pending for future use
 //    public var useACK : Bool = true
 //    public var waitingForACK: Bool = false
@@ -70,13 +82,21 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
     /// Write Data with Data
     /// - Parameter data: data to be sent
     public func write(data : Data) {
-        //pending for future use
-//        if useACK == true && waitingForACK == true {
-//            return
-//        }
-        self.asyncSocket?.write(data, withTimeout: -1, tag: -1)
-        self.asyncSocket?.write(GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
-        self.asyncSocket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
+        
+        if canWriteWithDropFrame == true {
+            if isWritingData == false {
+                isWritingData = true
+                self.asyncSocket?.write(data, withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+                self.asyncSocket?.write(GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+                self.asyncSocket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+            } else {
+                printLog("skip")
+            }
+        } else {
+            self.asyncSocket?.write(data, withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+            self.asyncSocket?.write(GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+            self.asyncSocket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
+        }
     }
     
     internal func printLog(_ msg : String) {
@@ -89,7 +109,6 @@ public class ImmersiveNetworkCore : NSObject, GCDAsyncSocketDelegate, NetService
 
 extension ImmersiveNetworkCore {
     public func bodyDidUpdate(bodyAnchor: ARBodyAnchor) {
-        
         //if transformCount == 0 {
             let body = Body(bodyAnchor: bodyAnchor)
             guard let bodyJSONData = body.jsonfiy() else {
@@ -112,11 +131,12 @@ extension ImmersiveNetworkCore {
 extension ImmersiveNetworkCore {
     //server
     public func socket(_ sock: GCDAsyncSocket, didAcceptNewSocket newSocket: GCDAsyncSocket) {
-        newSocket.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
+        newSocket.readData(to: GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
     }
     
     public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
+        ImmersiveCore.print(msg: "did connect to host")
+        sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
     }
     
     public func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
@@ -132,14 +152,39 @@ extension ImmersiveNetworkCore {
 //                waitingForACK = false
 //            }
 //        }
+
+        //ImmersiveCore.print(msg: "received data")
+        //try converting received data to body type
+        let decoder : JSONDecoder = JSONDecoder();
+        if let body = try? decoder.decode(Body.self, from: data) {
+            self.receiverDelegate?.bodyReceived(body: body)
+        }
         
+        if let setting = try? decoder.decode(VRCameraSetting.self, from: data) {
+            self.receiverDelegate?.cameraSettingReceived(setting: setting)
+        }
         
-        sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: -1, tag: -1)
+        if let str = data.stringify()  {
+            // received string from client server
+            printLog("received: \(str.quickTrim())")
+            if isEcho {
+                sock.write(data, withTimeout: -1, tag: -1)
+            }
+        }
+        
+        sock.readData(to: GCDAsyncSocket.crlfData(), withTimeout: ImmersiveNetworkCore.TIMEOUT, tag: -1)
     }
     
     public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-        
+        isWritingData = false
     }
+    
+    
+    
+//    public func socket(_ sock: GCDAsyncSocket, shouldTimeoutWriteWithTag tag: Int, elapsed: TimeInterval, bytesDone length: UInt) -> TimeInterval {
+//        isWritingData = false
+//        return -1
+//    }
     
     
 }

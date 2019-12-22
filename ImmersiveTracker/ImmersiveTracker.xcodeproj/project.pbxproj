@@ -15,13 +15,18 @@
 		ED0BCBAB23A0E36A00CA3DE1 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBAA23A0E36A00CA3DE1 /* Constant.swift */; };
 		ED207AFE238842A3001806CB /* UIDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFD238842A3001806CB /* UIDevices.swift */; };
 		ED207B00238842C4001806CB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFF238842C4001806CB /* File.swift */; };
-		ED207B03238843CA001806CB /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207B02238843CA001806CB /* ClientViewController.swift */; };
+		ED207B03238843CA001806CB /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207B02238843CA001806CB /* TrackerViewController.swift */; };
 		ED76D16223883C5100D8CE23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16123883C5100D8CE23 /* AppDelegate.swift */; };
 		ED76D16423883C5100D8CE23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16323883C5100D8CE23 /* SceneDelegate.swift */; };
 		ED76D16623883C5100D8CE23 /* ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16523883C5100D8CE23 /* ServerViewController.swift */; };
 		ED76D16923883C5100D8CE23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16723883C5100D8CE23 /* Main.storyboard */; };
 		ED76D16B23883C5400D8CE23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16A23883C5400D8CE23 /* Assets.xcassets */; };
 		ED76D16E23883C5400D8CE23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED76D16C23883C5400D8CE23 /* LaunchScreen.storyboard */; };
+		ED8C1AA123ACBB84003440B0 /* VRPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AA023ACBB84003440B0 /* VRPlayerViewController.swift */; };
+		ED8C1ABD23AD3399003440B0 /* CamSettingClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1ABC23AD3399003440B0 /* CamSettingClientViewController.swift */; };
+		ED8C1AC023ADBA1D003440B0 /* barrel_dist_mlsl.metal in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1ABE23ADBA1C003440B0 /* barrel_dist_mlsl.metal */; };
+		ED8C1AC623ADBB1F003440B0 /* BarrelDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AC423ADBB1F003440B0 /* BarrelDistortion.swift */; };
+		ED8C1AC723ADBB1F003440B0 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AC523ADBB1F003440B0 /* FileLoader.swift */; };
 		EDAA1DD123A002EA004424FB /* robot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EDAA1DD023A002EA004424FB /* robot.usdz */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +52,7 @@
 		ED207AED23884007001806CB /* ImmersiveTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImmersiveTracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		ED207AFD238842A3001806CB /* UIDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevices.swift; sourceTree = "<group>"; };
 		ED207AFF238842C4001806CB /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		ED207B02238843CA001806CB /* ClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientViewController.swift; sourceTree = "<group>"; };
+		ED207B02238843CA001806CB /* TrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
 		ED764ACB23A0A746004419AA /* ImmersiveKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImmersiveKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED76D15E23883C5100D8CE23 /* ImmersiveTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImmersiveTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED76D16123883C5100D8CE23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +62,12 @@
 		ED76D16A23883C5400D8CE23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED76D16D23883C5400D8CE23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED76D16F23883C5400D8CE23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED8C1AA023ACBB84003440B0 /* VRPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRPlayerViewController.swift; sourceTree = "<group>"; };
+		ED8C1ABC23AD3399003440B0 /* CamSettingClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamSettingClientViewController.swift; sourceTree = "<group>"; };
+		ED8C1ABE23ADBA1C003440B0 /* barrel_dist_mlsl.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = barrel_dist_mlsl.metal; sourceTree = "<group>"; };
+		ED8C1ABF23ADBA1D003440B0 /* barrel_dist_mlsl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = barrel_dist_mlsl.json; sourceTree = "<group>"; };
+		ED8C1AC423ADBB1F003440B0 /* BarrelDistortion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarrelDistortion.swift; path = "../../../../ImmersiveKit/ImmersiveKit/Application Development/VR/Barrel Distortion/BarrelDistortion.swift"; sourceTree = "<group>"; };
+		ED8C1AC523ADBB1F003440B0 /* FileLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileLoader.swift; path = "../../../../ImmersiveKit/ImmersiveKit/Application Development/FileLoader.swift"; sourceTree = "<group>"; };
 		EDAA1DD023A002EA004424FB /* robot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = robot.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,17 +123,53 @@
 				B5150F1A23AB2C2B00EF0667 /* art.scnassets */,
 				EDAA1DD223A002F0004424FB /* Resources */,
 				ED207AFC23884128001806CB /* 3rd-Party */,
-				ED76D16123883C5100D8CE23 /* AppDelegate.swift */,
+				ED8C1AC123ADBAC9003440B0 /* Classes */,
+				ED76D16F23883C5400D8CE23 /* Info.plist */,
+			);
+			path = ImmersiveTracker;
+			sourceTree = "<group>";
+		};
+		ED8C1AC123ADBAC9003440B0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1AC323ADBAF9003440B0 /* Helper */,
+				ED8C1AC223ADBAEB003440B0 /* ViewControllers */,
 				ED76D16323883C5100D8CE23 /* SceneDelegate.swift */,
-				ED76D16523883C5100D8CE23 /* ServerViewController.swift */,
-				ED207B02238843CA001806CB /* ClientViewController.swift */,
+				ED76D16123883C5100D8CE23 /* AppDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		ED8C1AC223ADBAEB003440B0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1AD723AE892C003440B0 /* Deprecated */,
+				ED8C1AA023ACBB84003440B0 /* VRPlayerViewController.swift */,
+				ED207B02238843CA001806CB /* TrackerViewController.swift */,
+				ED8C1ABC23AD3399003440B0 /* CamSettingClientViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ED8C1AC323ADBAF9003440B0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1AC423ADBB1F003440B0 /* BarrelDistortion.swift */,
+				ED8C1AC523ADBB1F003440B0 /* FileLoader.swift */,
 				B5769208238A5C8900930B03 /* MessageLabel.swift */,
 				B5769207238A5C8900930B03 /* Utilities.swift */,
 				ED207AFF238842C4001806CB /* File.swift */,
-				ED76D16F23883C5400D8CE23 /* Info.plist */,
 				ED0BCBAA23A0E36A00CA3DE1 /* Constant.swift */,
 			);
-			path = ImmersiveTracker;
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		ED8C1AD723AE892C003440B0 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				ED76D16523883C5100D8CE23 /* ServerViewController.swift */,
+			);
+			path = Deprecated;
 			sourceTree = "<group>";
 		};
 		EDAA1DD223A002F0004424FB /* Resources */ = {
@@ -131,6 +178,8 @@
 				EDF0569623A003A6001E8069 /* character */,
 				ED76D16723883C5100D8CE23 /* Main.storyboard */,
 				ED76D16C23883C5400D8CE23 /* LaunchScreen.storyboard */,
+				ED8C1ABF23ADBA1D003440B0 /* barrel_dist_mlsl.json */,
+				ED8C1ABE23ADBA1C003440B0 /* barrel_dist_mlsl.metal */,
 				ED76D16A23883C5400D8CE23 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -220,11 +269,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B576920A238A5C8900930B03 /* MessageLabel.swift in Sources */,
+				ED8C1AC023ADBA1D003440B0 /* barrel_dist_mlsl.metal in Sources */,
+				ED8C1AC723ADBB1F003440B0 /* FileLoader.swift in Sources */,
+				ED8C1AA123ACBB84003440B0 /* VRPlayerViewController.swift in Sources */,
 				ED207B00238842C4001806CB /* File.swift in Sources */,
-				ED207B03238843CA001806CB /* ClientViewController.swift in Sources */,
+				ED207B03238843CA001806CB /* TrackerViewController.swift in Sources */,
+				ED8C1ABD23AD3399003440B0 /* CamSettingClientViewController.swift in Sources */,
 				ED76D16623883C5100D8CE23 /* ServerViewController.swift in Sources */,
 				ED207AFE238842A3001806CB /* UIDevices.swift in Sources */,
 				B5769209238A5C8900930B03 /* Utilities.swift in Sources */,
+				ED8C1AC623ADBB1F003440B0 /* BarrelDistortion.swift in Sources */,
 				ED0BCBAB23A0E36A00CA3DE1 /* Constant.swift in Sources */,
 				ED76D16223883C5100D8CE23 /* AppDelegate.swift in Sources */,
 				ED76D16423883C5100D8CE23 /* SceneDelegate.swift in Sources */,

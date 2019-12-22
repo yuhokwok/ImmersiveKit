@@ -13,19 +13,41 @@
 		ED0BCBBD23A1203700CA3DE1 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0BCBB923A1203700CA3DE1 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED0BCBBE23A1203700CA3DE1 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBBA23A1203700CA3DE1 /* GCDAsyncUdpSocket.m */; };
 		ED0BCBC323A1444700CA3DE1 /* ImmersiveBodyTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBC223A1444700CA3DE1 /* ImmersiveBodyTracker.swift */; };
-		ED0BCBC923A14B1800CA3DE1 /* ImmersiveBodyTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBC823A14B1800CA3DE1 /* ImmersiveBodyTrackerViewController.swift */; };
+		ED0BCBC923A14B1800CA3DE1 /* ImmersiveBodyTrackerNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBC823A14B1800CA3DE1 /* ImmersiveBodyTrackerNetworkViewController.swift */; };
 		ED0BCBCB23A1563200CA3DE1 /* ImmersiveTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBCA23A1563200CA3DE1 /* ImmersiveTransform.swift */; };
 		ED145C2823AB5A1600215953 /* SCNVector3+MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED145C2723AB5A1600215953 /* SCNVector3+MathUtils.swift */; };
 		ED764AC423A0A43B004419AA /* ImmersiveServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED764AC223A0A43B004419AA /* ImmersiveServer.swift */; };
 		ED764AC523A0A43B004419AA /* ImmersiveClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED764AC323A0A43B004419AA /* ImmersiveClient.swift */; };
 		ED764AC823A0A44C004419AA /* ImmersiveBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED764AC723A0A44C004419AA /* ImmersiveBody.swift */; };
 		ED764ACA23A0A493004419AA /* ImmersiveCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED764AC923A0A493004419AA /* ImmersiveCore.swift */; };
+		ED8C1A8923ACB59F003440B0 /* barrel_dist_mlsl.metal in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1A8723ACB59F003440B0 /* barrel_dist_mlsl.metal */; };
+		ED8C1A8A23ACB59F003440B0 /* barrel_dist_mlsl.json in Resources */ = {isa = PBXBuildFile; fileRef = ED8C1A8823ACB59F003440B0 /* barrel_dist_mlsl.json */; };
+		ED8C1A8E23ACB5A5003440B0 /* barrel_dist_glsl.vsh in Resources */ = {isa = PBXBuildFile; fileRef = ED8C1A8B23ACB5A5003440B0 /* barrel_dist_glsl.vsh */; };
+		ED8C1A8F23ACB5A5003440B0 /* barrel_dist_glsl.fsh in Resources */ = {isa = PBXBuildFile; fileRef = ED8C1A8C23ACB5A5003440B0 /* barrel_dist_glsl.fsh */; };
+		ED8C1A9023ACB5A5003440B0 /* barrel_dist_glsl.json in Resources */ = {isa = PBXBuildFile; fileRef = ED8C1A8D23ACB5A5003440B0 /* barrel_dist_glsl.json */; };
+		ED8C1A9323ACB690003440B0 /* ImmersiveSCNVRCameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1A9223ACB690003440B0 /* ImmersiveSCNVRCameraNode.swift */; };
+		ED8C1A9623ACB6AB003440B0 /* ImmersiveSCNPlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1A9523ACB6AB003440B0 /* ImmersiveSCNPlayerNode.swift */; };
+		ED8C1A9923ACB729003440B0 /* ImmersiveMotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1A9823ACB729003440B0 /* ImmersiveMotionService.swift */; };
+		ED8C1A9B23ACB757003440B0 /* Numbers+DegreesToRadians.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1A9A23ACB757003440B0 /* Numbers+DegreesToRadians.swift */; };
+		ED8C1A9D23ACB791003440B0 /* CGFloat+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1A9C23ACB791003440B0 /* CGFloat+Random.swift */; };
+		ED8C1A9F23ACB7A5003440B0 /* simd_quatf+AxisAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1A9E23ACB7A5003440B0 /* simd_quatf+AxisAngle.swift */; };
+		ED8C1AA423ACBE8B003440B0 /* ImmersiveWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AA323ACBE8B003440B0 /* ImmersiveWorld.swift */; };
+		ED8C1AA723ACBEC2003440B0 /* ImmersiveVRViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AA623ACBEC2003440B0 /* ImmersiveVRViewType.swift */; };
+		ED8C1AAA23ACBF0C003440B0 /* ImmersiveGazeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AA923ACBF0C003440B0 /* ImmersiveGazeTimer.swift */; };
+		ED8C1AAD23ACC095003440B0 /* AppInjectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AAC23ACC095003440B0 /* AppInjectionService.swift */; };
+		ED8C1ABB23AD2F8E003440B0 /* VRCameraSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1ABA23AD2F8E003440B0 /* VRCameraSetting.swift */; };
+		ED8C1ACA23ADFC52003440B0 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AC923ADFC52003440B0 /* ImmersiveView.swift */; };
+		ED8C1ACC23AE0D33003440B0 /* ImmersiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1ACB23AE0D33003440B0 /* ImmersiveViewController.swift */; };
+		ED8C1ACE23AE1F6A003440B0 /* ImmersiveNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1ACD23AE1F6A003440B0 /* ImmersiveNetworkViewController.swift */; };
+		ED8C1AD023AE22B4003440B0 /* matrix_float4x4+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1ACF23AE22B4003440B0 /* matrix_float4x4+Extension.swift */; };
+		ED8C1AD423AE7D21003440B0 /* ImmersiveServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AD323AE7D21003440B0 /* ImmersiveServiceProvider.swift */; };
+		ED8C1AD623AE8166003440B0 /* ImmerstiveBodyTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AD523AE8166003440B0 /* ImmerstiveBodyTrackerViewController.swift */; };
 		ED9A541323A0052700E448B9 /* ImmersiveKit.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9A541123A0052700E448B9 /* ImmersiveKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED9B101D23A6267600DE406A /* ImmersiveSpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9B101C23A6267600DE406A /* ImmersiveSpeechRecognizer.swift */; };
 		EDB6028123A8AF8D00147A4D /* ImmersiveVoiceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6028023A8AF8D00147A4D /* ImmersiveVoiceControl.swift */; };
 		EDB6028423A8B5F100147A4D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6028323A8B5F100147A4D /* String+Extension.swift */; };
 		EDFF26B423A37716002B5B2F /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF26B323A37716002B5B2F /* Body.swift */; };
-		EDFF26B623A37BE8002B5B2F /* ImmersiveBodyReceiverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF26B523A37BE8002B5B2F /* ImmersiveBodyReceiverDelegate.swift */; };
+		EDFF26B623A37BE8002B5B2F /* ImmersiveDataReceiverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF26B523A37BE8002B5B2F /* ImmersiveDataReceiverDelegate.swift */; };
 		EDFF26B823A37D29002B5B2F /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFF26B723A37D29002B5B2F /* Data+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,13 +72,35 @@
 		ED0BCBB923A1203700CA3DE1 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		ED0BCBBA23A1203700CA3DE1 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		ED0BCBC223A1444700CA3DE1 /* ImmersiveBodyTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveBodyTracker.swift; sourceTree = "<group>"; };
-		ED0BCBC823A14B1800CA3DE1 /* ImmersiveBodyTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveBodyTrackerViewController.swift; sourceTree = "<group>"; };
+		ED0BCBC823A14B1800CA3DE1 /* ImmersiveBodyTrackerNetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveBodyTrackerNetworkViewController.swift; sourceTree = "<group>"; };
 		ED0BCBCA23A1563200CA3DE1 /* ImmersiveTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveTransform.swift; sourceTree = "<group>"; };
 		ED145C2723AB5A1600215953 /* SCNVector3+MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+MathUtils.swift"; sourceTree = "<group>"; };
 		ED764AC223A0A43B004419AA /* ImmersiveServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImmersiveServer.swift; sourceTree = "<group>"; };
 		ED764AC323A0A43B004419AA /* ImmersiveClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImmersiveClient.swift; sourceTree = "<group>"; };
 		ED764AC723A0A44C004419AA /* ImmersiveBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImmersiveBody.swift; sourceTree = "<group>"; };
 		ED764AC923A0A493004419AA /* ImmersiveCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveCore.swift; sourceTree = "<group>"; };
+		ED8C1A8723ACB59F003440B0 /* barrel_dist_mlsl.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = barrel_dist_mlsl.metal; path = ../../../../../../ImmersiveTracker/ImmersiveTracker/Resources/barrel_dist_mlsl.metal; sourceTree = "<group>"; };
+		ED8C1A8823ACB59F003440B0 /* barrel_dist_mlsl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = barrel_dist_mlsl.json; path = ../../../../../../ImmersiveTracker/ImmersiveTracker/Resources/barrel_dist_mlsl.json; sourceTree = "<group>"; };
+		ED8C1A8B23ACB5A5003440B0 /* barrel_dist_glsl.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = barrel_dist_glsl.vsh; sourceTree = "<group>"; };
+		ED8C1A8C23ACB5A5003440B0 /* barrel_dist_glsl.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = barrel_dist_glsl.fsh; sourceTree = "<group>"; };
+		ED8C1A8D23ACB5A5003440B0 /* barrel_dist_glsl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = barrel_dist_glsl.json; sourceTree = "<group>"; };
+		ED8C1A9223ACB690003440B0 /* ImmersiveSCNVRCameraNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveSCNVRCameraNode.swift; sourceTree = "<group>"; };
+		ED8C1A9523ACB6AB003440B0 /* ImmersiveSCNPlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveSCNPlayerNode.swift; sourceTree = "<group>"; };
+		ED8C1A9823ACB729003440B0 /* ImmersiveMotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveMotionService.swift; sourceTree = "<group>"; };
+		ED8C1A9A23ACB757003440B0 /* Numbers+DegreesToRadians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+DegreesToRadians.swift"; sourceTree = "<group>"; };
+		ED8C1A9C23ACB791003440B0 /* CGFloat+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Random.swift"; sourceTree = "<group>"; };
+		ED8C1A9E23ACB7A5003440B0 /* simd_quatf+AxisAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "simd_quatf+AxisAngle.swift"; sourceTree = "<group>"; };
+		ED8C1AA323ACBE8B003440B0 /* ImmersiveWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveWorld.swift; sourceTree = "<group>"; };
+		ED8C1AA623ACBEC2003440B0 /* ImmersiveVRViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveVRViewType.swift; sourceTree = "<group>"; };
+		ED8C1AA923ACBF0C003440B0 /* ImmersiveGazeTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveGazeTimer.swift; sourceTree = "<group>"; };
+		ED8C1AAC23ACC095003440B0 /* AppInjectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInjectionService.swift; sourceTree = "<group>"; };
+		ED8C1ABA23AD2F8E003440B0 /* VRCameraSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRCameraSetting.swift; sourceTree = "<group>"; };
+		ED8C1AC923ADFC52003440B0 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
+		ED8C1ACB23AE0D33003440B0 /* ImmersiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveViewController.swift; sourceTree = "<group>"; };
+		ED8C1ACD23AE1F6A003440B0 /* ImmersiveNetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveNetworkViewController.swift; sourceTree = "<group>"; };
+		ED8C1ACF23AE22B4003440B0 /* matrix_float4x4+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "matrix_float4x4+Extension.swift"; sourceTree = "<group>"; };
+		ED8C1AD323AE7D21003440B0 /* ImmersiveServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveServiceProvider.swift; sourceTree = "<group>"; };
+		ED8C1AD523AE8166003440B0 /* ImmerstiveBodyTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmerstiveBodyTrackerViewController.swift; sourceTree = "<group>"; };
 		ED9A540E23A0052700E448B9 /* ImmersiveKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImmersiveKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9A541123A0052700E448B9 /* ImmersiveKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImmersiveKit.h; sourceTree = "<group>"; };
 		ED9A541223A0052700E448B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,7 +108,7 @@
 		EDB6028023A8AF8D00147A4D /* ImmersiveVoiceControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveVoiceControl.swift; sourceTree = "<group>"; };
 		EDB6028323A8B5F100147A4D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		EDFF26B323A37716002B5B2F /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
-		EDFF26B523A37BE8002B5B2F /* ImmersiveBodyReceiverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveBodyReceiverDelegate.swift; sourceTree = "<group>"; };
+		EDFF26B523A37BE8002B5B2F /* ImmersiveDataReceiverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveDataReceiverDelegate.swift; sourceTree = "<group>"; };
 		EDFF26B723A37D29002B5B2F /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,7 +144,9 @@
 		ED0BCBC023A1417E00CA3DE1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				ED0BCBC823A14B1800CA3DE1 /* ImmersiveBodyTrackerViewController.swift */,
+				ED8C1AD323AE7D21003440B0 /* ImmersiveServiceProvider.swift */,
+				ED8C1AD223AE7BEB003440B0 /* Tracker */,
+				ED8C1AD123AE7BE0003440B0 /* Player */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -113,12 +159,12 @@
 			path = BodyTracking;
 			sourceTree = "<group>";
 		};
-		ED145C2623AB59FA00215953 /* Application Supports */ = {
+		ED145C2623AB59FA00215953 /* Application Development */ = {
 			isa = PBXGroup;
 			children = (
-				ED145C2723AB5A1600215953 /* SCNVector3+MathUtils.swift */,
+				ED8C1A8323ACB57E003440B0 /* VR */,
 			);
-			path = "Application Supports";
+			path = "Application Development";
 			sourceTree = "<group>";
 		};
 		ED764AC123A0A432004419AA /* NetworkIO */ = {
@@ -136,10 +182,121 @@
 			isa = PBXGroup;
 			children = (
 				EDFF26B923A37DB3002B5B2F /* Deprecated */,
-				EDFF26B523A37BE8002B5B2F /* ImmersiveBodyReceiverDelegate.swift */,
+				EDFF26B523A37BE8002B5B2F /* ImmersiveDataReceiverDelegate.swift */,
 				EDFF26B323A37716002B5B2F /* Body.swift */,
+				ED8C1ABA23AD2F8E003440B0 /* VRCameraSetting.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		ED8C1A8323ACB57E003440B0 /* VR */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1AAB23ACC082003440B0 /* injection */,
+				ED8C1AA523ACBEA6003440B0 /* Protocol */,
+				ED8C1AA823ACBEFD003440B0 /* Gaze */,
+				ED8C1A8423ACB587003440B0 /* Barrel Distortion */,
+				ED8C1A9723ACB6D4003440B0 /* Motion Service */,
+				ED8C1A9423ACB69F003440B0 /* Player */,
+				ED8C1A9123ACB674003440B0 /* Camera */,
+				ED8C1AA323ACBE8B003440B0 /* ImmersiveWorld.swift */,
+				ED8C1AC923ADFC52003440B0 /* ImmersiveView.swift */,
+			);
+			path = VR;
+			sourceTree = "<group>";
+		};
+		ED8C1A8423ACB587003440B0 /* Barrel Distortion */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1A8623ACB597003440B0 /* GLSL */,
+				ED8C1A8523ACB592003440B0 /* MLSL */,
+			);
+			path = "Barrel Distortion";
+			sourceTree = "<group>";
+		};
+		ED8C1A8523ACB592003440B0 /* MLSL */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1A8823ACB59F003440B0 /* barrel_dist_mlsl.json */,
+				ED8C1A8723ACB59F003440B0 /* barrel_dist_mlsl.metal */,
+			);
+			path = MLSL;
+			sourceTree = "<group>";
+		};
+		ED8C1A8623ACB597003440B0 /* GLSL */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1A8C23ACB5A5003440B0 /* barrel_dist_glsl.fsh */,
+				ED8C1A8D23ACB5A5003440B0 /* barrel_dist_glsl.json */,
+				ED8C1A8B23ACB5A5003440B0 /* barrel_dist_glsl.vsh */,
+			);
+			path = GLSL;
+			sourceTree = "<group>";
+		};
+		ED8C1A9123ACB674003440B0 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1A9223ACB690003440B0 /* ImmersiveSCNVRCameraNode.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		ED8C1A9423ACB69F003440B0 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1A9523ACB6AB003440B0 /* ImmersiveSCNPlayerNode.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		ED8C1A9723ACB6D4003440B0 /* Motion Service */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1A9823ACB729003440B0 /* ImmersiveMotionService.swift */,
+			);
+			path = "Motion Service";
+			sourceTree = "<group>";
+		};
+		ED8C1AA523ACBEA6003440B0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1AA623ACBEC2003440B0 /* ImmersiveVRViewType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		ED8C1AA823ACBEFD003440B0 /* Gaze */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1AA923ACBF0C003440B0 /* ImmersiveGazeTimer.swift */,
+			);
+			path = Gaze;
+			sourceTree = "<group>";
+		};
+		ED8C1AAB23ACC082003440B0 /* injection */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1AAC23ACC095003440B0 /* AppInjectionService.swift */,
+			);
+			path = injection;
+			sourceTree = "<group>";
+		};
+		ED8C1AD123AE7BE0003440B0 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1ACB23AE0D33003440B0 /* ImmersiveViewController.swift */,
+				ED8C1ACD23AE1F6A003440B0 /* ImmersiveNetworkViewController.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		ED8C1AD223AE7BEB003440B0 /* Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				ED8C1AD523AE8166003440B0 /* ImmerstiveBodyTrackerViewController.swift */,
+				ED0BCBC823A14B1800CA3DE1 /* ImmersiveBodyTrackerNetworkViewController.swift */,
+			);
+			path = Tracker;
 			sourceTree = "<group>";
 		};
 		ED9A540423A0052700E448B9 = {
@@ -162,7 +319,7 @@
 		ED9A541023A0052700E448B9 /* ImmersiveKit */ = {
 			isa = PBXGroup;
 			children = (
-				ED145C2623AB59FA00215953 /* Application Supports */,
+				ED145C2623AB59FA00215953 /* Application Development */,
 				EDB6028223A8B5D200147A4D /* Extensions */,
 				ED764AC623A0A440004419AA /* Model */,
 				ED9B101B23A6249D00DE406A /* SpeechRecognition */,
@@ -191,6 +348,11 @@
 			children = (
 				EDFF26B723A37D29002B5B2F /* Data+Extension.swift */,
 				EDB6028323A8B5F100147A4D /* String+Extension.swift */,
+				ED8C1A9A23ACB757003440B0 /* Numbers+DegreesToRadians.swift */,
+				ED145C2723AB5A1600215953 /* SCNVector3+MathUtils.swift */,
+				ED8C1A9C23ACB791003440B0 /* CGFloat+Random.swift */,
+				ED8C1A9E23ACB7A5003440B0 /* simd_quatf+AxisAngle.swift */,
+				ED8C1ACF23AE22B4003440B0 /* matrix_float4x4+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -277,6 +439,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED8C1A8A23ACB59F003440B0 /* barrel_dist_mlsl.json in Resources */,
+				ED8C1A9023ACB5A5003440B0 /* barrel_dist_glsl.json in Resources */,
+				ED8C1A8E23ACB5A5003440B0 /* barrel_dist_glsl.vsh in Resources */,
+				ED8C1A8F23ACB5A5003440B0 /* barrel_dist_glsl.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,21 +455,39 @@
 			files = (
 				EDB6028423A8B5F100147A4D /* String+Extension.swift in Sources */,
 				EDFF26B823A37D29002B5B2F /* Data+Extension.swift in Sources */,
+				ED8C1ACA23ADFC52003440B0 /* ImmersiveView.swift in Sources */,
 				EDB6028123A8AF8D00147A4D /* ImmersiveVoiceControl.swift in Sources */,
 				EDFF26B423A37716002B5B2F /* Body.swift in Sources */,
-				EDFF26B623A37BE8002B5B2F /* ImmersiveBodyReceiverDelegate.swift in Sources */,
+				EDFF26B623A37BE8002B5B2F /* ImmersiveDataReceiverDelegate.swift in Sources */,
+				ED8C1AD423AE7D21003440B0 /* ImmersiveServiceProvider.swift in Sources */,
+				ED8C1AD023AE22B4003440B0 /* matrix_float4x4+Extension.swift in Sources */,
+				ED8C1A8923ACB59F003440B0 /* barrel_dist_mlsl.metal in Sources */,
+				ED8C1ABB23AD2F8E003440B0 /* VRCameraSetting.swift in Sources */,
 				ED0BCBC323A1444700CA3DE1 /* ImmersiveBodyTracker.swift in Sources */,
+				ED8C1ACE23AE1F6A003440B0 /* ImmersiveNetworkViewController.swift in Sources */,
 				ED9B101D23A6267600DE406A /* ImmersiveSpeechRecognizer.swift in Sources */,
 				ED0BCBBC23A1203700CA3DE1 /* GCDAsyncSocket.m in Sources */,
+				ED8C1A9F23ACB7A5003440B0 /* simd_quatf+AxisAngle.swift in Sources */,
+				ED8C1AA723ACBEC2003440B0 /* ImmersiveVRViewType.swift in Sources */,
+				ED8C1A9D23ACB791003440B0 /* CGFloat+Random.swift in Sources */,
 				ED0BCBCB23A1563200CA3DE1 /* ImmersiveTransform.swift in Sources */,
 				ED764ACA23A0A493004419AA /* ImmersiveCore.swift in Sources */,
 				ED145C2823AB5A1600215953 /* SCNVector3+MathUtils.swift in Sources */,
-				ED0BCBC923A14B1800CA3DE1 /* ImmersiveBodyTrackerViewController.swift in Sources */,
+				ED8C1AD623AE8166003440B0 /* ImmerstiveBodyTrackerViewController.swift in Sources */,
+				ED0BCBC923A14B1800CA3DE1 /* ImmersiveBodyTrackerNetworkViewController.swift in Sources */,
+				ED8C1A9B23ACB757003440B0 /* Numbers+DegreesToRadians.swift in Sources */,
+				ED8C1A9323ACB690003440B0 /* ImmersiveSCNVRCameraNode.swift in Sources */,
+				ED8C1A9623ACB6AB003440B0 /* ImmersiveSCNPlayerNode.swift in Sources */,
 				ED764AC823A0A44C004419AA /* ImmersiveBody.swift in Sources */,
 				ED764AC523A0A43B004419AA /* ImmersiveClient.swift in Sources */,
+				ED8C1AAD23ACC095003440B0 /* AppInjectionService.swift in Sources */,
 				ED0BCBBE23A1203700CA3DE1 /* GCDAsyncUdpSocket.m in Sources */,
 				ED764AC423A0A43B004419AA /* ImmersiveServer.swift in Sources */,
 				ED0BCBA923A0C9CF00CA3DE1 /* ImmserviceNetworkCore.swift in Sources */,
+				ED8C1ACC23AE0D33003440B0 /* ImmersiveViewController.swift in Sources */,
+				ED8C1A9923ACB729003440B0 /* ImmersiveMotionService.swift in Sources */,
+				ED8C1AA423ACBE8B003440B0 /* ImmersiveWorld.swift in Sources */,
+				ED8C1AAA23ACBF0C003440B0 /* ImmersiveGazeTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

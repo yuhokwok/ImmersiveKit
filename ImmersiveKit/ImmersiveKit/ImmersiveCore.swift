@@ -22,7 +22,7 @@ public protocol ImmersiveKitDebugging {
 
 
 /// Core struct type for fundamental tasks
-public struct ImmersiveCore {
+public class ImmersiveCore : NSObject {
     public static var version : String {
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             return version
