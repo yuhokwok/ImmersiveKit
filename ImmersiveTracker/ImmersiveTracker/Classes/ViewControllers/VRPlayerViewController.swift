@@ -14,6 +14,10 @@ import CoreMotion
 
 class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     
+    var leftHandPosX : Float = 0
+    var leftHandPosY : Float = 0
+    var leftHandPosZ : Float = 0
+    
     enum Constant {
         enum Distance {
             static let recognizerMultiplier: Float = 0.01
@@ -73,7 +77,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         self.initialBody = nil
         super.resetPlayerPosition()
     }
- 
+    
     
     @IBOutlet var fovTextField : UITextField!
     @IBOutlet var pupillaryTextField : UITextField!
@@ -96,6 +100,37 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         let setting = VRCameraSetting(pupillary: pupillary, fieldOfView: fov)
         self.immersiveWorld?.player.cameraNode.setCameraSetting(setting)
     }
+    var firstBody : Body?
+    open override func bodyReceived(body: Body) {
+        //ImmersiveCore.print(msg: "body received")
+      //  super.bodyReceived(body: body)
+        
+        if firstBody == nil {
+            firstBody = body
+        }
+        
+        leftHandPosX = body.modelLeftHandTransform.simdFloat4x4().coordinate().x + body.hipWorldPosition.simdFloat4x4().coordinate().x - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().x
+        
+        leftHandPosY = body.modelLeftHandTransform.simdFloat4x4().coordinate().y + body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
+        ;
+        leftHandPosZ = body.modelLeftHandTransform.simdFloat4x4().coordinate().z + body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
+        
+        // object action //
+        let hipX = body.hipWorldPosition.simdFloat4x4().coordinate().x - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().x
+        let hipY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
+        let hipZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
+        
+        let modelHeadX =  body.modelHeadTransform.simdFloat4x4().coordinate().x + body.hipWorldPosition.simdFloat4x4().coordinate().x -  firstBody!.hipWorldPosition.simdFloat4x4().coordinate().x
+        
+        let modelHeadY = body.modelHeadTransform.simdFloat4x4().coordinate().y + body.hipWorldPosition.simdFloat4x4().coordinate().y -  firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
+        
+        let modelHeadZ = body.modelHeadTransform.simdFloat4x4().coordinate().z + body.hipWorldPosition.simdFloat4x4().coordinate().z -  firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
+        
+        let headPos = SCNVector3(modelHeadX, modelHeadY, modelHeadZ)
+        let leftHandPos = SCNVector3(leftHandPosX, leftHandPosY, leftHandPosZ)
+        let hipPos = SCNVector3(hipX, hipY, hipZ)
+        print("leftHandPos = \(leftHandPos) , hipPos = \(hipPos)")
+       }
     
 }
 
@@ -113,5 +148,7 @@ extension VRPlayerViewController {
 //                0.0,
 //                Float(lastPanTranslationOffset.y) * Constant.Distance.recognizerMultiplier))
     }
+
 }
+
 
