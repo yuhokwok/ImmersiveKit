@@ -15,20 +15,24 @@ public struct Body : Codable {
     public var hipWorldPosition : SIMDFloat4x4
     public var joints : [Joint]
     
-    var headTransform : SIMDFloat4x4?
-    var rootTransform : SIMDFloat4x4?
-    var leftShoulderTransform : SIMDFloat4x4?
-    var rightShoulderTransform : SIMDFloat4x4?
-    var leftHandTransform : SIMDFloat4x4?
-    var rightHandTransform : SIMDFloat4x4?
-    var leftFootTransform : SIMDFloat4x4?
-    var rightFootTransform : SIMDFloat4x4?
+    public var headTransform : SIMDFloat4x4
+    public var rootTransform : SIMDFloat4x4
+    public var leftShoulderTransform : SIMDFloat4x4
+    public var rightShoulderTransform : SIMDFloat4x4
+    public var leftHandTransform : SIMDFloat4x4
+    public var rightHandTransform : SIMDFloat4x4
+    public var leftFootTransform : SIMDFloat4x4
+    public var rightFootTransform : SIMDFloat4x4
+    
+    public var modelHeadTransform : SIMDFloat4x4
+    public var modelLeftHandTransform : SIMDFloat4x4
     
     init(bodyAnchor : ARBodyAnchor){
         joints = [Joint]()
         
         // Access to the Position of Root Node
         hipWorldPosition = SIMDFloat4x4(transform: bodyAnchor.transform)
+        
         
         // Accessing the Skeleton Geometry
         let skeleton = bodyAnchor.skeleton
@@ -37,14 +41,19 @@ public struct Body : Codable {
         // Accessing List of Transforms of all Joints Relative to Root
         let jointTransforms = skeleton.jointModelTransforms
         
-        headTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .head))
-        rootTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .root))
-        leftShoulderTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .leftShoulder))
-        rightShoulderTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .rightShoulder))
-        leftHandTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .leftHand))
-        rightHandTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .rightHand))
-        leftFootTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .leftFoot))
-        rightFootTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .rightFoot))
+        modelHeadTransform = SIMDFloat4x4(transform: skeleton.modelTransform(for: .head))!
+        modelLeftHandTransform = SIMDFloat4x4(transform: skeleton.modelTransform(for: .leftHand))!
+        
+        headTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .head))!
+        rootTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .root))!
+        leftShoulderTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .leftShoulder))!
+        rightShoulderTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .rightShoulder))!
+        leftHandTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .leftHand))!
+        rightHandTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .rightHand))!
+        leftFootTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .leftFoot))!
+        rightFootTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .rightFoot))!
+        
+        
 
         
         // Iterating over All Joints
@@ -119,5 +128,4 @@ public struct SIMDFloat4x4 : Codable, CustomStringConvertible  {
     public var description: String {
         return "SIMDFloat 4x4: \(-1)"
     }
-
 }
