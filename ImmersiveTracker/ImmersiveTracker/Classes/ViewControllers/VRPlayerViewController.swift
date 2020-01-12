@@ -13,7 +13,7 @@ import SceneKit
 import CoreMotion
 
 class VRPlayerViewController: ImmersivePlayerNetworkViewController {
-    
+
     enum Constant {
         enum Distance {
             static let recognizerMultiplier: Float = 0.01
@@ -95,6 +95,25 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         let pupillary : CGFloat  = CGFloat(Double(pupillaryTextField.text!)!)
         let setting = VRCameraSetting(pupillary: pupillary, fieldOfView: fov)
         self.immersiveWorld?.player.cameraNode.setCameraSetting(setting)
+    }
+    
+    override open func bodyReceived(body: Body) {
+        
+        super.bodyReceived(body: body)
+        
+        if initialBody == nil {
+            self.initialBody = body
+        }
+        
+        let leftHandPosX = body.modelLeftHandTransform!.simdFloat4x4().coordinate().x + body.hipWorldPosition.simdFloat4x4().coordinate().x - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().x
+        let leftHandPosY = body.modelLeftHandTransform!.simdFloat4x4().coordinate().y + body.hipWorldPosition.simdFloat4x4().coordinate().y - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().y
+        let leftHandPosZ = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z + body.hipWorldPosition.simdFloat4x4().coordinate().z - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().z
+        
+        let leftHandPos = SCNVector3(leftHandPosX,leftHandPosY,leftHandPosZ)
+        
+        
+        print("leftHandPos = \(leftHandPos)")
+        
     }
     
 }
