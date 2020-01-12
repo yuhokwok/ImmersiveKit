@@ -14,6 +14,10 @@ import CoreMotion
 
 class VRPlayerViewController: ImmersivePlayerNetworkViewController {
 
+    var leftHandPosX :Float = 0
+    var leftHandPosY :Float = 0
+    var leftHandPosZ :Float = 0
+
     enum Constant {
         enum Distance {
             static let recognizerMultiplier: Float = 0.01
@@ -62,6 +66,9 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         isReadyToReceive = !isReadyToReceive
         let msg = isReadyToReceive ? "start accept tracking" : "stop accept tracking"
         printLog(msg)
+        
+        let chairPos = SCNVector3(leftHandPosX, leftHandPosY, leftHandPosZ)
+        self.chairMove(pos: chairPos)
     }
     
     @IBAction func resetBtnClicked() {
@@ -105,18 +112,25 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
             self.initialBody = body
         }
         
-        let leftHandPosX = body.modelLeftHandTransform!.simdFloat4x4().coordinate().x + body.hipWorldPosition.simdFloat4x4().coordinate().x - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().x
-        let leftHandPosY = body.modelLeftHandTransform!.simdFloat4x4().coordinate().y + body.hipWorldPosition.simdFloat4x4().coordinate().y - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().y
-        let leftHandPosZ = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z + body.hipWorldPosition.simdFloat4x4().coordinate().z - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().z
-        
-        let leftHandPos = SCNVector3(leftHandPosX,leftHandPosY,leftHandPosZ)
-        
-        
-        print("leftHandPos = \(leftHandPos)")
-        
+         leftHandPosX = body.modelLeftHandTransform!.simdFloat4x4().coordinate().x + body.hipWorldPosition.simdFloat4x4().coordinate().x - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().x
+        leftHandPosY = body.modelLeftHandTransform!.simdFloat4x4().coordinate().y + body.hipWorldPosition.simdFloat4x4().coordinate().y - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().y
+         leftHandPosZ = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z + body.hipWorldPosition.simdFloat4x4().coordinate().z - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().z
     }
     
+    func sphereMove(pos: SCNVector3) {
+        let sphere = self.immersiveWorld?.scene.rootNode.childNode(withName: "sphere", recursively: true)
+        sphere?.runAction(SCNAction.move(to: pos, duration: 1))
+    }
+
+  func chairMove(pos: SCNVector3) {
+        let chair = self.immersiveWorld?.scene.rootNode.childNode(withName: "chair", recursively: true)
+        chair?.runAction(SCNAction.move(to: pos, duration: 1))
+        //chair?.runAction(SCNAction.repeatForever(SCNAction.rotateBy(pos, duration: 1)))
+
+    }
 }
+
+
 
 extension VRPlayerViewController {
     private func calculateOffset(from translation: CGPoint) {
