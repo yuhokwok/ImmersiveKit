@@ -39,10 +39,6 @@ public final class ImmersiveWorld {
         guard let scene = SCNScene(named: "art.scnassets/CubeScene.scn") else {
             return nil
         }
-        
-        let chair = scene.rootNode.childNode(withName: "chair", recursively: true)
-        chair?.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
-        
         self.scene = scene
         player = ImmersiveSCNPlayerNode(
             startingPosition: simd_float3(0, 0, 10),
