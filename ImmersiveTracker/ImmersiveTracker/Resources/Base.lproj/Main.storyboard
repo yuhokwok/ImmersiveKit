@@ -81,34 +81,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="129" translatesAutoresizingMaskIntoConstraints="NO" id="bmB-R2-yR8">
-                                <rect key="frame" x="145.5" y="196.5" width="123.5" height="503.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJt-8T-qRO">
+                                <rect key="frame" x="20" y="839.5" width="374" height="22.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="  Camera Setting" image="setting">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="B1W-nB-KhZ" kind="show" id="S0l-aX-eDc"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XRu-4U-F3y">
+                                <rect key="frame" x="20" y="168" width="374" height="48"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ImmersiveKit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT4-bb-tk2">
-                                        <rect key="frame" x="0.0" y="0.0" width="123.5" height="26.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ImmersiveKit Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT4-bb-tk2">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="33.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCj-Jt-Mhk">
-                                        <rect key="frame" x="0.0" y="155.5" width="123.5" height="30"/>
-                                        <state key="normal" title="Tracker"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by ImmersiveKit Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMw-up-IgI">
+                                        <rect key="frame" x="0.0" y="33.5" width="374" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NAo-hW-ZIY">
+                                <rect key="frame" x="20" y="529.5" width="374" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCj-Jt-Mhk">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="48.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="  Tracker" image="tracker">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <segue destination="LfU-9V-IjD" kind="show" id="Kot-v2-dcr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVG-UZ-eE4">
-                                        <rect key="frame" x="0.0" y="314.5" width="123.5" height="30"/>
-                                        <state key="normal" title="VR Player"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVG-UZ-eE4">
+                                        <rect key="frame" x="0.0" y="68.5" width="374" height="41.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="  VR Player" image="vr">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <segue destination="BCX-MI-9JO" kind="show" id="8Hf-9n-pq6"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJt-8T-qRO">
-                                        <rect key="frame" x="0.0" y="473.5" width="123.5" height="30"/>
-                                        <state key="normal" title="Camera Setting"/>
-                                        <connections>
-                                            <segue destination="B1W-nB-KhZ" kind="show" id="S0l-aX-eDc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -116,8 +136,18 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="bmB-R2-yR8" firstAttribute="centerX" secondItem="aOX-ai-1zN" secondAttribute="centerX" id="Kd1-bc-t0p"/>
-                            <constraint firstItem="bmB-R2-yR8" firstAttribute="centerY" secondItem="aOX-ai-1zN" secondAttribute="centerY" id="TD1-uw-9pL"/>
+                            <constraint firstItem="XRu-4U-F3y" firstAttribute="top" secondItem="rJN-vo-SX6" secondAttribute="top" constant="80" id="2c4-ff-VA5"/>
+                            <constraint firstItem="rJN-vo-SX6" firstAttribute="trailing" secondItem="XRu-4U-F3y" secondAttribute="trailing" constant="20" id="FTA-MK-pCb"/>
+                            <constraint firstItem="rJN-vo-SX6" firstAttribute="bottom" secondItem="TJt-8T-qRO" secondAttribute="bottom" id="Kpk-kJ-0Pe"/>
+                            <constraint firstItem="rJN-vo-SX6" firstAttribute="trailing" secondItem="NAo-hW-ZIY" secondAttribute="trailing" constant="20" id="L2p-2P-yvx"/>
+                            <constraint firstItem="NAo-hW-ZIY" firstAttribute="centerX" secondItem="aOX-ai-1zN" secondAttribute="centerX" id="Qb0-OF-uZR"/>
+                            <constraint firstItem="TJt-8T-qRO" firstAttribute="top" secondItem="NAo-hW-ZIY" secondAttribute="bottom" constant="200" id="ZPI-mm-CA1"/>
+                            <constraint firstItem="TJt-8T-qRO" firstAttribute="centerX" secondItem="aOX-ai-1zN" secondAttribute="centerX" id="c93-VL-aup"/>
+                            <constraint firstItem="rJN-vo-SX6" firstAttribute="trailing" secondItem="TJt-8T-qRO" secondAttribute="trailing" constant="20" id="hhq-Zi-tq1"/>
+                            <constraint firstItem="XRu-4U-F3y" firstAttribute="leading" secondItem="rJN-vo-SX6" secondAttribute="leading" constant="20" id="lDD-Cc-N7M"/>
+                            <constraint firstItem="XRu-4U-F3y" firstAttribute="centerX" secondItem="aOX-ai-1zN" secondAttribute="centerX" id="mp1-Nv-I6a"/>
+                            <constraint firstItem="TJt-8T-qRO" firstAttribute="leading" secondItem="rJN-vo-SX6" secondAttribute="leading" constant="20" id="nzp-W5-22p"/>
+                            <constraint firstItem="NAo-hW-ZIY" firstAttribute="leading" secondItem="rJN-vo-SX6" secondAttribute="leading" constant="20" id="y5m-gm-q58"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rJN-vo-SX6"/>
                     </view>
@@ -432,4 +462,9 @@
             <point key="canvasLocation" x="-352.17391304347831" y="1106.9196428571429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="setting" width="22.5" height="22.5"/>
+        <image name="tracker" width="31" height="48.5"/>
+        <image name="vr" width="51" height="41.5"/>
+    </resources>
 </document>
