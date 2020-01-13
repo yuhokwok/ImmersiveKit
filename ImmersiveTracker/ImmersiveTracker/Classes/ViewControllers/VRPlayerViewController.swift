@@ -18,6 +18,8 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     var leftHandPosY :Float = 0
     var leftHandPosZ :Float = 0
 
+    let WallLevel = 2
+
     enum Constant {
         enum Distance {
             static let recognizerMultiplier: Float = 0.01
@@ -44,7 +46,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     
     //MARK: - Function for loading immersive world
     override func worldToImmersive() -> ImmersiveWorld? {
-        return ImmersiveWorld(named: "art.scnassets/CubeScene.scn")
+        return ImmersiveWorld(named: "art.scnassets/CourtScene.scn")
     }
     
     //MARK: - Life Cycle Function
@@ -66,9 +68,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         isReadyToReceive = !isReadyToReceive
         let msg = isReadyToReceive ? "start accept tracking" : "stop accept tracking"
         printLog(msg)
-        
-        let chairPos = SCNVector3(leftHandPosX, leftHandPosY, leftHandPosZ)
-        self.chairMove(pos: chairPos)
+       self.ballMove()
     }
     
     @IBAction func resetBtnClicked() {
@@ -115,18 +115,16 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
          leftHandPosX = body.modelLeftHandTransform!.simdFloat4x4().coordinate().x + body.hipWorldPosition.simdFloat4x4().coordinate().x - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().x
         leftHandPosY = body.modelLeftHandTransform!.simdFloat4x4().coordinate().y + body.hipWorldPosition.simdFloat4x4().coordinate().y - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().y
          leftHandPosZ = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z + body.hipWorldPosition.simdFloat4x4().coordinate().z - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().z
+    
+        ballMove()
+        
     }
     
-    func sphereMove(pos: SCNVector3) {
-        let sphere = self.immersiveWorld?.scene.rootNode.childNode(withName: "sphere", recursively: true)
-        sphere?.runAction(SCNAction.move(to: pos, duration: 1))
-    }
-
-  func chairMove(pos: SCNVector3) {
-        let chair = self.immersiveWorld?.scene.rootNode.childNode(withName: "chair", recursively: true)
-        chair?.runAction(SCNAction.move(to: pos, duration: 1))
-        //chair?.runAction(SCNAction.repeatForever(SCNAction.rotateBy(pos, duration: 1)))
-
+    func ballMove() {
+        let ball = self.immersiveWorld?.scene.rootNode.childNode(withName: "ball", recursively: true)
+        ball?.physicsBody?.contactTestBitMask = WallLevel
+        ball?.runAction(SCNAction.moveBy(x: 0, y: CGFloat(leftHandPosY), z: 0, duration: 1))
+        ball?.runAction(SCNAction.moveBy(x: 0, y: -3, z: 0, duration: 1))
     }
 }
 
@@ -148,3 +146,21 @@ extension VRPlayerViewController {
     }
 }
 
+
+extension VRPlayerViewController : SCNPhysicsContactDelegate {
+    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        var contactNode:SCNNode!
+        
+        if contact.nodeA.name == "ball" {
+            contactNode = contact.nodeB
+        }else{
+            contactNode = contact.nodeA
+        }
+        
+        if contactNode.physicsBody?.categoryBitMask == WallLevel {
+            
+           contact.nodeA.runAction(SCNAction.moveBy(x: 0, y: 1, z: 0, duration: 1))
+            
+        }
+    }
+}
