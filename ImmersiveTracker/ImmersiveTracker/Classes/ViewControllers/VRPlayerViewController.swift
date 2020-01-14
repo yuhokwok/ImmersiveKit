@@ -46,7 +46,9 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     
     //MARK: - Function for loading immersive world
     override func worldToImmersive() -> ImmersiveWorld? {
-        return ImmersiveWorld(named: "art.scnassets/CourtScene.scn")
+//        return ImmersiveWorld(named: "art.scnassets/CourtScene.scn")
+        return ImmersiveWorld(named: "art.scnassets/Room.scn")
+
     }
     
     //MARK: - Life Cycle Function
