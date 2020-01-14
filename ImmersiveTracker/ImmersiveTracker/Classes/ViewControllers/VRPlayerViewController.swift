@@ -124,6 +124,8 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     
     func ballMove() {
         let ball = self.immersiveWorld?.scene.rootNode.childNode(withName: "ball", recursively: true)
+        let racket = self.immersiveWorld?.scene.rootNode.childNode(withName: "racket", recursively: true)
+        racket?.position = SCNVector3(x: 1, y: 1, z: 1)
         ball?.physicsBody?.contactTestBitMask = WallLevel
         ball?.runAction(SCNAction.moveBy(x: 0, y: CGFloat(leftHandPosY), z: 0, duration: 1))
         ball?.runAction(SCNAction.moveBy(x: 0, y: -3, z: 0, duration: 1))
