@@ -22,6 +22,16 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     
     var ball = SCNNode()
     var floor = SCNNode()
+    
+    private var _mark: MarkDisplay?
+    var mark: MarkDisplay? {
+        get {
+            return _mark
+        }
+        set(value) {
+            _mark = value
+        }
+    }
 
     enum Constant {
         enum Distance {
@@ -59,7 +69,20 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         
         ball = (immersiveWorld?.scene.rootNode.childNode(withName: "ball", recursively: true)!)!
         immersiveWorld?.scene.physicsWorld.contactDelegate = self
+        
+        mark = MarkDisplay(immersiveView.frame.size)
+        immersiveView.leftScnView.overlaySKScene = mark?.scene
+        immersiveView.leftScnView.isUserInteractionEnabled = false
+        immersiveView.rightScnView.overlaySKScene = mark?.scene
+        immersiveView.rightScnView.isUserInteractionEnabled = false
         ball.physicsBody?.contactTestBitMask = WallLevel
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        mark = MarkDisplay(immersiveView.frame.size)
+        immersiveView.leftScnView.overlaySKScene = mark?.scene
+        immersiveView.rightScnView.overlaySKScene = mark?.scene
     }
     
     override func viewDidAppear(_ animated: Bool) {

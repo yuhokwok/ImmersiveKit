@@ -28,6 +28,7 @@
 		ED8C1AC623ADBB1F003440B0 /* BarrelDistortion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AC423ADBB1F003440B0 /* BarrelDistortion.swift */; };
 		ED8C1AC723ADBB1F003440B0 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C1AC523ADBB1F003440B0 /* FileLoader.swift */; };
 		EDAA1DD123A002EA004424FB /* robot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EDAA1DD023A002EA004424FB /* robot.usdz */; };
+		F69C837923CEC62500429657 /* MarkDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69C837823CEC62500429657 /* MarkDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		ED8C1AC423ADBB1F003440B0 /* BarrelDistortion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarrelDistortion.swift; path = "../../../../ImmersiveKit/ImmersiveKit/Application Development/VR/Barrel Distortion/BarrelDistortion.swift"; sourceTree = "<group>"; };
 		ED8C1AC523ADBB1F003440B0 /* FileLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileLoader.swift; path = "../../../../ImmersiveKit/ImmersiveKit/Application Development/FileLoader.swift"; sourceTree = "<group>"; };
 		EDAA1DD023A002EA004424FB /* robot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = robot.usdz; sourceTree = "<group>"; };
+		F69C837823CEC62500429657 /* MarkDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				ED8C1AC223ADBAEB003440B0 /* ViewControllers */,
 				ED76D16323883C5100D8CE23 /* SceneDelegate.swift */,
 				ED76D16123883C5100D8CE23 /* AppDelegate.swift */,
+				F69C837823CEC62500429657 /* MarkDisplay.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				B576920A238A5C8900930B03 /* MessageLabel.swift in Sources */,
 				ED8C1AC023ADBA1D003440B0 /* barrel_dist_mlsl.metal in Sources */,
 				ED8C1AC723ADBB1F003440B0 /* FileLoader.swift in Sources */,
+				F69C837923CEC62500429657 /* MarkDisplay.swift in Sources */,
 				ED8C1AA123ACBB84003440B0 /* VRPlayerViewController.swift in Sources */,
 				ED207B00238842C4001806CB /* File.swift in Sources */,
 				ED207B03238843CA001806CB /* TrackerViewController.swift in Sources */,
