@@ -18,10 +18,13 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     var leftHandPosY :Float = 0
     var leftHandPosZ :Float = 0
 
-    let WallLevel = 2
+    let RacketLevel = 4
+    let FloorLevel = 2
+    var hitCombo = 0
     
     var ball = SCNNode()
     var floor = SCNNode()
+    var racket = SCNNode()
 
     enum Constant {
         enum Distance {
@@ -58,8 +61,9 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         super.viewDidLoad()
         
         ball = (immersiveWorld?.scene.rootNode.childNode(withName: "ball", recursively: true)!)!
+ 
         immersiveWorld?.scene.physicsWorld.contactDelegate = self
-        ball.physicsBody?.contactTestBitMask = WallLevel
+        ball.physicsBody?.contactTestBitMask = FloorLevel | RacketLevel
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -153,14 +157,21 @@ extension VRPlayerViewController {
 extension VRPlayerViewController : SCNPhysicsContactDelegate {
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         var contactNode:SCNNode!
+        
         if contact.nodeA.name == "ball" {
             contactNode = contact.nodeB
         }else{
             contactNode = contact.nodeA
         }
-        
-        if contactNode.physicsBody?.categoryBitMask == WallLevel {
-            ball.physicsBody?.applyForce(SCNVector3( x:0.88, y: 3, z : 0), asImpulse: true)
+        if contactNode.physicsBody?.categoryBitMask == FloorLevel {
+               ball.physicsBody?.applyForce(SCNVector3( x:0, y: 0, z : 0), asImpulse: true)
+               print("gameover")
+           }
+        if contactNode.physicsBody?.categoryBitMask == RacketLevel {
+            ball.physicsBody?.applyForce(SCNVector3( x:0, y: 3, z : 0), asImpulse: true)
+            hitCombo += 1
+            print("hitCombo= \(hitCombo)")
         }
+    
     }
 }
