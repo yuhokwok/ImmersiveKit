@@ -168,7 +168,7 @@ extension VRPlayerViewController : SCNPhysicsContactDelegate {
                print("gameover")
            }
         if contactNode.physicsBody?.categoryBitMask == RacketLevel {
-            ball.physicsBody?.applyForce(SCNVector3( x:0, y: 3, z : 0), asImpulse: true)
+            ball.physicsBody?.applyForce(SCNVector3( x:0, y: 1, z : 0), asImpulse: true)
             hitCombo += 1
             print("hitCombo= \(hitCombo)")
         }
