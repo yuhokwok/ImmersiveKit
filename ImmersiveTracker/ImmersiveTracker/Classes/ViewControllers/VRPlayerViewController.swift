@@ -71,6 +71,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         super.viewDidLoad()
         
         ball = (immersiveWorld?.scene.rootNode.childNode(withName: "ball", recursively: true)!)!
+        racket = (immersiveWorld?.scene.rootNode.childNode(withName: "racket", recursively: true)!)!
         immersiveWorld?.scene.physicsWorld.contactDelegate = self
         
         mark = MarkDisplay(immersiveView.frame.size)
@@ -80,6 +81,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         immersiveView.rightScnView.isUserInteractionEnabled = false
 
         ball.physicsBody?.contactTestBitMask = FloorLevel | RacketLevel
+//        racket.position = SCNVector3(x: 5, y: 0, z: -12)
     }
     
     override func viewDidLayoutSubviews() {
@@ -137,26 +139,29 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         self.immersiveWorld?.player.cameraNode.setCameraSetting(setting)
     }
 
-    override open func bodyReceived(body: Body) {
+    var firstBody : Body?
+    override func bodyReceived(body: Body) {
 
-        super.bodyReceived(body: body)
-
-        if initialBody == nil {
-            self.initialBody = body
+        //super.bodyReceived(body: body)
+        
+        if firstBody == nil {
+            self.firstBody = body
         }
 
-         leftHandPosX = body.modelLeftHandTransform!.simdFloat4x4().coordinate().x + body.hipWorldPosition.simdFloat4x4().coordinate().x - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().x
-        leftHandPosY = body.modelLeftHandTransform!.simdFloat4x4().coordinate().y + body.hipWorldPosition.simdFloat4x4().coordinate().y - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().y
-         leftHandPosZ = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z + body.hipWorldPosition.simdFloat4x4().coordinate().z - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().z
+         leftHandPosX = body.modelLeftHandTransform!.simdFloat4x4().coordinate().x + body.hipWorldPosition.simdFloat4x4().coordinate().x - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().x
+        leftHandPosY = body.modelLeftHandTransform!.simdFloat4x4().coordinate().y + body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
+         leftHandPosZ = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z + body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
 
 
-        let diffX = body.hipWorldPosition.simdFloat4x4().coordinate().x - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().x
-        let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().y
-        let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - initialBody!.hipWorldPosition.simdFloat4x4().coordinate().z
+        let diffX = body.hipWorldPosition.simdFloat4x4().coordinate().x - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().x
+        let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
+        let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
 
-        let pos = SCNVector3(diffX, diffY, diffZ)
+        //let pos = SCNVector3(-diffX, 0, (-diffZ - 12))
+        let racketPostion = SCNVector3(-leftHandPosX, 0, (-leftHandPosZ - 6))
+         racket.position = racketPostion
 
-        print(pos)
+        print(racketPostion)
 
         }
     }
