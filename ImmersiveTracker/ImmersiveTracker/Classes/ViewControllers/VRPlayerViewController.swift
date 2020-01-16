@@ -157,11 +157,14 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
         let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
         let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
 
-        //let pos = SCNVector3(-diffX, 0, (-diffZ - 12))
-        let racketPostion = SCNVector3(-leftHandPosX, 0, (-leftHandPosZ - 6))
+      //  let pos = SCNVector3(-diffX, 0, (-diffZ - 12))
+        let racketPostion = SCNVector3(-diffX, 0, (-diffZ - 6))
+        
          racket.position = racketPostion
-
-        print(racketPostion)
+     //   let pos = SCNVector3(-diffX, 0, (-diffZ - 12))
+        
+       // print(pos)
+        //print(racketPostion)
 
         }
     }
@@ -192,12 +195,13 @@ extension VRPlayerViewController : SCNPhysicsContactDelegate {
             contactNode = contact.nodeA
         }
         if contactNode.physicsBody?.categoryBitMask == FloorLevel {
-               ball.physicsBody?.applyForce(SCNVector3( x:0, y: 0, z : 0), asImpulse: true)
-               hitCombo -= 1
+//               ball.physicsBody?.applyForce(SCNVector3( x:0, y: 0, z : 0), asImpulse: true)
+                ball.position = SCNVector3(x: 0, y: 5, z: -6)
+                hitCombo = 0
            
            }
         if contactNode.physicsBody?.categoryBitMask == RacketLevel {
-            ball.physicsBody?.applyForce(SCNVector3( x:0, y: 3, z : 0), asImpulse: true)
+            ball.physicsBody?.applyForce(SCNVector3( x:0, y: 1, z : 0), asImpulse: true)
             hitCombo += 1
             print("hitCombo= \(hitCombo)")
         }
