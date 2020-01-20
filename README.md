@@ -15,6 +15,7 @@ An AR VR Development Framework for Developing Full Body Tracking ARVR App based 
     -transmit pre-recorded tracking data
     -receive tracking data
     -sending tracking data bug (will keep sending pending data / latency)
+    -test from ccf
 
 ## VoiceCommandTestApp
 ### Sample Test App for ImmersiveKit's Voice command feature
