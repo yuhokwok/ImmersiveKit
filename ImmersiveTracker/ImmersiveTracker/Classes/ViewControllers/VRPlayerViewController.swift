@@ -12,8 +12,8 @@ import QuartzCore
 import SceneKit
 import CoreMotion
 
-class VRPlayerViewController: ImmersivePlayerNetworkViewController {
-
+class VRPlayerViewController: ImmersivePlayerNetworkViewController, SCNSceneRendererDelegate {
+    var targetCreationTime:TimeInterval = 0
     var leftHandPosX :Float = 0
     var leftHandPosY :Float = 0
     var leftHandPosZ :Float = 0
@@ -21,10 +21,11 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     let RacketLevel = 4
     let FloorLevel = 2
     var hitCombo = 0
-    
-    var ball = SCNNode()
-    var floor = SCNNode()
-    var racket = SCNNode()
+
+    // new game
+    var time = 0.0
+    var blueBox = SCNNode()
+
     
     private var _mark: MarkDisplay?
     var mark: MarkDisplay? {
@@ -62,30 +63,33 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     
     //MARK: - Function for loading immersive world
     override func worldToImmersive() -> ImmersiveWorld? {
-        return ImmersiveWorld(named: "art.scnassets/CourtScene.scn")
+        return ImmersiveWorld(named: "art.scnassets/TestScene.scn")
     }
     
     //MARK: - Life Cycle Function
     override func viewDidLoad() {
         logTextView = self.tv
         super.viewDidLoad()
-        
-        ball = (immersiveWorld?.scene.rootNode.childNode(withName: "ball", recursively: true)!)!
-        racket = (immersiveWorld?.scene.rootNode.childNode(withName: "racket", recursively: true)!)!
+
+        immersiveView.leftScnView.delegate = self
+        immersiveView.rightScnView.delegate = self
+        //immersiveView.leftScnView.delegate = self
+        //immersiveView.rightScnView.delegate = self
+        blueBox = (immersiveWorld?.scene.rootNode.childNode(withName: "blueBox", recursively: true)!)!
+
         immersiveWorld?.scene.physicsWorld.contactDelegate = self
-        
         mark = MarkDisplay(immersiveView.frame.size)
         immersiveView.leftScnView.overlaySKScene = mark?.scene
         immersiveView.leftScnView.isUserInteractionEnabled = false
         immersiveView.rightScnView.overlaySKScene = mark?.scene
         immersiveView.rightScnView.isUserInteractionEnabled = false
-
-        ball.physicsBody?.contactTestBitMask = FloorLevel | RacketLevel
-//        racket.position = SCNVector3(x: 5, y: 0, z: -12)
+     
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        //immersiveView.leftScnView.delegate = self
+        //immersiveView.rightScnView.delegate = self
         mark = MarkDisplay(immersiveView.frame.size)
         immersiveView.leftScnView.overlaySKScene = mark?.scene
         immersiveView.rightScnView.overlaySKScene = mark?.scene
@@ -93,7 +97,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    }
+       }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -148,26 +152,79 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController {
             self.firstBody = body
         }
 
-         leftHandPosX = body.modelLeftHandTransform!.simdFloat4x4().coordinate().x + body.hipWorldPosition.simdFloat4x4().coordinate().x - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().x
-        leftHandPosY = body.modelLeftHandTransform!.simdFloat4x4().coordinate().y + body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
-         leftHandPosZ = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z + body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
+        leftHandPosX = body.modelLeftHandTransform!.simdFloat4x4().coordinate().x - (firstBody!.modelLeftHandTransform?.simdFloat4x4().coordinate().x)!
+        leftHandPosY = body.modelLeftHandTransform!.simdFloat4x4().coordinate().y - (firstBody!.modelLeftHandTransform?.simdFloat4x4().coordinate().z)!
+         leftHandPosZ = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelLeftHandTransform?.simdFloat4x4().coordinate().z)!
 
 
         let diffX = body.hipWorldPosition.simdFloat4x4().coordinate().x - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().x
         let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
         let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
 
-      //  let pos = SCNVector3(-diffX, 0, (-diffZ - 12))
-        let racketPostion = SCNVector3(-diffX, 0, (-diffZ - 6))
+        let racketPostion = SCNVector3((-leftHandPosX * 1.5), 0.5, -6)
         
-         racket.position = racketPostion
-     //   let pos = SCNVector3(-diffX, 0, (-diffZ - 12))
+            blueBox.position = racketPostion
+        }
+    
+    func testCreateOjbect() {
+       let box = SCNBox(width:1, height: 1, length: 1, chamferRadius: 0.2)
+        let material  = SCNMaterial()
+        material.diffuse.contents = UIImage(named: "momo")
+        box.materials = [material]
+        let boxNode = SCNNode(geometry: box)
+        boxNode.position = SCNVector3(x: 0, y: 3, z: -24)
+        immersiveWorld?.scene.rootNode.addChildNode(boxNode)
+    }
+    // new game create object function
+    func createTarget() {
+        let box : SCNGeometry = SCNBox(width:1, height: 1, length: 1, chamferRadius: 0.2)
         
-       // print(pos)
-        //print(racketPostion)
-
+        let boxNode = SCNNode(geometry: box)
+        boxNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "art.scnassets/momo")
+        boxNode.position = SCNVector3(x: 0, y: 4, z: -20)
+        boxNode.categoryBitMask = 1
+        boxNode.physicsBody?.mass = 1
+        boxNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        boxNode.name = "pinkBox"
+        let randomDirection : Float = arc4random_uniform(2) == 0 ? -0.5 : 0.5
+        let force =  SCNVector3(x: randomDirection, y: 1, z: 3.2)
+        boxNode.physicsBody?.applyForce(force, at: SCNVector3(x: 0 , y: 0 , z: 0), asImpulse: true)
+        //        boxNode.physicsBody?.contactTestBitMask = RacketLevel
+        
+        immersiveWorld?.scene.rootNode.addChildNode(boxNode)
+    }
+    
+    
+    func cleanUpWhenHit() {
+        for node in immersiveWorld!.scene.rootNode.childNodes {
+            if node.name == "pinkBox" {
+                node.removeFromParentNode()
+                hitCombo += 1
+                _mark?.mark.text = "Mark: \(hitCombo)"
+            }
         }
     }
+    func clearScoreWhenFallDown() {
+        for node in immersiveWorld!.scene.rootNode.childNodes {
+            if node.name == "pinkBox" {
+                if (node.presentation.position.y <= 0) {
+                    node.removeFromParentNode()
+                    hitCombo = 0
+                    _mark?.mark.text = "Mark: \(hitCombo)"
+                }
+            }
+        }
+    }
+    
+    override func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if time > targetCreationTime {
+            createTarget()
+            targetCreationTime = time + 1
+        }
+        clearScoreWhenFallDown()
+    }
+}
+
 
 extension VRPlayerViewController {
     private func calculateOffset(from translation: CGPoint) {
@@ -187,26 +244,23 @@ extension VRPlayerViewController {
 
 extension VRPlayerViewController : SCNPhysicsContactDelegate {
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+
+    }
+    
+    func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
+        
         var contactNode:SCNNode!
         
-        if contact.nodeA.name == "ball" {
+        if contact.nodeA.name == "pinkBox" {
             contactNode = contact.nodeB
+            
         }else{
             contactNode = contact.nodeA
         }
-        if contactNode.physicsBody?.categoryBitMask == FloorLevel {
-//               ball.physicsBody?.applyForce(SCNVector3( x:0, y: 0, z : 0), asImpulse: true)
-                ball.position = SCNVector3(x: 0, y: 5, z: -6)
-                hitCombo = 0
-           
-           }
-        if contactNode.physicsBody?.categoryBitMask == RacketLevel {
-            ball.physicsBody?.applyForce(SCNVector3( x:0, y: 1, z : 0), asImpulse: true)
-            hitCombo += 1
-            print("hitCombo= \(hitCombo)")
-        }
         
-         _mark?.mark.text = "Mark: \(hitCombo)"
-    
+        if contactNode.physicsBody?.categoryBitMask == RacketLevel {
+            print("hit")
+           cleanUpWhenHit()
+        }
     }
 }

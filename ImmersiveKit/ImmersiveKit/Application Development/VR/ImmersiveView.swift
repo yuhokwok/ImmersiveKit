@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 
-public protocol ImmersiveViewDelegate{
+@objc public protocol ImmersiveViewDelegate{
     func renderer(_ renderer : SCNSceneRenderer, updateAtTime time: TimeInterval)
 }
 

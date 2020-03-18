@@ -11,7 +11,7 @@ import SpriteKit
 
 class MarkDisplay {
     private var _scene: SKScene!
-    var mark = SKLabelNode(text: "TESTTESTTEST")
+    var mark = SKLabelNode(text: "Mark: 0")
     
     var scene: SKScene {
         get {

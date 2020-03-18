@@ -36,7 +36,7 @@ public final class ImmersiveWorld {
     private var gazeTimer: ImmersiveGazeTimer?
     
     public init?(named: String) {
-        guard let scene = SCNScene(named: "art.scnassets/CourtScene.scn") else {
+        guard let scene = SCNScene(named: "art.scnassets/TestScene.scn") else {
             return nil
         }
         self.scene = scene
