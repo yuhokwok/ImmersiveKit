@@ -206,18 +206,19 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
             }
         }
     }
-//    func clearScoreWhenFallDown() {
-//        for node in immersiveWorld!.scene.rootNode.childNodes {
-//            if node.name == "pinkBox" {
-//                if (node.presentation.position.y <= 0) {
-//                    node.removeFromParentNode()
-//                    hitCombo = 0
-//                    _mark?.mark.text = "Mark: \(hitCombo)"
-//                }
-//            }
-//        }
-//    }
-//
+    
+    func clearScoreWhenFallDown() {
+        for node in immersiveWorld!.scene.rootNode.childNodes {
+            if node.name == "pinkBox" {
+                if (node.presentation.position.y <= 0) {
+                    node.removeFromParentNode()
+                    hitCombo = 0
+                    _mark?.mark.text = "Mark: \(hitCombo)"
+                }
+            }
+        }
+    }
+
     @objc func runTimedCode() {
          createTarget()
     }
