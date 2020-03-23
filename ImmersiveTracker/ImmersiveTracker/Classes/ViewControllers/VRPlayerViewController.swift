@@ -12,7 +12,7 @@ import QuartzCore
 import SceneKit
 import CoreMotion
 
-class VRPlayerViewController: ImmersivePlayerNetworkViewController, SCNSceneRendererDelegate {
+class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     var targetCreationTime:TimeInterval = 0
     var leftHandPosX :Float = 0
     var leftHandPosY :Float = 0
@@ -70,11 +70,12 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController, SCNSceneRend
     override func viewDidLoad() {
         logTextView = self.tv
         super.viewDidLoad()
-
-        immersiveView.leftScnView.delegate = self
-        immersiveView.rightScnView.delegate = self
-        //immersiveView.leftScnView.delegate = self
-        //immersiveView.rightScnView.delegate = self
+        
+        // run in background for create new box per 1 second
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            self.createTarget()
+        }
+        
         blueBox = (immersiveWorld?.scene.rootNode.childNode(withName: "blueBox", recursively: true)!)!
 
         immersiveWorld?.scene.physicsWorld.contactDelegate = self
@@ -97,6 +98,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController, SCNSceneRend
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        gameTimer?.invalidate()
        }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -187,14 +189,14 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController, SCNSceneRend
         boxNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         boxNode.name = "pinkBox"
         let randomDirection : Float = arc4random_uniform(2) == 0 ? -0.5 : 0.5
-        let force =  SCNVector3(x: randomDirection, y: 1, z: 3.2)
+        let force =  SCNVector3(x: randomDirection, y: 1, z: 3.4)
         boxNode.physicsBody?.applyForce(force, at: SCNVector3(x: 0 , y: 0 , z: 0), asImpulse: true)
         //        boxNode.physicsBody?.contactTestBitMask = RacketLevel
         
         immersiveWorld?.scene.rootNode.addChildNode(boxNode)
     }
     
-    
+
     func cleanUpWhenHit() {
         for node in immersiveWorld!.scene.rootNode.childNodes {
             if node.name == "pinkBox" {
@@ -204,27 +206,30 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController, SCNSceneRend
             }
         }
     }
-    func clearScoreWhenFallDown() {
-        for node in immersiveWorld!.scene.rootNode.childNodes {
-            if node.name == "pinkBox" {
-                if (node.presentation.position.y <= 0) {
-                    node.removeFromParentNode()
-                    hitCombo = 0
-                    _mark?.mark.text = "Mark: \(hitCombo)"
-                }
-            }
-        }
+//    func clearScoreWhenFallDown() {
+//        for node in immersiveWorld!.scene.rootNode.childNodes {
+//            if node.name == "pinkBox" {
+//                if (node.presentation.position.y <= 0) {
+//                    node.removeFromParentNode()
+//                    hitCombo = 0
+//                    _mark?.mark.text = "Mark: \(hitCombo)"
+//                }
+//            }
+//        }
+//    }
+//
+    @objc func runTimedCode() {
+         createTarget()
     }
-    
-    override func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-        if time > targetCreationTime {
-            createTarget()
-            targetCreationTime = time + 1
-        }
-        clearScoreWhenFallDown()
-    }
+//    override func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+//        if time > targetCreationTime {
+//            createTarget()
+//            targetCreationTime = time + 1
+//        }
+//       // clearScoreWhenFallDown()
+//    }
 }
-
+// SCNSceneRenderer
 
 extension VRPlayerViewController {
     private func calculateOffset(from translation: CGPoint) {
@@ -240,6 +245,7 @@ extension VRPlayerViewController {
 //                0.0,
 //                Float(lastPanTranslationOffset.y) * Constant.Distance.recognizerMultiplier))
     }
+
 }
 
 extension VRPlayerViewController : SCNPhysicsContactDelegate {
@@ -260,7 +266,7 @@ extension VRPlayerViewController : SCNPhysicsContactDelegate {
         
         if contactNode.physicsBody?.categoryBitMask == RacketLevel {
             print("hit")
-           cleanUpWhenHit()
+         cleanUpWhenHit()
         }
     }
 }
