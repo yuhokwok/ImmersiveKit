@@ -75,6 +75,7 @@ public class ImmersiveSpeechRecognizer {
             result, error in
             if let result = result {
                 print(result.bestTranscription.formattedString)
+                self.voiceCommandDelegate?.voiceCommandDetected(str: result.bestTranscription.formattedString)
                 if result.isFinal {
                     ImmersiveCore.printer?.debugPrint(msg: "\(result.bestTranscription.formattedString) - Final")
                 } else {

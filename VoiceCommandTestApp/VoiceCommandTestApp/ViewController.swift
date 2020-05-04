@@ -7,20 +7,28 @@
 //
 
 import UIKit
+import Foundation
+import AVFoundation
+import Speech
 import ImmersiveKit
 
-class ViewController: UIViewController {
+class ViewController: ImmersiveVoiceControl {
+    
+    override func voiceCommandDetected(str: String) {
+        print("!!! - \(str)")
+    }
+    
 
-    var voiceCommand : ImmersiveSpeechRecognizer?
+//    var voiceCommand : ImmersiveSpeechRecognizer?
     
     @IBOutlet weak var tv: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         logTextView = self.tv
         // Do any additional setup after loading the view.
-        let locale = Locale(identifier: "zh-hk")
-        self.voiceCommand = ImmersiveSpeechRecognizer(locale: locale, keyPhrases: ["津路"])
-        self.voiceCommand?.grandPermission()
+//        let locale = Locale(identifier: "zh-hk")
+//        self.voiceCommand = ImmersiveSpeechRecognizer(locale: locale, keyPhrases: ["津路"])
+//        self.voiceCommand?.grandPermission()
     }
 
     @IBAction func clicked(_ sender: Any) {
@@ -31,6 +39,5 @@ class ViewController: UIViewController {
         self.voiceCommand?.stopRecognition()
         super.viewDidDisappear(animated)
     }
-
 }
 
