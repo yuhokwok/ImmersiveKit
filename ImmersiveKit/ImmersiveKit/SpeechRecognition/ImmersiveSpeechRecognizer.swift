@@ -16,12 +16,12 @@ public protocol ImmersiveVoiceSpeechRecognizerDelegate {
 
 
 /// Class for quick on-device recognition setup
-public class ImmersiveSpeechRecognizer {
+open class ImmersiveSpeechRecognizer {
     public var recognizer : SFSpeechRecognizer?
     var request : SFSpeechAudioBufferRecognitionRequest
     var recoginitionTask : SFSpeechRecognitionTask?
     var audioEngine : AVAudioEngine?
-    var voiceCommandDelegate : ImmersiveVoiceSpeechRecognizerDelegate?
+    public var voiceCommandDelegate : ImmersiveVoiceSpeechRecognizerDelegate?
     var commands : [String] = [String]()
     
     

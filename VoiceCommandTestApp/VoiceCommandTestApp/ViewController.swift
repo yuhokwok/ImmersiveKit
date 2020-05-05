@@ -12,32 +12,33 @@ import AVFoundation
 import Speech
 import ImmersiveKit
 
+enum SpeechWords: String {
+    case tracking, 開始追蹤
+    case vr = "virtual reality", 開始虛擬實境
+    case setting, 設定
+}
+
 class ViewController: ImmersiveVoiceControl {
     
     override func voiceCommandDetected(str: String) {
-        print("!!! - \(str)")
+        if let speechWord = SpeechWords.init(rawValue: str.lowercased()){
+            print("match the SpeechWords - \(speechWord.rawValue)")
+        }
     }
-    
-
-//    var voiceCommand : ImmersiveSpeechRecognizer?
     
     @IBOutlet weak var tv: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         logTextView = self.tv
-        // Do any additional setup after loading the view.
-//        let locale = Locale(identifier: "zh-hk")
-//        self.voiceCommand = ImmersiveSpeechRecognizer(locale: locale, keyPhrases: ["津路"])
+//        let locale = Locale(identifier: "en-hk")
+//        self.voiceCommand = ImmersiveSpeechRecognizer(locale: locale, keyPhrases: ["ImmersiveVoiceControl (en-hk)"])
 //        self.voiceCommand?.grandPermission()
+//        self.voiceCommand?.voiceCommandDelegate = self
     }
 
     @IBAction func clicked(_ sender: Any) {
         self.voiceCommand?.startRecognition()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        self.voiceCommand?.stopRecognition()
-        super.viewDidDisappear(animated)
-    }
+
 }
 
