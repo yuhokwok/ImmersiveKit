@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ImmersiveKit/../FrameworkImportTest/FrameworkImportTest.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ImmersiveKit/ImmersiveKit.xcodeproj">
    </FileRef>
    <FileRef

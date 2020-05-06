@@ -1,0 +1,11 @@
+framework module ImmersiveKit {
+  umbrella header "ImmersiveKit.h"
+
+  export *
+  module * { export * }
+}
+
+module ImmersiveKit.Swift {
+    header "ImmersiveKit-Swift.h"
+    requires objc
+}
