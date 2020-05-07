@@ -21,11 +21,30 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     let RacketLevel = 4
     let FloorLevel = 2
     var hitCombo = 0
+    
+    var firstRobotHipsPosition = SCNVector3(0,0,0)
+    // left
+    var firstRobotLeftHandPosition = SCNVector3(0,0,0)
+    var firstRobotLeftShoulderPosition = SCNVector3(0,0,0)
+    var firstRobotLeftFootPosition = SCNVector3(0,0,0)
+    // right
+    var firstRobotRightHandPosition = SCNVector3(0,0,0)
+    var firstRobotRightShoulderPosition = SCNVector3(0,0,0)
+    var firstRobotRightFootPosition = SCNVector3(0,0,0)
+    
 
     // new game
     var time = 0.0
-    var blueBox = SCNNode()
-
+    
+    // import robot
+    var robot = SCNNode()
+    var robotLeftHand = SCNNode()
+    var robotLeftShoulder = SCNNode()
+    var robotLeftFoot = SCNNode()
+    
+    var robotRightHand = SCNNode()
+    var robotRightShoulder = SCNNode()
+    var robotRightFoot = SCNNode()
     
     private var _mark: MarkDisplay?
     var mark: MarkDisplay? {
@@ -76,7 +95,9 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
             self.createTarget()
         }
         
-        blueBox = (immersiveWorld?.scene.rootNode.childNode(withName: "blueBox", recursively: true)!)!
+        // robot
+        robot = (immersiveWorld?.scene.rootNode.childNode(withName: "robot", recursively: true)!)!
+       
 
         immersiveWorld?.scene.physicsWorld.contactDelegate = self
         mark = MarkDisplay(immersiveView.frame.size)
@@ -84,7 +105,37 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         immersiveView.leftScnView.isUserInteractionEnabled = false
         immersiveView.rightScnView.overlaySKScene = mark?.scene
         immersiveView.rightScnView.isUserInteractionEnabled = false
-     
+        
+        //set robot point
+        immersiveWorld?.scene.rootNode.enumerateChildNodes {(node, _) in
+
+            if( node.name == "hips") {
+                robot = node
+                firstRobotHipsPosition = SCNVector3(robot.position.x, robot.position.y, robot.position.z)
+                print("origin robot: \(robot.position)")
+                print("firstPostion =\(firstRobotHipsPosition)")
+            }
+            if( node.name == "left_shoulder") {
+                
+                robotLeftShoulder = node
+                firstRobotLeftShoulderPosition = SCNVector3(x: robotLeftShoulder.position.x, y: robotLeftShoulder.position.y , z: robotLeftShoulder.position.z)
+            }
+            if( node.name == "left_foot") {
+                robotLeftFoot = node
+                firstRobotLeftFootPosition = SCNVector3(x: robotLeftFoot.position.x, y: robotLeftFoot.position.y , z: robotLeftFoot.position.z)
+            }
+            if(node.name == "right_shoulder") {
+                robotRightShoulder = node
+                firstRobotRightShoulderPosition = SCNVector3(x: robotRightShoulder.position.x, y: robotRightShoulder.position.y , z: robotRightShoulder.position.z)
+            }
+            if(node.name == "right_foot") {
+                robotRightFoot = node
+                firstRobotRightFootPosition = SCNVector3(x: robotRightFoot.position.x, y: robotRightFoot.position.y , z: robotRightFoot.position.z)
+            }
+                print("origin robot left shoulder position \(firstRobotLeftShoulderPosition)")
+        }
+        
+//        robotShoulder.runAction(SCNAction.rotateBy(x: 0, y: 0, z: -2, duration: 1))
     }
     
     override func viewDidLayoutSubviews() {
@@ -153,21 +204,44 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         if firstBody == nil {
             self.firstBody = body
         }
-
-        leftHandPosX = body.modelLeftHandTransform!.simdFloat4x4().coordinate().x - (firstBody!.modelLeftHandTransform?.simdFloat4x4().coordinate().x)!
-        leftHandPosY = body.modelLeftHandTransform!.simdFloat4x4().coordinate().y - (firstBody!.modelLeftHandTransform?.simdFloat4x4().coordinate().z)!
-         leftHandPosZ = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelLeftHandTransform?.simdFloat4x4().coordinate().z)!
-
-
+        
         let diffX = body.hipWorldPosition.simdFloat4x4().coordinate().x - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().x
         let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
         let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
-
-        let racketPostion = SCNVector3((-leftHandPosX * 1.5), 0.5, -6)
         
-            blueBox.position = racketPostion
-        }
-    
+        let racketPostion = SCNVector3(diffX  ,
+                                       diffY + 2 ,
+                                       -3)
+        robot.position = racketPostion
+       //  print("robot: \(robot.position)")
+        
+        let leftHandPosZFromAr = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelLeftHandTransform?.simdFloat4x4().coordinate().z)!
+        let leftShoulderPosZFromAr = body.modelLeftShoulderTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelLeftShoulderTransform?.simdFloat4x4().coordinate().z)!
+        let leftFootPosZFromAr = body.modelLeftFootTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelLeftFootTransform?.simdFloat4x4().coordinate().z)!
+        
+        let rightHandPosZFromAr = body.modelRightHandTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelRightHandTransform?.simdFloat4x4().coordinate().z)!
+        let rightShoulderPosZFromAr = body.modelRightShoulderTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelRightShoulderTransform?.simdFloat4x4().coordinate().z)!
+        let rightFootPosZFromAr = body.modelRightFootTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelRightFootTransform?.simdFloat4x4().coordinate().z)!
+        
+        
+        let newRobotLeftHandPosZ = (leftHandPosZFromAr - firstRobotLeftHandPosition.z) * 20
+        let newRobotLeftShoulderPosZ = (leftShoulderPosZFromAr - firstRobotLeftShoulderPosition.z) * 20
+        let newRobotLeftFootPosZ = (leftFootPosZFromAr - firstRobotLeftFootPosition.z) * 20
+        
+        let newRobotRightHandPosZ = (rightHandPosZFromAr - firstRobotRightHandPosition.z) * 20
+        let newRobotRightShoulderPosZ = (rightShoulderPosZFromAr - firstRobotRightShoulderPosition.z) * 20
+        let newRobotRightFootPosZ = (rightFootPosZFromAr - firstRobotRightFootPosition.z) * 20
+        
+        robotLeftHand.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotLeftHandPosZ), duration: 1))
+        robotLeftShoulder.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotLeftShoulderPosZ), duration: 1))
+        robotLeftFoot.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotLeftFootPosZ), duration: 1))
+        
+        robotRightHand.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotRightHandPosZ), duration: 1))
+        robotRightShoulder.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotRightShoulderPosZ), duration: 1))
+        robotRightFoot.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotRightFootPosZ), duration: 1))
+
+         }
+     
     func testCreateOjbect() {
        let box = SCNBox(width:1, height: 1, length: 1, chamferRadius: 0.2)
         let material  = SCNMaterial()
@@ -266,7 +340,7 @@ extension VRPlayerViewController : SCNPhysicsContactDelegate {
         }
         
         if contactNode.physicsBody?.categoryBitMask == RacketLevel {
-            print("hit")
+            //print("hit")
          cleanUpWhenHit()
         }
     }
