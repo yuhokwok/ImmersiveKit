@@ -25,8 +25,14 @@ public struct Body : Codable {
     var rightFootTransform : SIMDFloat4x4?
     
     public var modelHeadTransform : SIMDFloat4x4?
+    // left
     public var modelLeftHandTransform : SIMDFloat4x4?
-    
+    public var modelLeftShoulderTransform : SIMDFloat4x4?
+    public var modelLeftFootTransform: SIMDFloat4x4?
+    // right
+    public var modelRightHandTransform : SIMDFloat4x4?
+    public var modelRightShoulderTransform : SIMDFloat4x4?
+    public var modelRightFootTransform : SIMDFloat4x4?
     
     init(bodyAnchor : ARBodyAnchor){
         joints = [Joint]()
@@ -51,7 +57,15 @@ public struct Body : Codable {
         rightFootTransform = SIMDFloat4x4(transform: skeleton.localTransform(for: .rightFoot))
         
         modelHeadTransform = SIMDFloat4x4(transform: skeleton.modelTransform(for: .head))
+        // left
         modelLeftHandTransform = SIMDFloat4x4(transform: skeleton.modelTransform(for: .leftHand))
+        modelLeftShoulderTransform = SIMDFloat4x4(transform: skeleton.modelTransform(for: .leftShoulder))
+        modelLeftFootTransform = SIMDFloat4x4(transform: skeleton.modelTransform(for: .leftFoot))
+        // right
+        modelRightHandTransform = SIMDFloat4x4(transform: skeleton.modelTransform(for: .rightHand))
+        modelRightShoulderTransform = SIMDFloat4x4(transform: skeleton.modelTransform(for: .rightShoulder))
+        modelRightFootTransform = SIMDFloat4x4(transform: skeleton.modelTransform(for: .rightFoot))
+        
         
         // Iterating over All Joints
         for (i, jointTransform) in jointTransforms.enumerated() {
