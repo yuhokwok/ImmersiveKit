@@ -209,9 +209,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
         let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
         
-        let racketPostion = SCNVector3(diffX  ,
-                                       diffY + 2 ,
-                                       -3)
+        let racketPostion = SCNVector3(0,2,-3)
         robot.position = racketPostion
        //  print("robot: \(robot.position)")
         
