@@ -32,6 +32,10 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     var firstRobotRightShoulderPosition = SCNVector3(0,0,0)
     var firstRobotRightFootPosition = SCNVector3(0,0,0)
     
+    var firstRobotRightArmPosition = SCNVector3(0,0,0)
+    var firstRobotRightForeArmPosition = SCNVector3(0,0,0)
+     
+    
 
     // new game
     var time = 0.0
@@ -45,6 +49,8 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     var robotRightHand = SCNNode()
     var robotRightShoulder = SCNNode()
     var robotRightFoot = SCNNode()
+    var robotRightArm = SCNNode()
+    var robotRightForeArm = SCNNode()
     
     private var _mark: MarkDisplay?
     var mark: MarkDisplay? {
@@ -115,24 +121,18 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
                 print("origin robot: \(robot.position)")
                 print("firstPostion =\(firstRobotHipsPosition)")
             }
-            if( node.name == "left_shoulder") {
-                
-                robotLeftShoulder = node
-                firstRobotLeftShoulderPosition = SCNVector3(x: robotLeftShoulder.position.x, y: robotLeftShoulder.position.y , z: robotLeftShoulder.position.z)
+            
+            if( node.name == "right_arm_joint") {
+                robotRightArm = node
+                firstRobotRightArmPosition = SCNVector3(robotRightArm.position.x, robotRightArm.position.y, robotRightArm.position.z)
+//                print("origin robot: \(robot.position)")
+//                print("firstPostion =\(firstRobotHipsPosition)")
             }
-            if( node.name == "left_foot") {
-                robotLeftFoot = node
-                firstRobotLeftFootPosition = SCNVector3(x: robotLeftFoot.position.x, y: robotLeftFoot.position.y , z: robotLeftFoot.position.z)
+            
+            if(node.name == "right_forearm_joint") {
+                robotRightForeArm = node
+                firstRobotRightForeArmPosition = SCNVector3(robotRightForeArm.position.x, robotRightForeArm.position.y, robotRightForeArm.position.z)
             }
-            if(node.name == "right_shoulder") {
-                robotRightShoulder = node
-                firstRobotRightShoulderPosition = SCNVector3(x: robotRightShoulder.position.x, y: robotRightShoulder.position.y , z: robotRightShoulder.position.z)
-            }
-            if(node.name == "right_foot") {
-                robotRightFoot = node
-                firstRobotRightFootPosition = SCNVector3(x: robotRightFoot.position.x, y: robotRightFoot.position.y , z: robotRightFoot.position.z)
-            }
-                print("origin robot left shoulder position \(firstRobotLeftShoulderPosition)")
         }
         
 //        robotShoulder.runAction(SCNAction.rotateBy(x: 0, y: 0, z: -2, duration: 1))
@@ -215,30 +215,22 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         robot.position = racketPostion
        //  print("robot: \(robot.position)")
         
-        let leftHandPosZFromAr = body.modelLeftHandTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelLeftHandTransform?.simdFloat4x4().coordinate().z)!
-        let leftShoulderPosZFromAr = body.modelLeftShoulderTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelLeftShoulderTransform?.simdFloat4x4().coordinate().z)!
-        let leftFootPosZFromAr = body.modelLeftFootTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelLeftFootTransform?.simdFloat4x4().coordinate().z)!
+
         
-        let rightHandPosZFromAr = body.modelRightHandTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelRightHandTransform?.simdFloat4x4().coordinate().z)!
-        let rightShoulderPosZFromAr = body.modelRightShoulderTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelRightShoulderTransform?.simdFloat4x4().coordinate().z)!
-        let rightFootPosZFromAr = body.modelRightFootTransform!.simdFloat4x4().coordinate().z - (firstBody!.modelRightFootTransform?.simdFloat4x4().coordinate().z)!
+        let rightArmJointPos = body.joints[20].transform.simdFloat4x4().columns.2
+        let rightArmJointPosX = rightArmJointPos.x / 5
+        let rightArmJointPosY = rightArmJointPos.y / 5
+        let rightArmJointPosZ = rightArmJointPos.z / 5
         
         
-        let newRobotLeftHandPosZ = (leftHandPosZFromAr - firstRobotLeftHandPosition.z) * 20
-        let newRobotLeftShoulderPosZ = (leftShoulderPosZFromAr - firstRobotLeftShoulderPosition.z) * 20
-        let newRobotLeftFootPosZ = (leftFootPosZFromAr - firstRobotLeftFootPosition.z) * 20
+        let rightForeArmPos = body.joints[21].transform.simdFloat4x4().columns.2
+        let rightForeArmPosX = rightForeArmPos.x / 5
+        let rightForeArmPosY = rightForeArmPos.y / 5
+        let rightForeArmPosZ = rightForeArmPos.z / 5
+
+        robotRightArm.runAction(SCNAction.rotateBy(x: CGFloat(rightArmJointPosX), y: CGFloat(rightArmJointPosY), z: CGFloat(rightArmJointPosZ), duration: 1))
         
-        let newRobotRightHandPosZ = (rightHandPosZFromAr - firstRobotRightHandPosition.z) * 20
-        let newRobotRightShoulderPosZ = (rightShoulderPosZFromAr - firstRobotRightShoulderPosition.z) * 20
-        let newRobotRightFootPosZ = (rightFootPosZFromAr - firstRobotRightFootPosition.z) * 20
-        
-        robotLeftHand.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotLeftHandPosZ), duration: 1))
-        robotLeftShoulder.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotLeftShoulderPosZ), duration: 1))
-        robotLeftFoot.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotLeftFootPosZ), duration: 1))
-        
-        robotRightHand.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotRightHandPosZ), duration: 1))
-        robotRightShoulder.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotRightShoulderPosZ), duration: 1))
-        robotRightFoot.runAction(SCNAction.rotateTo(x: 0, y: 0, z: CGFloat(newRobotRightFootPosZ), duration: 1))
+        robotRightForeArm.runAction(SCNAction.rotateBy(x: CGFloat(rightForeArmPosX), y: CGFloat(rightForeArmPosY), z: CGFloat(rightForeArmPosZ), duration: 1))
 
          }
      
