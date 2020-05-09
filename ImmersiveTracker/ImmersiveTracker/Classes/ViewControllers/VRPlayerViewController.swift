@@ -34,9 +34,11 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     
     var firstRobotRightArmPosition = SCNVector3(0,0,0)
     var firstRobotRightForeArmPosition = SCNVector3(0,0,0)
-     
     
-
+    var firstRobotRightArmAngle = SCNVector3(0,0,0)
+    var firstRobotRightForeArmAngle = SCNVector3(0,0,0)
+    var firstRobotHipsAngle = SCNVector3(0,0,0)
+    
     // new game
     var time = 0.0
     
@@ -98,13 +100,12 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         
         // run in background for create new box per 1 second
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            self.createTarget()
+           // self.createTarget()
         }
         
         // robot
         robot = (immersiveWorld?.scene.rootNode.childNode(withName: "robot", recursively: true)!)!
        
-
         immersiveWorld?.scene.physicsWorld.contactDelegate = self
         mark = MarkDisplay(immersiveView.frame.size)
         immersiveView.leftScnView.overlaySKScene = mark?.scene
@@ -115,27 +116,33 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         //set robot point
         immersiveWorld?.scene.rootNode.enumerateChildNodes {(node, _) in
 
-            if( node.name == "hips") {
+            if( node.name == "hips_joint") {
                 robot = node
-                firstRobotHipsPosition = SCNVector3(robot.position.x, robot.position.y, robot.position.z)
-                print("origin robot: \(robot.position)")
-                print("firstPostion =\(firstRobotHipsPosition)")
+              firstRobotHipsPosition = SCNVector3(robot.position.x, robot.position.y, robot.position.z)
+                firstRobotHipsAngle = SCNVector3(robot.eulerAngles.x, robot.eulerAngles.y, robot.eulerAngles.z)
+                print("firstRobotHipsAngle = \(firstRobotHipsAngle)")
             }
             
             if( node.name == "right_arm_joint") {
                 robotRightArm = node
                 firstRobotRightArmPosition = SCNVector3(robotRightArm.position.x, robotRightArm.position.y, robotRightArm.position.z)
-//                print("origin robot: \(robot.position)")
-//                print("firstPostion =\(firstRobotHipsPosition)")
+               firstRobotRightArmAngle = SCNVector3(robotRightArm.eulerAngles.x,
+                                                    robotRightArm.eulerAngles.y,
+                                                    robotRightArm.eulerAngles.z)
+                print("firstRobotRightArmAngle = \(firstRobotRightArmAngle)")
+                
             }
             
             if(node.name == "right_forearm_joint") {
                 robotRightForeArm = node
                 firstRobotRightForeArmPosition = SCNVector3(robotRightForeArm.position.x, robotRightForeArm.position.y, robotRightForeArm.position.z)
-            }
+                firstRobotRightForeArmAngle = SCNVector3(robotRightForeArm.eulerAngles.x,
+                                                         robotRightForeArm.eulerAngles.y,
+                                                         robotRightForeArm.eulerAngles.z)
+                }
         }
-        
-//        robotShoulder.runAction(SCNAction.rotateBy(x: 0, y: 0, z: -2, duration: 1))
+            //  low rightArmAngle Y =  -0.18672945
+            //  high rightArmAngle Y =  -0.37004063
     }
     
     override func viewDidLayoutSubviews() {
@@ -209,28 +216,24 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
         let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
         
-        let racketPostion = SCNVector3(0,2,-3)
-        robot.position = racketPostion
-       //  print("robot: \(robot.position)")
-        
+        let rightArmEulerAngle = body.joints[20].transform.simdFloat4x4().rotation()
+        robotRightArm.eulerAngles.x = rightArmEulerAngle.x
+        robotRightArm.eulerAngles.y = rightArmEulerAngle.y
+        robotRightArm.eulerAngles.z = -rightArmEulerAngle.z
 
-        
-        let rightArmJointPos = body.joints[20].transform.simdFloat4x4().columns.2
-        let rightArmJointPosX = rightArmJointPos.x / 5
-        let rightArmJointPosY = rightArmJointPos.y / 5
-        let rightArmJointPosZ = rightArmJointPos.z / 5
-        
-        
-        let rightForeArmPos = body.joints[21].transform.simdFloat4x4().columns.2
-        let rightForeArmPosX = rightForeArmPos.x / 5
-        let rightForeArmPosY = rightForeArmPos.y / 5
-        let rightForeArmPosZ = rightForeArmPos.z / 5
+        let rightForeArmEulerAngle = body.joints[21].transform.simdFloat4x4().rotation()
+        robotRightForeArm.eulerAngles.x = rightForeArmEulerAngle.x
+        robotRightForeArm.eulerAngles.y = rightForeArmEulerAngle.y
+        robotRightForeArm.eulerAngles.z = -rightForeArmEulerAngle.z
 
-        robotRightArm.runAction(SCNAction.rotateBy(x: CGFloat(rightArmJointPosX), y: CGFloat(rightArmJointPosY), z: CGFloat(rightArmJointPosZ), duration: 1))
+        let hipEulerAngle = body.joints[1].transform.simdFloat4x4().rotation()
+        robot.eulerAngles.x = hipEulerAngle.x * 10
+        robot.eulerAngles.y = sin(0.38)
+        robot.eulerAngles.z = hipEulerAngle.z * 10
         
-        robotRightForeArm.runAction(SCNAction.rotateBy(x: CGFloat(rightForeArmPosX), y: CGFloat(rightForeArmPosY), z: CGFloat(rightForeArmPosZ), duration: 1))
-
-         }
+        print("robot root = \(robot.eulerAngles)")
+        
+        }
      
     func testCreateOjbect() {
        let box = SCNBox(width:1, height: 1, length: 1, chamferRadius: 0.2)
@@ -284,7 +287,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     }
 
     @objc func runTimedCode() {
-         createTarget()
+         //createTarget()
     }
 //    override func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 //        if time > targetCreationTime {
