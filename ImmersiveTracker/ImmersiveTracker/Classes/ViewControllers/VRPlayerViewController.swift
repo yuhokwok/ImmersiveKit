@@ -137,7 +137,6 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
                firstRobotRightArmAngle = SCNVector3(robotRightArm.eulerAngles.x,
                                                     robotRightArm.eulerAngles.y,
                                                     robotRightArm.eulerAngles.z)
-                print("firstRobotRightArmAngle =\(firstRobotRightArmAngle)")
             }
             
             if(node.name == "right_forearm_joint") {
@@ -146,8 +145,6 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
                 firstRobotRightForeArmAngle = SCNVector3(robotRightForeArm.eulerAngles.x,
                                                          robotRightForeArm.eulerAngles.y,
                                                          robotRightForeArm.eulerAngles.z)
-                print("robotRightForeArm = \(robotRightForeArm)")
-                
             }
             if(node.name == "left_arm_joint") {
                 robotLeftArm = node
@@ -155,7 +152,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
                 firstRobotLeftArmAngle = SCNVector3(robotLeftArm.eulerAngles.x,
                                                     robotLeftArm.eulerAngles.y,
                                                     robotLeftArm.eulerAngles.z)
-                print("firstRobotLeftArmAngle =\(firstRobotLeftArmAngle)")
+              //  print("firstRobotLeftArmAngle =\(firstRobotLeftArmAngle)")
             }
             if(node.name == "left_forearm_joint") {
                 robotLeftForeArm = node
@@ -164,7 +161,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
                                                         robotLeftForeArm.eulerAngles.y,
                                                         robotLeftForeArm.eulerAngles.z)
             }
-        }   
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -244,16 +241,14 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         let rightForeArmEulerAngle = body.joints[65].transform.matrix
         robotRightForeArm.eulerAngles.z = (rightForeArmEulerAngle[0][1] +
                                            rightForeArmEulerAngle[0][2])
-        
+
         let leftArmEulerAngle = body.joints[20].transform.matrix
         robotLeftArm.eulerAngles.z = (leftArmEulerAngle[0][1] +
                                       leftArmEulerAngle[0][2])
-        
+
         let leftForeArmEulerAngle = body.joints[21].transform.matrix
         robotLeftForeArm.eulerAngles.z = (leftForeArmEulerAngle[0][1] +
                                           leftForeArmEulerAngle[0][2])
-        
-        let hipEulerAngle = body.joints[1].transform.simdFloat4x4().rotation()
         }
      
     func testCreateOjbect() {
