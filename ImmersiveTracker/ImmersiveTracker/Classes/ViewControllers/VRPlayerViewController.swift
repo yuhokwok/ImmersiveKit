@@ -27,6 +27,13 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     var firstRobotLeftHandPosition = SCNVector3(0,0,0)
     var firstRobotLeftShoulderPosition = SCNVector3(0,0,0)
     var firstRobotLeftFootPosition = SCNVector3(0,0,0)
+    
+    var firstRobotLeftArmPosition = SCNVector3(0,0,0)
+    var firstRobotLeftForeArmPosition = SCNVector3(0,0,0)
+    
+    var firstRobotLeftArmAngle = SCNVector3(0,0,0)
+    var firstRobotLeftForeArmAngle = SCNVector3(0,0,0)
+    
     // right
     var firstRobotRightHandPosition = SCNVector3(0,0,0)
     var firstRobotRightShoulderPosition = SCNVector3(0,0,0)
@@ -47,6 +54,8 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     var robotLeftHand = SCNNode()
     var robotLeftShoulder = SCNNode()
     var robotLeftFoot = SCNNode()
+    var robotLeftArm = SCNNode()
+    var robotLeftForeArm = SCNNode()
     
     var robotRightHand = SCNNode()
     var robotRightShoulder = SCNNode()
@@ -115,12 +124,11 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         
         //set robot point
         immersiveWorld?.scene.rootNode.enumerateChildNodes {(node, _) in
-
+        
             if( node.name == "hips_joint") {
                 robot = node
               firstRobotHipsPosition = SCNVector3(robot.position.x, robot.position.y, robot.position.z)
                 firstRobotHipsAngle = SCNVector3(robot.eulerAngles.x, robot.eulerAngles.y, robot.eulerAngles.z)
-                print("firstRobotHipsAngle = \(firstRobotHipsAngle)")
             }
             
             if( node.name == "right_arm_joint") {
@@ -129,8 +137,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
                firstRobotRightArmAngle = SCNVector3(robotRightArm.eulerAngles.x,
                                                     robotRightArm.eulerAngles.y,
                                                     robotRightArm.eulerAngles.z)
-                print("firstRobotRightArmAngle = \(firstRobotRightArmAngle)")
-                
+                print("firstRobotRightArmAngle =\(firstRobotRightArmAngle)")
             }
             
             if(node.name == "right_forearm_joint") {
@@ -139,10 +146,25 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
                 firstRobotRightForeArmAngle = SCNVector3(robotRightForeArm.eulerAngles.x,
                                                          robotRightForeArm.eulerAngles.y,
                                                          robotRightForeArm.eulerAngles.z)
-                }
-        }
-            //  low rightArmAngle Y =  -0.18672945
-            //  high rightArmAngle Y =  -0.37004063
+                print("robotRightForeArm = \(robotRightForeArm)")
+                
+            }
+            if(node.name == "left_arm_joint") {
+                robotLeftArm = node
+                firstRobotLeftArmPosition = SCNVector3(robotLeftArm.position.x, robotLeftArm.position.y, robotLeftArm.position.z)
+                firstRobotLeftArmAngle = SCNVector3(robotLeftArm.eulerAngles.x,
+                                                    robotLeftArm.eulerAngles.y,
+                                                    robotLeftArm.eulerAngles.z)
+                print("firstRobotLeftArmAngle =\(firstRobotLeftArmAngle)")
+            }
+            if(node.name == "left_forearm_joint") {
+                robotLeftForeArm = node
+                firstRobotLeftForeArmAngle = SCNVector3(robotLeftForeArm.position.x, robotLeftForeArm.position.y, robotLeftForeArm.position.z)
+                firstRobotLeftForeArmAngle = SCNVector3(robotLeftForeArm.eulerAngles.x,
+                                                        robotLeftForeArm.eulerAngles.y,
+                                                        robotLeftForeArm.eulerAngles.z)
+            }
+        }   
     }
     
     override func viewDidLayoutSubviews() {
@@ -180,7 +202,6 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         super.resetPlayerPosition()
     }
  
-    
     @IBOutlet var fovTextField : UITextField!
     @IBOutlet var pupillaryTextField : UITextField!
     @IBOutlet var fovSlider : UISlider!
@@ -216,23 +237,23 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
         let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
         
-        let rightArmEulerAngle = body.joints[20].transform.simdFloat4x4().rotation()
-        robotRightArm.eulerAngles.x = rightArmEulerAngle.x
-        robotRightArm.eulerAngles.y = rightArmEulerAngle.y
-        robotRightArm.eulerAngles.z = -rightArmEulerAngle.z
-
-        let rightForeArmEulerAngle = body.joints[21].transform.simdFloat4x4().rotation()
-        robotRightForeArm.eulerAngles.x = rightForeArmEulerAngle.x
-        robotRightForeArm.eulerAngles.y = rightForeArmEulerAngle.y
-        robotRightForeArm.eulerAngles.z = -rightForeArmEulerAngle.z
-
+        let rightArmEulerAngle = body.joints[64].transform.matrix
+        
+        robotRightArm.eulerAngles.z = (rightArmEulerAngle[0][1] +
+                                       rightArmEulerAngle[0][2])
+        let rightForeArmEulerAngle = body.joints[65].transform.matrix
+        robotRightForeArm.eulerAngles.z = (rightForeArmEulerAngle[0][1] +
+                                           rightForeArmEulerAngle[0][2])
+        
+        let leftArmEulerAngle = body.joints[20].transform.matrix
+        robotLeftArm.eulerAngles.z = (leftArmEulerAngle[0][1] +
+                                      leftArmEulerAngle[0][2])
+        
+        let leftForeArmEulerAngle = body.joints[21].transform.matrix
+        robotLeftForeArm.eulerAngles.z = (leftForeArmEulerAngle[0][1] +
+                                          leftForeArmEulerAngle[0][2])
+        
         let hipEulerAngle = body.joints[1].transform.simdFloat4x4().rotation()
-        robot.eulerAngles.x = hipEulerAngle.x * 10
-        robot.eulerAngles.y = sin(0.38)
-        robot.eulerAngles.z = hipEulerAngle.z * 10
-        
-        print("robot root = \(robot.eulerAngles)")
-        
         }
      
     func testCreateOjbect() {
