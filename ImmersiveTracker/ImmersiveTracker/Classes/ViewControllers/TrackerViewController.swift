@@ -11,13 +11,30 @@ import UIKit
 import RealityKit
 import ARKit
 import Combine
+
+
 // ar kit - body tracking code //
 
 import ImmersiveKit
 
 
+
+
+
+
 //GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate,
-class TrackerViewController: ImmersiveBodyTrackerNetworkViewController {
+ class TrackerViewController: ImmersiveBodyTrackerNetworkViewController{
+    
+    
+   
+
+    
+    
+    
+    
+    
+    
+     
     
     @IBOutlet var tv : UITextView?
     @IBOutlet weak var messageTextField: UITextField!
@@ -56,7 +73,6 @@ class TrackerViewController: ImmersiveBodyTrackerNetworkViewController {
     }
     
     override func viewDidLoad() {
-        logTextView = self.tv
         super.viewDidLoad()
         //specifically ignore writing request when it is writing some data
         self.networkAgent?.canWriteWithDropFrame = false
