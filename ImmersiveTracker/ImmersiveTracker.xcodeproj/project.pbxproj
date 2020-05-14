@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5141955246D9A6A0080B791 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5141954246D9A6A0080B791 /* MainPageViewController.swift */; };
 		B5150F1B23AB2C2C00EF0667 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B5150F1A23AB2C2B00EF0667 /* art.scnassets */; };
 		B568E09223A5077000B3457D /* ImmersiveKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED764ACB23A0A746004419AA /* ImmersiveKit.framework */; };
 		B568E09323A5080500B3457D /* ImmersiveKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED764ACB23A0A746004419AA /* ImmersiveKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -46,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B5141954246D9A6A0080B791 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		B5150F1A23AB2C2B00EF0667 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		B5769207238A5C8900930B03 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B5769208238A5C8900930B03 /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				ED8C1AD723AE892C003440B0 /* Deprecated */,
 				ED8C1AA023ACBB84003440B0 /* VRPlayerViewController.swift */,
+				B5141954246D9A6A0080B791 /* MainPageViewController.swift */,
 				ED207B02238843CA001806CB /* TrackerViewController.swift */,
 				ED8C1ABC23AD3399003440B0 /* CamSettingClientViewController.swift */,
 			);
@@ -279,6 +282,7 @@
 				ED207B00238842C4001806CB /* File.swift in Sources */,
 				ED207B03238843CA001806CB /* TrackerViewController.swift in Sources */,
 				ED8C1ABD23AD3399003440B0 /* CamSettingClientViewController.swift in Sources */,
+				B5141955246D9A6A0080B791 /* MainPageViewController.swift in Sources */,
 				ED76D16623883C5100D8CE23 /* ServerViewController.swift in Sources */,
 				ED207AFE238842A3001806CB /* UIDevices.swift in Sources */,
 				B5769209238A5C8900930B03 /* Utilities.swift in Sources */,

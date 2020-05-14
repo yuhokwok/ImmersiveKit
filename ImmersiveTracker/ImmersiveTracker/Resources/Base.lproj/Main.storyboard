@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="-1681" y="384"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Page View Controller-->
         <scene sceneID="YUy-xS-Nnt">
             <objects>
-                <viewController id="MiU-Sh-3l1" sceneMemberID="viewController">
+                <viewController id="MiU-Sh-3l1" customClass="MainPageViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aOX-ai-1zN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +130,7 @@
         <!--Tracker View Controller-->
         <scene sceneID="yxp-6W-rZ6">
             <objects>
-                <viewController id="LfU-9V-IjD" customClass="TrackerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrackerViewController" id="LfU-9V-IjD" customClass="TrackerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sTr-xF-Fem">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -207,7 +207,7 @@
         <!--Player View Controller-->
         <scene sceneID="bax-T2-MDD">
             <objects>
-                <viewController id="BCX-MI-9JO" customClass="VRPlayerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VRPlayerViewController" id="BCX-MI-9JO" customClass="VRPlayerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C34-iU-PoO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,7 +338,7 @@
         <!--Cam Setting Client View Controller-->
         <scene sceneID="2ub-gA-uX6">
             <objects>
-                <viewController id="B1W-nB-KhZ" customClass="CamSettingClientViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CamSettingClientViewController" id="B1W-nB-KhZ" customClass="CamSettingClientViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bfi-Ah-IRo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

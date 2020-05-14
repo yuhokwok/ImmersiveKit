@@ -22,6 +22,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Get Coordinates</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>For Voice Command</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>For Voice Command</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
