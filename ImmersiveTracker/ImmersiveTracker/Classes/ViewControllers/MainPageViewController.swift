@@ -14,8 +14,8 @@ import Speech
 
 
 enum SpeechWords: String {
-    case tracking, 開始追蹤
-    case vr = "virtual reality", 開始
+    case tracking, 跟蹤
+    case vr = "virtual reality", 遊玩
     case setting, 設定
 }
 
@@ -25,24 +25,37 @@ class MainPageViewController: ImmersiveVoiceControl {
     
     override func voiceCommandDetected(str: String) {
         if let speechWord = SpeechWords.init(rawValue: str.lowercased()){
-             let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            if let vc = mainStoryboard.instantiateViewController(withIdentifier: "ViewControllerDIdentifier") as? TrackerViewController
-                {
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            switch speechWord {
+            case .tracking, .跟蹤:
+                if let vc = mainStoryboard.instantiateViewController(withIdentifier: "TrackerViewController") as? TrackerViewController{
+                    self.voiceCommand?.stopRecognition()
+                    navigationController?.pushViewController(vc, animated: true)
+                }
+            case .vr, .遊玩:
+                if let vc = mainStoryboard.instantiateViewController(withIdentifier: "VRPlayerViewController") as? VRPlayerViewController{
+                    self.voiceCommand?.stopRecognition()
+                    navigationController?.pushViewController(vc, animated: true)
+                }
+            case .setting, .設定:
+                if let vc = mainStoryboard.instantiateViewController(withIdentifier: "CamSettingClientViewController") as? CamSettingClientViewController{
+                    self.voiceCommand?.stopRecognition()
                     navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }
-           
-        
+    }
     
 
     override func viewDidLoad() {
-        self.voiceCommand?.startRecognition()
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.voiceCommand?.startRecognition()
+    }
 
     /*
     // MARK: - Navigation

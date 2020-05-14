@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ycn-dj-Ww5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ycn-dj-Ww5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -130,7 +130,7 @@
         <!--Tracker View Controller-->
         <scene sceneID="yxp-6W-rZ6">
             <objects>
-                <viewController id="LfU-9V-IjD" customClass="TrackerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrackerViewController" id="LfU-9V-IjD" customClass="TrackerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sTr-xF-Fem">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -207,7 +207,7 @@
         <!--Player View Controller-->
         <scene sceneID="bax-T2-MDD">
             <objects>
-                <viewController id="BCX-MI-9JO" customClass="VRPlayerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VRPlayerViewController" id="BCX-MI-9JO" customClass="VRPlayerViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C34-iU-PoO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,7 +338,7 @@
         <!--Cam Setting Client View Controller-->
         <scene sceneID="2ub-gA-uX6">
             <objects>
-                <viewController id="B1W-nB-KhZ" customClass="CamSettingClientViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CamSettingClientViewController" id="B1W-nB-KhZ" customClass="CamSettingClientViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bfi-Ah-IRo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
