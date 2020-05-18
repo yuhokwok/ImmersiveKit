@@ -14,10 +14,7 @@ import CoreMotion
 
 class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     var targetCreationTime:TimeInterval = 0
-    var leftHandPosX :Float = 0
-    var leftHandPosY :Float = 0
-    var leftHandPosZ :Float = 0
-
+    
     let RacketLevel = 4
     let FloorLevel = 2
     var hitCombo = 0
@@ -31,14 +28,12 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     // import robot
     var robot = SCNNode()
     var robotLeftHand = SCNNode()
-    var robotLeftShoulder = SCNNode()
     var robotLeftUpLeg = SCNNode()
     var robotLeftLeg = SCNNode()
     var robotLeftArm = SCNNode()
     var robotLeftForeArm = SCNNode()
     
     var robotRightHand = SCNNode()
-    var robotRightShoulder = SCNNode()
     var robotRightUpLeg = SCNNode()
     var robotRightLeg = SCNNode()
     var robotRightArm = SCNNode()
