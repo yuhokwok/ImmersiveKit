@@ -14,10 +14,7 @@ import CoreMotion
 
 class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     var targetCreationTime:TimeInterval = 0
-    var leftHandPosX :Float = 0
-    var leftHandPosY :Float = 0
-    var leftHandPosZ :Float = 0
-
+    
     let RacketLevel = 4
     let FloorLevel = 2
     var hitCombo = 0
@@ -31,14 +28,12 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     // import robot
     var robot = SCNNode()
     var robotLeftHand = SCNNode()
-    var robotLeftShoulder = SCNNode()
     var robotLeftUpLeg = SCNNode()
     var robotLeftLeg = SCNNode()
     var robotLeftArm = SCNNode()
     var robotLeftForeArm = SCNNode()
     
     var robotRightHand = SCNNode()
-    var robotRightShoulder = SCNNode()
     var robotRightUpLeg = SCNNode()
     var robotRightLeg = SCNNode()
     var robotRightArm = SCNNode()
@@ -108,9 +103,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         
             if( node.name == "hips_joint") {
                 robot = node
-              firstRobotHipsPosition = SCNVector3(robot.position.x, robot.position.y, robot.position.z)
-                firstRobotHipsAngle = SCNVector3(robot.eulerAngles.x, robot.eulerAngles.y, robot.eulerAngles.z)
-                
+              firstRobotHipsPosition = SCNVector3(robot.position.x, robot.position.y, robot.position.z - 2)
             }else if( node.name == "right_arm_joint") {
                 robotRightArm = node
             }else if(node.name == "right_forearm_joint") {
@@ -227,6 +220,11 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         let leftLegEulerAngle = body.joints[3].transform.simdFloat4x4()
         robotLeftLeg.simdTransform = leftLegEulerAngle
         
+        let hipEulerAngle = body.hipWorldPosition.simdFloat4x4()
+        robot.simdTransform = hipEulerAngle
+        
+        let hipPosition = SCNVector3(diffX / 10, diffY / 10, diffZ / 10)
+        robot.position = hipPosition
         }
      
     func testCreateOjbect() {
