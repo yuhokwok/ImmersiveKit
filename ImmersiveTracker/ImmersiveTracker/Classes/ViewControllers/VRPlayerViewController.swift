@@ -22,29 +22,8 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     let FloorLevel = 2
     var hitCombo = 0
     
-    var firstRobotHipsPosition = SCNVector3(0,0,0)
-    // left
-    var firstRobotLeftHandPosition = SCNVector3(0,0,0)
-    var firstRobotLeftShoulderPosition = SCNVector3(0,0,0)
-    var firstRobotLeftFootPosition = SCNVector3(0,0,0)
-    
-    var firstRobotLeftArmPosition = SCNVector3(0,0,0)
-    var firstRobotLeftForeArmPosition = SCNVector3(0,0,0)
-    
-    var firstRobotLeftArmAngle = SCNVector3(0,0,0)
-    var firstRobotLeftForeArmAngle = SCNVector3(0,0,0)
-    
-    // right
-    var firstRobotRightHandPosition = SCNVector3(0,0,0)
-    var firstRobotRightShoulderPosition = SCNVector3(0,0,0)
-    var firstRobotRightFootPosition = SCNVector3(0,0,0)
-    
-    var firstRobotRightArmPosition = SCNVector3(0,0,0)
-    var firstRobotRightForeArmPosition = SCNVector3(0,0,0)
-    
-    var firstRobotRightArmAngle = SCNVector3(0,0,0)
-    var firstRobotRightForeArmAngle = SCNVector3(0,0,0)
-    var firstRobotHipsAngle = SCNVector3(0,0,0)
+    var firstRobotHipsPosition = SCNVector3()
+    var firstRobotHipsAngle = SCNVector3()
     
     // new game
     var time = 0.0
@@ -53,13 +32,15 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     var robot = SCNNode()
     var robotLeftHand = SCNNode()
     var robotLeftShoulder = SCNNode()
-    var robotLeftFoot = SCNNode()
+    var robotLeftUpLeg = SCNNode()
+    var robotLeftLeg = SCNNode()
     var robotLeftArm = SCNNode()
     var robotLeftForeArm = SCNNode()
     
     var robotRightHand = SCNNode()
     var robotRightShoulder = SCNNode()
-    var robotRightFoot = SCNNode()
+    var robotRightUpLeg = SCNNode()
+    var robotRightLeg = SCNNode()
     var robotRightArm = SCNNode()
     var robotRightForeArm = SCNNode()
     
@@ -129,37 +110,25 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
                 robot = node
               firstRobotHipsPosition = SCNVector3(robot.position.x, robot.position.y, robot.position.z)
                 firstRobotHipsAngle = SCNVector3(robot.eulerAngles.x, robot.eulerAngles.y, robot.eulerAngles.z)
-            }
-            
-            if( node.name == "right_arm_joint") {
+                
+            }else if( node.name == "right_arm_joint") {
                 robotRightArm = node
-                firstRobotRightArmPosition = SCNVector3(robotRightArm.position.x, robotRightArm.position.y, robotRightArm.position.z)
-               firstRobotRightArmAngle = SCNVector3(robotRightArm.eulerAngles.x,
-                                                    robotRightArm.eulerAngles.y,
-                                                    robotRightArm.eulerAngles.z)
-            }
-            
-            if(node.name == "right_forearm_joint") {
+            }else if(node.name == "right_forearm_joint") {
                 robotRightForeArm = node
-                firstRobotRightForeArmPosition = SCNVector3(robotRightForeArm.position.x, robotRightForeArm.position.y, robotRightForeArm.position.z)
-                firstRobotRightForeArmAngle = SCNVector3(robotRightForeArm.eulerAngles.x,
-                                                         robotRightForeArm.eulerAngles.y,
-                                                         robotRightForeArm.eulerAngles.z)
-            }
-            if(node.name == "left_arm_joint") {
+            }else if(node.name == "right_upLeg_joint") {
+                robotRightUpLeg = node
+            }else if(node.name == "right_leg_joint") {
+                robotRightLeg = node
+            }else if(node.name == "left_arm_joint") {
                 robotLeftArm = node
-                firstRobotLeftArmPosition = SCNVector3(robotLeftArm.position.x, robotLeftArm.position.y, robotLeftArm.position.z)
-                firstRobotLeftArmAngle = SCNVector3(robotLeftArm.eulerAngles.x,
-                                                    robotLeftArm.eulerAngles.y,
-                                                    robotLeftArm.eulerAngles.z)
-              //  print("firstRobotLeftArmAngle =\(firstRobotLeftArmAngle)")
-            }
-            if(node.name == "left_forearm_joint") {
+            }else if(node.name == "left_forearm_joint") {
                 robotLeftForeArm = node
-                firstRobotLeftForeArmAngle = SCNVector3(robotLeftForeArm.position.x, robotLeftForeArm.position.y, robotLeftForeArm.position.z)
-                firstRobotLeftForeArmAngle = SCNVector3(robotLeftForeArm.eulerAngles.x,
-                                                        robotLeftForeArm.eulerAngles.y,
-                                                        robotLeftForeArm.eulerAngles.z)
+            }else if(node.name == "left_upLeg_joint") {
+                robotLeftUpLeg = node
+            }else if(node.name == "left_leg_joint") {
+                robotLeftLeg = node
+            }else {
+                return
             }
         }
     }
@@ -234,21 +203,30 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
         let diffY = body.hipWorldPosition.simdFloat4x4().coordinate().y - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().y
         let diffZ = body.hipWorldPosition.simdFloat4x4().coordinate().z - firstBody!.hipWorldPosition.simdFloat4x4().coordinate().z
         
-        let rightArmEulerAngle = body.joints[64].transform.matrix
+        let rightArmEulerAngle = body.joints[64].transform.simdFloat4x4()
         
-        robotRightArm.eulerAngles.z = (rightArmEulerAngle[0][1] +
-                                       rightArmEulerAngle[0][2])
-        let rightForeArmEulerAngle = body.joints[65].transform.matrix
-        robotRightForeArm.eulerAngles.z = (rightForeArmEulerAngle[0][1] +
-                                           rightForeArmEulerAngle[0][2])
-
-        let leftArmEulerAngle = body.joints[20].transform.matrix
-        robotLeftArm.eulerAngles.z = (leftArmEulerAngle[0][1] +
-                                      leftArmEulerAngle[0][2])
-
-        let leftForeArmEulerAngle = body.joints[21].transform.matrix
-        robotLeftForeArm.eulerAngles.z = (leftForeArmEulerAngle[0][1] +
-                                          leftForeArmEulerAngle[0][2])
+        robotRightArm.simdTransform = rightArmEulerAngle
+        let rightForeArmEulerAngle = body.joints[65].transform.simdFloat4x4()
+        robotRightForeArm.simdTransform = rightForeArmEulerAngle
+        
+        let rightUpLegEulerAngle = body.joints[7].transform.simdFloat4x4()
+        robotRightUpLeg.simdTransform = rightUpLegEulerAngle
+        
+        let rightlegEulerAngle = body.joints[8].transform.simdFloat4x4()
+        robotRightLeg.simdTransform = rightlegEulerAngle
+        
+        let leftArmEulerAngle = body.joints[20].transform.simdFloat4x4()
+        robotLeftArm.simdTransform = leftArmEulerAngle
+        
+        let leftForeArmEulerAngle = body.joints[21].transform.simdFloat4x4()
+        robotLeftForeArm.simdTransform = leftForeArmEulerAngle
+        
+        let leftUpLegEulerAngle = body.joints[2].transform.simdFloat4x4()
+        robotLeftUpLeg.simdTransform = leftUpLegEulerAngle
+        
+        let leftLegEulerAngle = body.joints[3].transform.simdFloat4x4()
+        robotLeftLeg.simdTransform = leftLegEulerAngle
+        
         }
      
     func testCreateOjbect() {
