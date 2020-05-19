@@ -48,7 +48,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     
     //MARK: - Life Cycle Function
     override func viewDidLoad() {
-        logTextView = self.tv
+//        logTextView = self.tv
         super.viewDidLoad()
         
         // run in background for create new box per 1 second
