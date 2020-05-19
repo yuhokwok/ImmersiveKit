@@ -77,7 +77,7 @@ class CamSettingClientViewController: UIViewController, ImmersiveKitDebugging {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.isIdleTimerDisabled = true
-        
+        navigationController?.isNavigationBarHidden = false
         logTextView = self.tv
         
         

@@ -60,6 +60,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Bh9-2E-H21">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uGe-kn-RmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="ycn-dj-Ww5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xAu-GQ-VvL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -69,7 +70,6 @@
                         <segue destination="MiU-Sh-3l1" kind="relationship" relationship="rootViewController" id="p9j-wc-UHs"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uGe-kn-RmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1681" y="384"/>
         </scene>
@@ -81,43 +81,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="129" translatesAutoresizingMaskIntoConstraints="NO" id="bmB-R2-yR8">
-                                <rect key="frame" x="145.5" y="196.5" width="123.5" height="503.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJt-8T-qRO">
+                                <rect key="frame" x="136.5" y="819" width="141.5" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="aZS-Qz-hh3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="   Camera Setting" image="setting">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="B1W-nB-KhZ" kind="show" id="S0l-aX-eDc"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cwy-Ab-9eX">
+                                <rect key="frame" x="90" y="188" width="234.5" height="49.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ImmersiveKit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT4-bb-tk2">
-                                        <rect key="frame" x="0.0" y="0.0" width="123.5" height="26.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ImmersiveKit Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT4-bb-tk2">
+                                        <rect key="frame" x="0.0" y="0.0" width="234.5" height="33.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCj-Jt-Mhk">
-                                        <rect key="frame" x="0.0" y="155.5" width="123.5" height="30"/>
-                                        <state key="normal" title="Tracker"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered By ImmersiveKit Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUg-BN-hrd">
+                                        <rect key="frame" x="0.0" y="33.5" width="234.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49.5" id="a11-li-fIE"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bmB-R2-yR8">
+                                <rect key="frame" x="118.5" y="569" width="177" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCj-Jt-Mhk">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="43.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="   Setup Tracker" image="tracker">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
                                         <connections>
                                             <segue destination="LfU-9V-IjD" kind="show" id="Kot-v2-dcr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVG-UZ-eE4">
-                                        <rect key="frame" x="0.0" y="314.5" width="123.5" height="30"/>
-                                        <state key="normal" title="VR Player"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVG-UZ-eE4">
+                                        <rect key="frame" x="0.0" y="58.5" width="177" height="41.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="    VR Player" image="vr">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <connections>
                                             <segue destination="BCX-MI-9JO" kind="show" id="8Hf-9n-pq6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJt-8T-qRO">
-                                        <rect key="frame" x="0.0" y="473.5" width="123.5" height="30"/>
-                                        <state key="normal" title="Camera Setting"/>
-                                        <connections>
-                                            <segue destination="B1W-nB-KhZ" kind="show" id="S0l-aX-eDc"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="cyl-iV-jCw"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="bmB-R2-yR8" firstAttribute="centerX" secondItem="aOX-ai-1zN" secondAttribute="centerX" id="Kd1-bc-t0p"/>
-                            <constraint firstItem="bmB-R2-yR8" firstAttribute="centerY" secondItem="aOX-ai-1zN" secondAttribute="centerY" id="TD1-uw-9pL"/>
+                            <constraint firstItem="cwy-Ab-9eX" firstAttribute="centerX" secondItem="aOX-ai-1zN" secondAttribute="centerX" id="3aX-d4-Nm9"/>
+                            <constraint firstItem="TJt-8T-qRO" firstAttribute="centerX" secondItem="aOX-ai-1zN" secondAttribute="centerX" id="42j-Zc-dr6"/>
+                            <constraint firstItem="bmB-R2-yR8" firstAttribute="centerX" secondItem="aOX-ai-1zN" secondAttribute="centerX" id="5L3-PI-mHi"/>
+                            <constraint firstItem="rJN-vo-SX6" firstAttribute="bottom" secondItem="TJt-8T-qRO" secondAttribute="bottom" constant="20" id="N6J-nu-SWa"/>
+                            <constraint firstItem="TJt-8T-qRO" firstAttribute="top" secondItem="bmB-R2-yR8" secondAttribute="bottom" constant="150" id="fiD-9V-lBT"/>
+                            <constraint firstItem="cwy-Ab-9eX" firstAttribute="top" secondItem="rJN-vo-SX6" secondAttribute="top" constant="100" id="nB3-zD-Qpu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rJN-vo-SX6"/>
                     </view>
@@ -340,7 +374,7 @@
             <objects>
                 <viewController storyboardIdentifier="CamSettingClientViewController" id="B1W-nB-KhZ" customClass="CamSettingClientViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bfi-Ah-IRo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cam Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GG-nn-tAD">
@@ -432,4 +466,9 @@
             <point key="canvasLocation" x="-352.17391304347831" y="1106.9196428571429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="setting" width="22.5" height="22.5"/>
+        <image name="tracker" width="31" height="48.5"/>
+        <image name="vr" width="51" height="41.5"/>
+    </resources>
 </document>

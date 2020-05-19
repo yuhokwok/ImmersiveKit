@@ -60,6 +60,7 @@ class TrackerViewController: ImmersiveBodyTrackerNetworkViewController {
         super.viewDidLoad()
         //specifically ignore writing request when it is writing some data
         self.networkAgent?.canWriteWithDropFrame = false
+        navigationController?.isNavigationBarHidden = false
     }
     
     
