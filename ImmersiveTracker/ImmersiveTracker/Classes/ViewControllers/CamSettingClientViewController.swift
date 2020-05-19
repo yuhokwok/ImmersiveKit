@@ -16,7 +16,7 @@ class CamSettingClientViewController: UIViewController, ImmersiveKitDebugging {
 
     var immersiveClient : ImmersiveClient?
     
-    @IBOutlet var tv : UITextView?
+//    @IBOutlet var tv : UITextView?
     @IBOutlet weak var messageTextField: UITextField!
     
     
@@ -78,7 +78,7 @@ class CamSettingClientViewController: UIViewController, ImmersiveKitDebugging {
         super.viewDidAppear(animated)
         UIApplication.shared.isIdleTimerDisabled = true
         navigationController?.isNavigationBarHidden = false
-        logTextView = self.tv
+//        logTextView = self.tv
         
         
         try? self.immersiveClient?.start()

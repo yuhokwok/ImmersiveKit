@@ -60,7 +60,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Bh9-2E-H21">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uGe-kn-RmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="ycn-dj-Ww5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xAu-GQ-VvL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -70,6 +69,7 @@
                         <segue destination="MiU-Sh-3l1" kind="relationship" relationship="rootViewController" id="p9j-wc-UHs"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uGe-kn-RmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1681" y="384"/>
         </scene>
@@ -365,7 +365,7 @@
             </objects>
             <point key="canvasLocation" x="650.72463768115949" y="99.776785714285708"/>
         </scene>
-        <!--Cam Setting Client View Controller-->
+        <!--Camera Setting-->
         <scene sceneID="2ub-gA-uX6">
             <objects>
                 <viewController storyboardIdentifier="CamSettingClientViewController" id="B1W-nB-KhZ" customClass="CamSettingClientViewController" customModule="ImmersiveTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -373,39 +373,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cam Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GG-nn-tAD">
-                                <rect key="frame" x="20" y="143" width="111" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="90" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kN5-yJ-ina">
-                                <rect key="frame" x="164" y="143" width="230" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="90" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kN5-yJ-ina">
+                                <rect key="frame" x="318" y="143" width="76" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2.2" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xMu-Hy-jiK">
-                                <rect key="frame" x="158" y="210" width="236" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2.2" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xMu-Hy-jiK">
+                                <rect key="frame" x="318" y="275" width="76" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROR-DT-8ui" customClass="MessageLabel" customModule="ImmersiveTracker" customModuleProvider="target">
-                                <rect key="frame" x="20" y="103" width="374" height="21"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j8T-ag-jMi">
-                                <rect key="frame" x="20" y="297" width="374" height="365"/>
-                                <color key="backgroundColor" white="1" alpha="0.2343218537" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fv-kU-i7L">
-                                <rect key="frame" x="163" y="371" width="231" height="30"/>
+                                <rect key="frame" x="318" y="371" width="76" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send"/>
                                 <connections>
@@ -421,40 +401,49 @@
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.3999999999999999" minValue="1.8" maxValue="8.5" translatesAutoresizingMaskIntoConstraints="NO" id="q5P-ui-Y2e">
-                                <rect key="frame" x="20" y="252" width="376" height="30"/>
+                                <rect key="frame" x="20" y="317" width="376" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="sliderTouchUpInside" destination="B1W-nB-KhZ" eventType="touchUpInside" id="gs1-c4-pDo"/>
                                     <action selector="sliderValueChangedPupillary" destination="B1W-nB-KhZ" eventType="valueChanged" id="STp-HW-aP9"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pupillary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIG-Gs-pTR">
+                                <rect key="frame" x="87" y="148" width="86" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pupillary" translatesAutoresizingMaskIntoConstraints="NO" id="v5T-Lk-QOe">
+                                <rect key="frame" x="20" y="133" width="73" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FOV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsK-a9-4Kz">
+                                <rect key="frame" x="90" y="283" width="86" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fov" translatesAutoresizingMaskIntoConstraints="NO" id="LQO-5l-COJ">
+                                <rect key="frame" x="20" y="271" width="62" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0GG-nn-tAD" firstAttribute="top" secondItem="ROR-DT-8ui" secondAttribute="bottom" constant="19" id="5lH-0X-EUG"/>
-                            <constraint firstItem="IHs-YQ-Qne" firstAttribute="bottom" secondItem="j8T-ag-jMi" secondAttribute="bottom" constant="200" id="BhK-Iu-TEt"/>
-                            <constraint firstItem="ROR-DT-8ui" firstAttribute="top" secondItem="IHs-YQ-Qne" secondAttribute="top" constant="15" id="EhF-pG-Lcx"/>
-                            <constraint firstItem="j8T-ag-jMi" firstAttribute="top" secondItem="kN5-yJ-ina" secondAttribute="bottom" constant="120" id="Feu-Vt-Grj"/>
-                            <constraint firstItem="0GG-nn-tAD" firstAttribute="leading" secondItem="IHs-YQ-Qne" secondAttribute="leading" constant="20" id="Idi-A8-zHX"/>
                             <constraint firstItem="kN5-yJ-ina" firstAttribute="top" secondItem="IHs-YQ-Qne" secondAttribute="top" constant="55" id="WB9-DC-3zp"/>
-                            <constraint firstItem="IHs-YQ-Qne" firstAttribute="trailing" secondItem="ROR-DT-8ui" secondAttribute="trailing" constant="20" id="Yy9-od-xQn"/>
-                            <constraint firstItem="ROR-DT-8ui" firstAttribute="leading" secondItem="IHs-YQ-Qne" secondAttribute="leading" constant="20" id="bot-Fi-Xcr"/>
-                            <constraint firstItem="IHs-YQ-Qne" firstAttribute="trailing" secondItem="j8T-ag-jMi" secondAttribute="trailing" constant="20" id="dTP-Pt-Ro6"/>
-                            <constraint firstItem="kN5-yJ-ina" firstAttribute="leading" secondItem="0GG-nn-tAD" secondAttribute="trailing" constant="33" id="i3d-YM-49h"/>
-                            <constraint firstItem="0GG-nn-tAD" firstAttribute="top" secondItem="IHs-YQ-Qne" secondAttribute="top" constant="55" id="i6z-ay-PBt"/>
                             <constraint firstItem="IHs-YQ-Qne" firstAttribute="trailing" secondItem="kN5-yJ-ina" secondAttribute="trailing" constant="20" id="wiu-Hp-Ocf"/>
-                            <constraint firstItem="j8T-ag-jMi" firstAttribute="leading" secondItem="IHs-YQ-Qne" secondAttribute="leading" constant="20" id="zfq-GS-LSf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IHs-YQ-Qne"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LN7-i7-8TB"/>
+                    <navigationItem key="navigationItem" title="Camera Setting" id="LN7-i7-8TB"/>
                     <connections>
                         <outlet property="fovSlider" destination="Ium-UJ-1wp" id="s6o-nN-Ana"/>
                         <outlet property="fovTextField" destination="kN5-yJ-ina" id="nsD-O5-8X8"/>
-                        <outlet property="messageLabel" destination="ROR-DT-8ui" id="9pR-1P-xfe"/>
                         <outlet property="pupillarySlider" destination="q5P-ui-Y2e" id="6kW-GI-MnU"/>
                         <outlet property="pupillaryTextField" destination="xMu-Hy-jiK" id="meV-Lv-7ch"/>
-                        <outlet property="tv" destination="j8T-ag-jMi" id="FdD-Wt-pRw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfV-SH-p4z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -463,6 +452,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fov" width="34" height="24"/>
+        <image name="pupillary" width="34" height="34"/>
         <image name="setting" width="22.5" height="22.5"/>
         <image name="tracker" width="31" height="48.5"/>
         <image name="tracker_bg" width="375" height="166"/>
