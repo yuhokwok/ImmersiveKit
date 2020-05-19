@@ -2,7 +2,7 @@
 //  MarkDisplay.swift
 //  ImmersiveTracker
 //
-//  Created by Jason Chow on 15/1/2020.
+//  Created by ImmersiveKit Team on 15/1/2020.
 //  Copyright © 2020 ImmersiveKit Team. All rights reserved.
 //
 

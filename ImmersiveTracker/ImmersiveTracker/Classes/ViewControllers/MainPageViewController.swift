@@ -2,7 +2,7 @@
 //  MainPageViewController.swift
 //  ImmersiveTracker
 //
-//  Created by chan CHAKFUNG on 14/5/2020.
+//  Created by ImmersiveKit Team on 14/5/2020.
 //  Copyright © 2020 ImmersiveKit Team. All rights reserved.
 //
 
