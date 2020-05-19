@@ -50,6 +50,7 @@ class VRPlayerViewController: ImmersivePlayerNetworkViewController{
     override func viewDidLoad() {
 //        logTextView = self.tv
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = false
         
         // run in background for create new box per 1 second
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in

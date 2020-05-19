@@ -19,8 +19,11 @@ import ImmersiveKit
 //GCDAsyncSocketDelegate, NetServiceDelegate, NetServiceBrowserDelegate,
 class TrackerViewController: ImmersiveBodyTrackerNetworkViewController {
     
-    @IBOutlet var tv : UITextView?
-    @IBOutlet weak var messageTextField: UITextField!
+//    @IBOutlet var tv : UITextView?
+    
+    @IBOutlet var state: UILabel!
+    @IBOutlet var trackingState: UILabel!
+    
 
     //MARK: - ImmersiveNetworkAgentProvider
     override var networkAgentShouldAutoRun: Bool {
@@ -41,25 +44,26 @@ class TrackerViewController: ImmersiveBodyTrackerNetworkViewController {
     //var tapPlacementAnchor: AnchorEntity?    
 
     // ar kit - body tracking code //
-    @IBAction func sendData(_ sender: Any) {
-        self.sendData()
-    }
-    
+//    @IBAction func sendData(_ sender: Any) {
+//        self.sendData()
+//    }
+//
     func sendData() {
-        guard let msg = self.messageTextField.text else { return }
-        self.networkAgent?.write(str: msg)
+//        guard let msg = self.messageTextField.text else { return }
+//        self.networkAgent?.write(str: msg)
     }
     
 
     @IBAction func screenTapped(_ sender: Any) {
-        self.messageTextField.resignFirstResponder()
+//        self.messageTextField.resignFirstResponder()
     }
     
     override func viewDidLoad() {
-        logTextView = self.tv
+//        logTextView = self.tv
         super.viewDidLoad()
         //specifically ignore writing request when it is writing some data
         self.networkAgent?.canWriteWithDropFrame = false
+        navigationController?.isNavigationBarHidden = false
     }
     
     

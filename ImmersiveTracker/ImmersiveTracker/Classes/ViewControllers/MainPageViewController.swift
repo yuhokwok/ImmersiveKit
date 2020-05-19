@@ -50,10 +50,12 @@ class MainPageViewController: ImmersiveVoiceControl {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        navigationController?.isNavigationBarHidden = true
         self.voiceCommand?.startRecognition()
     }
 
