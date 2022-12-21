@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		B5141955246D9A6A0080B791 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5141954246D9A6A0080B791 /* MainPageViewController.swift */; };
 		B5150F1B23AB2C2C00EF0667 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B5150F1A23AB2C2B00EF0667 /* art.scnassets */; };
-		B568E09223A5077000B3457D /* ImmersiveKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED764ACB23A0A746004419AA /* ImmersiveKit.framework */; };
-		B568E09323A5080500B3457D /* ImmersiveKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED764ACB23A0A746004419AA /* ImmersiveKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5769209238A5C8900930B03 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5769207238A5C8900930B03 /* Utilities.swift */; };
 		B576920A238A5C8900930B03 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5769208238A5C8900930B03 /* MessageLabel.swift */; };
 		ED0BCBAB23A0E36A00CA3DE1 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0BCBAA23A0E36A00CA3DE1 /* Constant.swift */; };
 		ED207AFE238842A3001806CB /* UIDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFD238842A3001806CB /* UIDevices.swift */; };
 		ED207B00238842C4001806CB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207AFF238842C4001806CB /* File.swift */; };
 		ED207B03238843CA001806CB /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED207B02238843CA001806CB /* TrackerViewController.swift */; };
+		ED5565DC28D78CA9000A31AF /* ImmersiveKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5565DB28D78CA9000A31AF /* ImmersiveKit.framework */; };
+		ED5565DD28D78CA9000A31AF /* ImmersiveKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED5565DB28D78CA9000A31AF /* ImmersiveKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ED76D16223883C5100D8CE23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16123883C5100D8CE23 /* AppDelegate.swift */; };
 		ED76D16423883C5100D8CE23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16323883C5100D8CE23 /* SceneDelegate.swift */; };
 		ED76D16623883C5100D8CE23 /* ServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED76D16523883C5100D8CE23 /* ServerViewController.swift */; };
@@ -33,13 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		ED764ACE23A0A746004419AA /* Embed Frameworks */ = {
+		ED5565DE28D78CA9000A31AF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B568E09323A5080500B3457D /* ImmersiveKit.framework in Embed Frameworks */,
+				ED5565DD28D78CA9000A31AF /* ImmersiveKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,7 +56,8 @@
 		ED207AFD238842A3001806CB /* UIDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevices.swift; sourceTree = "<group>"; };
 		ED207AFF238842C4001806CB /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		ED207B02238843CA001806CB /* TrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
-		ED764ACB23A0A746004419AA /* ImmersiveKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImmersiveKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED5565D328D78B6D000A31AF /* ImmersiveKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImmersiveKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/ImmersiveKit-fwzatngobnbfmnealdrnmfdzcxii/Build/Products/Debug-iphoneos/ImmersiveKit.framework"; sourceTree = "<group>"; };
+		ED5565DB28D78CA9000A31AF /* ImmersiveKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImmersiveKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED76D15E23883C5100D8CE23 /* ImmersiveTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImmersiveTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED76D16123883C5100D8CE23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED76D16323883C5100D8CE23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B568E09223A5077000B3457D /* ImmersiveKit.framework in Frameworks */,
+				ED5565DC28D78CA9000A31AF /* ImmersiveKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +100,8 @@
 		ED764ABE23A0A419004419AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ED764ACB23A0A746004419AA /* ImmersiveKit.framework */,
+				ED5565DB28D78CA9000A31AF /* ImmersiveKit.framework */,
+				ED5565D328D78B6D000A31AF /* ImmersiveKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -209,7 +211,7 @@
 				ED76D15A23883C5100D8CE23 /* Sources */,
 				ED76D15B23883C5100D8CE23 /* Frameworks */,
 				ED76D15C23883C5100D8CE23 /* Resources */,
-				ED764ACE23A0A746004419AA /* Embed Frameworks */,
+				ED5565DE28D78CA9000A31AF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,7 +229,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "ImmersiveKit Team";
 				TargetAttributes = {
 					ED76D15D23883C5100D8CE23 = {
@@ -341,6 +343,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -365,7 +368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,6 +405,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -420,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -437,19 +441,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G747L87TGJ;
 				INFOPLIST_FILE = ImmersiveTracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mad.fyp.ImmersiveKit.ImmersiveTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ImmersiveTracker/3rd-Party/ImmersiveTracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -459,18 +467,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = G747L87TGJ;
 				INFOPLIST_FILE = ImmersiveTracker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = louisTsui.ImmersiveTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ImmersiveTracker/3rd-Party/ImmersiveTracker-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -105,4 +105,9 @@ class TrackerViewController: ImmersiveBodyTrackerNetworkViewController {
     public override func report(msg : String) {
         printLog(msg)
     }
+    
+    override func bodyDidUpdate(bodyAnchor: ARBodyAnchor) {
+        //let skeleton = bodyAnchor.skeleton
+        
+    }
 }
