@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ImmersiveDebugPrintDelega
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print("====== Powered by ImmersiveKit \(ImmersiveCore.version) ======")
-        ImmersiveCore.printer = self
+        //ImmersiveCore.printer = self
         print("====== ImmersiveKit debug printer hooked ======")
         return true
     }

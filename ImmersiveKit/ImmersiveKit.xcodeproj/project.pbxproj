@@ -170,10 +170,8 @@
 		ED764AC123A0A432004419AA /* NetworkIO */ = {
 			isa = PBXGroup;
 			children = (
-				ED0BCBAD23A11B7400CA3DE1 /* CocoaAsyncSocket */,
-				ED764AC323A0A43B004419AA /* ImmersiveClient.swift */,
-				ED764AC223A0A43B004419AA /* ImmersiveServer.swift */,
-				ED0BCBA823A0C9CF00CA3DE1 /* ImmserviceNetworkCore.swift */,
+				EDA7F2A129A79CD500612697 /* Peer Connectivity */,
+				EDA7F2A029A79CC400612697 /* Client Server */,
 			);
 			path = NetworkIO;
 			sourceTree = "<group>";
@@ -341,6 +339,24 @@
 				EDB6028023A8AF8D00147A4D /* ImmersiveVoiceControl.swift */,
 			);
 			path = SpeechRecognition;
+			sourceTree = "<group>";
+		};
+		EDA7F2A029A79CC400612697 /* Client Server */ = {
+			isa = PBXGroup;
+			children = (
+				ED0BCBAD23A11B7400CA3DE1 /* CocoaAsyncSocket */,
+				ED764AC323A0A43B004419AA /* ImmersiveClient.swift */,
+				ED764AC223A0A43B004419AA /* ImmersiveServer.swift */,
+				ED0BCBA823A0C9CF00CA3DE1 /* ImmserviceNetworkCore.swift */,
+			);
+			path = "Client Server";
+			sourceTree = "<group>";
+		};
+		EDA7F2A129A79CD500612697 /* Peer Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Peer Connectivity";
 			sourceTree = "<group>";
 		};
 		EDB6028223A8B5D200147A4D /* Extensions */ = {
